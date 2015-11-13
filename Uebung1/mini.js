@@ -1,9 +1,9 @@
 /**
  * Created by Thea on 09.11.15.
  */
-var http = require('http');
+var http = require('http'); //Server
 var redis = require('redis');
-var client = redis.createClient(6379, '127.0.0.1');
+var client = redis.createClient(6379, '127.0.0.1'); //DB
 
 client.on('connect', function () {
     client.set('hochschule:professor', 'Thomas Smits');
