@@ -16,3 +16,9 @@ function pressSearchKey()    {
     }
   });
 }
+
+$('input[name=srch-term]').keyup(function(event){
+    if(event.keyCode == 13 || event.which == 13){
+        pressSearchKey(); 
+    }
+});
