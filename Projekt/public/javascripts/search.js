@@ -10,8 +10,7 @@ function pressSearchKey()    {
           $("#search").attr("class","well well-sm");
           var source   = $("#result-template").html();
           var template = Handlebars.compile(source);
-          var context = {result: resp};
-          $("#result").html(template(context));
+          $("#result").html(template(resp));
     },
     error: function(e) {
         alert('Error: '+e);

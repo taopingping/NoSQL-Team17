@@ -50,7 +50,7 @@ app.get('/:key', function(req, res){
 
     db.close();
   });*/
-  var result = "success";
+  var result = [{id: 1, doc:"a.doc", count: 3 }, {id: 2, doc: "b.doc", count: 2 }, {id: 3, doc: "c.txt", count: 1 }];
   res.send(result);
 });
 

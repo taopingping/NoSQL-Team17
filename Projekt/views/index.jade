@@ -13,8 +13,17 @@ html(lang='en')
   #result
   <!-- Template for search results-->
   script#result-template(type='text/x-handlebars-template')
-    #res.well.well-sm
-      {{result}}
+    table.table.table-striped
+      tr
+        th ID
+        th Document
+        th Count
+      {{#each this}}
+      tr
+        td {{id}}
+        td {{doc}}
+        td {{count}}
+      {{/each}}
   script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
   script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
   script(src='http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars.min-latest.js')
