@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
+var mongoose = require('mongoose');
 var app = express();
 
 //initialize ElasticSearch client
@@ -31,9 +32,8 @@ app.use('/', routes);
 app.get('/:key', function(req, res){
   console.log("Searched for: " + req.params.key);
   //set result
-
 // TODO initialize ES client
-  
+
   //initialize MongoDB client
   var MongoClient = require('mongodb').MongoClient
     , assert = require('assert');

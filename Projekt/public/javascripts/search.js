@@ -6,10 +6,13 @@ function pressSearchKey()    {
     url: "http://localhost:1337/"+needle,
     type: 'GET',
     success: function (resp) {
-          $("#searchText").text("Suchanfrage: " + needle);
-          $("#resultText").text("Ergebnis: " + resp);
-          $("#searchText").attr("class","well well-sm");
-          $("#resultText").attr("class","well well-sm");
+          $("#search").text("Suchanfrage: " + needle);
+          $("#search").attr("class","well well-sm");
+          var source   = $("#result-template").html();
+          var template = Handlebars.compile(source);
+          var context = {result: resp};
+          $("#result").empty();
+          $("#result").append(template(context));
     },
     error: function(e) {
         alert('Error: '+e);
@@ -19,6 +22,6 @@ function pressSearchKey()    {
 
 $('input[name=srch-term]').keyup(function(event){
     if(event.keyCode == 13 || event.which == 13){
-        pressSearchKey(); 
+        pressSearchKey();
     }
 });
