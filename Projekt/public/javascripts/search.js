@@ -11,8 +11,7 @@ function pressSearchKey()    {
           var source   = $("#result-template").html();
           var template = Handlebars.compile(source);
           var context = {result: resp};
-          $("#result").empty();
-          $("#result").append(template(context));
+          $("#result").html(template(context));
     },
     error: function(e) {
         alert('Error: '+e);
