@@ -29,8 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
-app.get('/:key', function(req, res){
-  console.log("Searched for: " + req.params.key);
+app.get('/:search', function(req, res){
+  console.log("Searched for: " + req.params.search);
   //set result
 // TODO initialize ES client
 
