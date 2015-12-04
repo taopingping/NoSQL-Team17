@@ -3,11 +3,16 @@ html(lang='en')
   head
     link(href='//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css', rel='stylesheet')
   body
-  .input-group
-    input#srch-term.form-control(type='text', placeholder='Search with button', name='srch-term')
-    .input-group-btn
-      button.btn.btn-default(type='submit', onclick='pressSearchKey()')
-        i.glyphicon.glyphicon-search
+    .input-group
+      .input-group-btn
+        button.btn.btn-default(type='submit', onclick='pressSearchKey()')
+          i.glyphicon.glyphicon-search
+      input#srch-term.form-control(type='text', placeholder='Enter search text here', name='srch-term')
+      .input-group-btn
+        span.btn.btn-default.btn-file
+          input(type='file', accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+        button.btn.btn-default(type='submit', onclick='uploadFile()', name='file')
+          i.glyphicon.glyphicon-upload
   br
   #search
   #result
@@ -27,4 +32,5 @@ html(lang='en')
   script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
   script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
   script(src='http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars.min-latest.js')
+  script(src='/javascripts/upload.js')
   script(src='/javascripts/search.js')
