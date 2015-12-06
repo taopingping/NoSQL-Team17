@@ -19,15 +19,18 @@ client.on('connect', function () {
 
 http.createServer(function(req, res){
     var url = req.url.substr(1); //'/test'
-    console.log(url);
-    if (!url)
+    console.log('URLxy'+url);
+    if (!url){
         res.end('Hello World');
-    else {
+    } else {
         client.get(url, function (err, value) {
-            if(value == null)
-                res.end('Hello World');
-            else
+            if(value == null){
+                res.end('Key not found');
+                console.log(err+'flag1');
+            } else{
+                console.log('SUCCESSFUL');
                 res.end(value);
+            }
         });
     }
 }).listen(3500, '127.0.0.1');
