@@ -25,7 +25,11 @@ var Ftp = new JSFtp({
 
 Ftp.ls(".", function(err, res) {
   res.forEach(function(file) {
+    // log filename
     console.log(file.name);
+
+    //log file
+    console.log(file);
   });
 });
 
