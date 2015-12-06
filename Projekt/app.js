@@ -106,3 +106,9 @@ app.use(function(err, req, res, next) {
 app.listen(process.env.SRV_PORT);
 
 module.exports = app;
+
+//parse to
+var textract = require('textract');
+textract.fromFileWithPath('test.txt', function( error, text ){
+  console.log(text);
+})
