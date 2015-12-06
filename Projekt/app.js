@@ -5,13 +5,28 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
+var elasticsearch = require('elasticsearch');
+var JSFtp = require("jsftp");
 var app = express();
 
-//initialize ElasticSearch client
-var elasticsearch = require('elasticsearch');
+require('dotenv').load();
+
 var client = new elasticsearch.Client({
-  host: 'localhost:9200',
+  host: process.env.ES_HOST,
   log: 'trace'
+});
+
+var Ftp = new JSFtp({
+  host: process.env.FTP_HOST,
+  port: process.env.FTP_PORT,
+  user: process.env.FTP_USER,
+  pass: process.env.FTP_PWD
+});
+
+Ftp.ls(".", function(err, res) {
+  res.forEach(function(file) {
+    console.log(file.name);
+  });
 });
 
 // view engine setup
@@ -84,7 +99,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(1337);
-console.log('Server running at localhost:1337/');
+app.listen(process.env.SRV_PORT);
 
 module.exports = app;
