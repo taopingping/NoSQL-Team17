@@ -1,11 +1,11 @@
 var express = require('express');
 var app = express();
-var port = 6379;
+var ClientPort = 6379;
 var serverPort = 8000;
 
 /* GET home page. */
 var redis = require('redis');
-var client = redis.createClient(port, "127.0.0.1");
+var client = redis.createClient(ClientPort, "127.0.0.1");
 
 client.on('connect', function () {
     client.set('hochschule:professor', 'Thomas Smits');
@@ -32,7 +32,7 @@ app.get('*', function (req, res) {
     else {
         client.get(url, function (err, value) {
             if(value == null)
-                res.send('Hello World');
+                res.send('Key not found');
             else
                 res.send(value);
         });

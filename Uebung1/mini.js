@@ -1,9 +1,9 @@
 /**
  * Created by Thea on 09.11.15.
  */
-var http = require('http');
+var http = require('http'); //Server
 var redis = require('redis');
-var client = redis.createClient(6379, '127.0.0.1');
+var client = redis.createClient(6379, '127.0.0.1'); //DB
 
 client.on('connect', function () {
     client.set('hochschule:professor', 'Thomas Smits');
@@ -19,15 +19,18 @@ client.on('connect', function () {
 
 http.createServer(function(req, res){
     var url = req.url.substr(1); //'/test'
-    console.log(url);
-    if (!url)
+    console.log('URLxy'+url);
+    if (!url){
         res.end('Hello World');
-    else {
+    } else {
         client.get(url, function (err, value) {
-            if(value == null)
-                res.end('Hello World');
-            else
+            if(value == null){
+                res.end('Key not found');
+                console.log(err+'flag1');
+            } else{
+                console.log('SUCCESSFUL');
                 res.end(value);
+            }
         });
     }
 }).listen(3500, '127.0.0.1');
