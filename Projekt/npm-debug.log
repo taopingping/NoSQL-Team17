@@ -1,0 +1,1330 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'office' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.2
+4 verbose install initial load of /Users/Thea/Desktop/NoSQL-Team17/Projekt/package.json
+5 verbose installManyTop reading scoped package data from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/body-parser/package.json
+6 verbose installManyTop reading scoped package data from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/cookie-parser/package.json
+7 verbose installManyTop reading scoped package data from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/debug/package.json
+8 verbose installManyTop reading scoped package data from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/elasticsearch/package.json
+9 verbose installManyTop reading scoped package data from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/express/package.json
+10 verbose installManyTop reading scoped package data from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/handlebars/package.json
+11 verbose installManyTop reading scoped package data from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/jade/package.json
+12 verbose installManyTop reading scoped package data from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/mongodb/package.json
+13 verbose installManyTop reading scoped package data from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/morgan/package.json
+14 verbose installManyTop reading scoped package data from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/serve-favicon/package.json
+15 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/package.json
+16 silly cache add args [ 'office', null ]
+17 verbose cache add spec office
+18 silly cache add parsed spec Result {
+18 silly cache add   raw: 'office',
+18 silly cache add   scope: null,
+18 silly cache add   name: 'office',
+18 silly cache add   rawSpec: '',
+18 silly cache add   spec: '*',
+18 silly cache add   type: 'range' }
+19 silly addNamed office@*
+20 verbose addNamed "*" is a valid semver range for office
+21 silly addNameRange { name: 'office', range: '*', hasData: false }
+22 silly mapToRegistry name office
+23 silly mapToRegistry using default registry
+24 silly mapToRegistry registry https://registry.npmjs.org/
+25 silly mapToRegistry uri https://registry.npmjs.org/office
+26 verbose addNameRange registry:https://registry.npmjs.org/office not in flight; fetching
+27 verbose request uri https://registry.npmjs.org/office
+28 verbose request no auth needed
+29 info attempt registry request try #1 at 14:46:06
+30 verbose request id 25bc7d8999817c3e
+31 http request GET https://registry.npmjs.org/office
+32 http 200 https://registry.npmjs.org/office
+33 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+33 verbose headers   etag: '"89W0O5JQL912VT7MAKDUNFX6B"',
+33 verbose headers   'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=60',
+33 verbose headers   'content-length': '7705',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Sun, 06 Dec 2015 13:46:06 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   age: '0',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-fra1244-FRA',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1449409566.316470,VS0,VE176',
+33 verbose headers   vary: 'Accept' }
+34 silly get cb [ 200,
+34 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+34 silly get     etag: '"89W0O5JQL912VT7MAKDUNFX6B"',
+34 silly get     'content-type': 'application/json',
+34 silly get     'cache-control': 'max-age=60',
+34 silly get     'content-length': '7705',
+34 silly get     'accept-ranges': 'bytes',
+34 silly get     date: 'Sun, 06 Dec 2015 13:46:06 GMT',
+34 silly get     via: '1.1 varnish',
+34 silly get     age: '0',
+34 silly get     connection: 'keep-alive',
+34 silly get     'x-served-by': 'cache-fra1244-FRA',
+34 silly get     'x-cache': 'MISS',
+34 silly get     'x-cache-hits': '0',
+34 silly get     'x-timer': 'S1449409566.316470,VS0,VE176',
+34 silly get     vary: 'Accept' } ]
+35 verbose get saving office to /Users/Thea/.npm/registry.npmjs.org/office/.cache.json
+36 silly addNameRange number 2 { name: 'office', range: '*', hasData: true }
+37 silly addNameRange versions [ 'office',
+37 silly addNameRange   [ '0.0.2', '0.0.3', '0.0.4', '0.0.5', '0.0.6', '0.0.7', '0.0.8' ] ]
+38 silly addNamed office@0.0.8
+39 verbose addNamed "0.0.8" is a plain semver version for office
+40 silly mapToRegistry name office
+41 silly mapToRegistry using default registry
+42 silly mapToRegistry registry https://registry.npmjs.org/
+43 silly mapToRegistry uri https://registry.npmjs.org/office
+44 verbose addRemoteTarball https://registry.npmjs.org/office/-/office-0.0.8.tgz not in flight; adding
+45 verbose addRemoteTarball [ 'https://registry.npmjs.org/office/-/office-0.0.8.tgz',
+45 verbose addRemoteTarball   '355ee55d0d63476518ca379025c49c4893f690a8' ]
+46 info retry fetch attempt 1 at 14:46:06
+47 info attempt registry request try #1 at 14:46:06
+48 http fetch GET https://registry.npmjs.org/office/-/office-0.0.8.tgz
+49 http fetch 200 https://registry.npmjs.org/office/-/office-0.0.8.tgz
+50 silly fetchAndShaCheck shasum 355ee55d0d63476518ca379025c49c4893f690a8
+51 verbose addTmpTarball /var/folders/_8/2q4q23cx7qs5wg5zm7mz9kf40000gn/T/npm-39755-07cdd26a/registry.npmjs.org/office/-/office-0.0.8.tgz not in flight; adding
+52 verbose addTmpTarball already have metadata; skipping unpack for office@0.0.8
+53 silly cache afterAdd office@0.0.8
+54 verbose afterAdd /Users/Thea/.npm/office/0.0.8/package/package.json not in flight; writing
+55 verbose afterAdd /Users/Thea/.npm/office/0.0.8/package/package.json written
+56 silly install resolved [ { name: 'office',
+56 silly install resolved     version: '0.0.8',
+56 silly install resolved     description: 'Parse office documents (doc, docx, xls, etc..)',
+56 silly install resolved     main: 'index.js',
+56 silly install resolved     directories: { test: 'test' },
+56 silly install resolved     scripts: { test: 'grunt nodeunit' },
+56 silly install resolved     repository:
+56 silly install resolved      { type: 'git',
+56 silly install resolved        url: 'git://github.com/dkiyatkin/node-office.git' },
+56 silly install resolved     keywords: [ 'doc', 'xls', 'docx', 'xlsx', 'odt', 'ods' ],
+56 silly install resolved     author:
+56 silly install resolved      { name: 'Dmitriy Kiyatkin',
+56 silly install resolved        email: 'info@dkiyatkin.com',
+56 silly install resolved        url: 'http://dkiyatkin.com/' },
+56 silly install resolved     license: 'MIT',
+56 silly install resolved     bugs: { url: 'https://github.com/dkiyatkin/node-office/issues' },
+56 silly install resolved     homepage: 'https://github.com/dkiyatkin/node-office',
+56 silly install resolved     devDependencies:
+56 silly install resolved      { grunt: '~0.4.2',
+56 silly install resolved        'grunt-contrib-jshint': '~0.8.0',
+56 silly install resolved        'grunt-contrib-nodeunit': '~0.2.2',
+56 silly install resolved        htmlparser: '~1.7.7' },
+56 silly install resolved     dependencies: { xml2json: '~0.3.2', temp: '~0.6.0' },
+56 silly install resolved     _id: 'office@0.0.8',
+56 silly install resolved     dist:
+56 silly install resolved      { shasum: '355ee55d0d63476518ca379025c49c4893f690a8',
+56 silly install resolved        tarball: 'http://registry.npmjs.org/office/-/office-0.0.8.tgz' },
+56 silly install resolved     _from: 'office@*',
+56 silly install resolved     _npmVersion: '1.3.23',
+56 silly install resolved     _npmUser: { name: 'dkiyatkin', email: 'd.kiyatkin@itlf.ru' },
+56 silly install resolved     maintainers: [ [Object] ],
+56 silly install resolved     _shasum: '355ee55d0d63476518ca379025c49c4893f690a8',
+56 silly install resolved     _resolved: 'https://registry.npmjs.org/office/-/office-0.0.8.tgz' } ]
+57 info install office@0.0.8 into /Users/Thea/Desktop/NoSQL-Team17/Projekt
+58 info installOne office@0.0.8
+59 verbose installOne of office to /Users/Thea/Desktop/NoSQL-Team17/Projekt not in flight; installing
+60 verbose lock using /Users/Thea/.npm/_locks/office-d63a5d170eaaf283.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+61 silly install write writing office 0.0.8 to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+62 verbose unbuild node_modules/office
+63 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office is being purged from base /Users/Thea/Desktop/NoSQL-Team17/Projekt
+64 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+65 verbose tar unpack /Users/Thea/.npm/office/0.0.8/package.tgz
+66 verbose tar unpacking to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+67 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office is being purged
+68 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+69 silly gunzTarPerm modes [ '755', '644' ]
+70 silly gunzTarPerm extractEntry package.json
+71 silly gunzTarPerm extractEntry .npmignore
+72 silly gunzTarPerm extractEntry README.md
+73 silly gunzTarPerm extractEntry LICENSE
+74 silly gunzTarPerm extractEntry Gruntfile.js
+75 silly gunzTarPerm extractEntry index.js
+76 silly gunzTarPerm extractEntry test/documents.js
+77 silly gunzTarPerm extractEntry test/spreadsheets.js
+78 silly gunzTarPerm extractEntry test/test.ods
+79 silly gunzTarPerm extractEntry test/test.odt
+80 silly gunzTarPerm extractEntry test/test.xls
+81 verbose write writing to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/package.json
+82 info preinstall office@0.0.8
+83 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/package.json
+84 silly prepareForInstallMany adding xml2json@~0.3.2 from office dependencies
+85 silly prepareForInstallMany adding temp@~0.6.0 from office dependencies
+86 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/package.json
+87 silly cache add args [ 'temp@~0.6.0', null ]
+88 verbose cache add spec temp@~0.6.0
+89 silly cache add parsed spec Result {
+89 silly cache add   raw: 'temp@~0.6.0',
+89 silly cache add   scope: null,
+89 silly cache add   name: 'temp',
+89 silly cache add   rawSpec: '~0.6.0',
+89 silly cache add   spec: '>=0.6.0 <0.7.0',
+89 silly cache add   type: 'range' }
+90 silly addNamed temp@>=0.6.0 <0.7.0
+91 verbose addNamed ">=0.6.0 <0.7.0" is a valid semver range for temp
+92 silly addNameRange { name: 'temp', range: '>=0.6.0 <0.7.0', hasData: false }
+93 silly mapToRegistry name temp
+94 silly mapToRegistry using default registry
+95 silly mapToRegistry registry https://registry.npmjs.org/
+96 silly mapToRegistry uri https://registry.npmjs.org/temp
+97 verbose addNameRange registry:https://registry.npmjs.org/temp not in flight; fetching
+98 silly cache add args [ 'xml2json@~0.3.2', null ]
+99 verbose cache add spec xml2json@~0.3.2
+100 silly cache add parsed spec Result {
+100 silly cache add   raw: 'xml2json@~0.3.2',
+100 silly cache add   scope: null,
+100 silly cache add   name: 'xml2json',
+100 silly cache add   rawSpec: '~0.3.2',
+100 silly cache add   spec: '>=0.3.2 <0.4.0',
+100 silly cache add   type: 'range' }
+101 silly addNamed xml2json@>=0.3.2 <0.4.0
+102 verbose addNamed ">=0.3.2 <0.4.0" is a valid semver range for xml2json
+103 silly addNameRange { name: 'xml2json', range: '>=0.3.2 <0.4.0', hasData: false }
+104 silly mapToRegistry name xml2json
+105 silly mapToRegistry using default registry
+106 silly mapToRegistry registry https://registry.npmjs.org/
+107 silly mapToRegistry uri https://registry.npmjs.org/xml2json
+108 verbose addNameRange registry:https://registry.npmjs.org/xml2json not in flight; fetching
+109 verbose request uri https://registry.npmjs.org/temp
+110 verbose request no auth needed
+111 info attempt registry request try #1 at 14:46:06
+112 http request GET https://registry.npmjs.org/temp
+113 verbose request uri https://registry.npmjs.org/xml2json
+114 verbose request no auth needed
+115 info attempt registry request try #1 at 14:46:06
+116 http request GET https://registry.npmjs.org/xml2json
+117 http 200 https://registry.npmjs.org/temp
+118 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+118 verbose headers   etag: '"48DKXQ9Q3CYL3RK2J4W8N0DC0"',
+118 verbose headers   'content-type': 'application/json',
+118 verbose headers   'cache-control': 'max-age=60',
+118 verbose headers   'content-length': '19299',
+118 verbose headers   'accept-ranges': 'bytes',
+118 verbose headers   date: 'Sun, 06 Dec 2015 13:46:06 GMT',
+118 verbose headers   via: '1.1 varnish',
+118 verbose headers   age: '3',
+118 verbose headers   connection: 'keep-alive',
+118 verbose headers   'x-served-by': 'cache-fra1231-FRA',
+118 verbose headers   'x-cache': 'HIT',
+118 verbose headers   'x-cache-hits': '1',
+118 verbose headers   'x-timer': 'S1449409566.856211,VS0,VE0',
+118 verbose headers   vary: 'Accept' }
+119 silly get cb [ 200,
+119 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+119 silly get     etag: '"48DKXQ9Q3CYL3RK2J4W8N0DC0"',
+119 silly get     'content-type': 'application/json',
+119 silly get     'cache-control': 'max-age=60',
+119 silly get     'content-length': '19299',
+119 silly get     'accept-ranges': 'bytes',
+119 silly get     date: 'Sun, 06 Dec 2015 13:46:06 GMT',
+119 silly get     via: '1.1 varnish',
+119 silly get     age: '3',
+119 silly get     connection: 'keep-alive',
+119 silly get     'x-served-by': 'cache-fra1231-FRA',
+119 silly get     'x-cache': 'HIT',
+119 silly get     'x-cache-hits': '1',
+119 silly get     'x-timer': 'S1449409566.856211,VS0,VE0',
+119 silly get     vary: 'Accept' } ]
+120 verbose get saving temp to /Users/Thea/.npm/registry.npmjs.org/temp/.cache.json
+121 silly addNameRange number 2 { name: 'temp', range: '>=0.6.0 <0.7.0', hasData: true }
+122 silly addNameRange versions [ 'temp',
+122 silly addNameRange   [ '0.2.0',
+122 silly addNameRange     '0.3.0',
+122 silly addNameRange     '0.4.0',
+122 silly addNameRange     '0.5.0',
+122 silly addNameRange     '0.5.1',
+122 silly addNameRange     '0.6.0',
+122 silly addNameRange     '0.7.0',
+122 silly addNameRange     '0.8.0',
+122 silly addNameRange     '0.8.1',
+122 silly addNameRange     '0.8.2',
+122 silly addNameRange     '0.8.3' ] ]
+123 silly addNamed temp@0.6.0
+124 verbose addNamed "0.6.0" is a plain semver version for temp
+125 silly mapToRegistry name temp
+126 silly mapToRegistry using default registry
+127 silly mapToRegistry registry https://registry.npmjs.org/
+128 silly mapToRegistry uri https://registry.npmjs.org/temp
+129 verbose addRemoteTarball https://registry.npmjs.org/temp/-/temp-0.6.0.tgz not in flight; adding
+130 verbose addRemoteTarball [ 'https://registry.npmjs.org/temp/-/temp-0.6.0.tgz',
+130 verbose addRemoteTarball   '6b13df5cddf370f2e3a606ca40f202c419173f07' ]
+131 info retry fetch attempt 1 at 14:46:06
+132 info attempt registry request try #1 at 14:46:06
+133 http fetch GET https://registry.npmjs.org/temp/-/temp-0.6.0.tgz
+134 http fetch 200 https://registry.npmjs.org/temp/-/temp-0.6.0.tgz
+135 silly fetchAndShaCheck shasum 6b13df5cddf370f2e3a606ca40f202c419173f07
+136 verbose addTmpTarball /var/folders/_8/2q4q23cx7qs5wg5zm7mz9kf40000gn/T/npm-39755-07cdd26a/registry.npmjs.org/temp/-/temp-0.6.0.tgz not in flight; adding
+137 verbose addTmpTarball already have metadata; skipping unpack for temp@0.6.0
+138 silly cache afterAdd temp@0.6.0
+139 verbose afterAdd /Users/Thea/.npm/temp/0.6.0/package/package.json not in flight; writing
+140 verbose afterAdd /Users/Thea/.npm/temp/0.6.0/package/package.json written
+141 http 200 https://registry.npmjs.org/xml2json
+142 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+142 verbose headers   etag: '"C3WSNJWR0H2LBEOHNAYY9XZE"',
+142 verbose headers   'content-type': 'application/json',
+142 verbose headers   'cache-control': 'max-age=60',
+142 verbose headers   'content-length': '31919',
+142 verbose headers   'accept-ranges': 'bytes',
+142 verbose headers   date: 'Sun, 06 Dec 2015 13:46:06 GMT',
+142 verbose headers   via: '1.1 varnish',
+142 verbose headers   age: '0',
+142 verbose headers   connection: 'keep-alive',
+142 verbose headers   'x-served-by': 'cache-fra1231-FRA',
+142 verbose headers   'x-cache': 'MISS',
+142 verbose headers   'x-cache-hits': '0',
+142 verbose headers   'x-timer': 'S1449409566.856357,VS0,VE104',
+142 verbose headers   vary: 'Accept' }
+143 silly get cb [ 200,
+143 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+143 silly get     etag: '"C3WSNJWR0H2LBEOHNAYY9XZE"',
+143 silly get     'content-type': 'application/json',
+143 silly get     'cache-control': 'max-age=60',
+143 silly get     'content-length': '31919',
+143 silly get     'accept-ranges': 'bytes',
+143 silly get     date: 'Sun, 06 Dec 2015 13:46:06 GMT',
+143 silly get     via: '1.1 varnish',
+143 silly get     age: '0',
+143 silly get     connection: 'keep-alive',
+143 silly get     'x-served-by': 'cache-fra1231-FRA',
+143 silly get     'x-cache': 'MISS',
+143 silly get     'x-cache-hits': '0',
+143 silly get     'x-timer': 'S1449409566.856357,VS0,VE104',
+143 silly get     vary: 'Accept' } ]
+144 verbose get saving xml2json to /Users/Thea/.npm/registry.npmjs.org/xml2json/.cache.json
+145 silly addNameRange number 2 { name: 'xml2json', range: '>=0.3.2 <0.4.0', hasData: true }
+146 silly addNameRange versions [ 'xml2json',
+146 silly addNameRange   [ '0.1.0',
+146 silly addNameRange     '0.1.1',
+146 silly addNameRange     '0.2.0',
+146 silly addNameRange     '0.2.1',
+146 silly addNameRange     '0.2.2',
+146 silly addNameRange     '0.2.3',
+146 silly addNameRange     '0.2.4',
+146 silly addNameRange     '0.3.0',
+146 silly addNameRange     '0.3.1',
+146 silly addNameRange     '0.3.2',
+146 silly addNameRange     '0.4.0',
+146 silly addNameRange     '0.5.0',
+146 silly addNameRange     '0.5.1',
+146 silly addNameRange     '0.6.0',
+146 silly addNameRange     '0.6.1',
+146 silly addNameRange     '0.6.2',
+146 silly addNameRange     '0.7.0',
+146 silly addNameRange     '0.7.1',
+146 silly addNameRange     '0.8.0',
+146 silly addNameRange     '0.8.1',
+146 silly addNameRange     '0.8.2',
+146 silly addNameRange     '0.9.0' ] ]
+147 silly addNamed xml2json@0.3.2
+148 verbose addNamed "0.3.2" is a plain semver version for xml2json
+149 silly mapToRegistry name xml2json
+150 silly mapToRegistry using default registry
+151 silly mapToRegistry registry https://registry.npmjs.org/
+152 silly mapToRegistry uri https://registry.npmjs.org/xml2json
+153 verbose addRemoteTarball https://registry.npmjs.org/xml2json/-/xml2json-0.3.2.tgz not in flight; adding
+154 verbose addRemoteTarball [ 'https://registry.npmjs.org/xml2json/-/xml2json-0.3.2.tgz',
+154 verbose addRemoteTarball   '97461b97b9645723c447e919cdc64d54a76a1e65' ]
+155 info retry fetch attempt 1 at 14:46:06
+156 info attempt registry request try #1 at 14:46:06
+157 http fetch GET https://registry.npmjs.org/xml2json/-/xml2json-0.3.2.tgz
+158 http fetch 200 https://registry.npmjs.org/xml2json/-/xml2json-0.3.2.tgz
+159 silly fetchAndShaCheck shasum 97461b97b9645723c447e919cdc64d54a76a1e65
+160 verbose addTmpTarball /var/folders/_8/2q4q23cx7qs5wg5zm7mz9kf40000gn/T/npm-39755-07cdd26a/registry.npmjs.org/xml2json/-/xml2json-0.3.2.tgz not in flight; adding
+161 verbose addTmpTarball already have metadata; skipping unpack for xml2json@0.3.2
+162 silly cache afterAdd xml2json@0.3.2
+163 verbose afterAdd /Users/Thea/.npm/xml2json/0.3.2/package/package.json not in flight; writing
+164 verbose afterAdd /Users/Thea/.npm/xml2json/0.3.2/package/package.json written
+165 silly install resolved [ { name: 'temp',
+165 silly install resolved     description: 'Temporary files and directories',
+165 silly install resolved     tags:
+165 silly install resolved      [ 'temporary',
+165 silly install resolved        'temp',
+165 silly install resolved        'tempfile',
+165 silly install resolved        'tempdir',
+165 silly install resolved        'tmpfile',
+165 silly install resolved        'tmpdir',
+165 silly install resolved        'security' ],
+165 silly install resolved     version: '0.6.0',
+165 silly install resolved     author: { name: 'Bruce Williams', email: 'bruce@codefluency.com' },
+165 silly install resolved     directories: { lib: 'lib' },
+165 silly install resolved     engines: [ 'node >=0.6.0' ],
+165 silly install resolved     main: './lib/temp',
+165 silly install resolved     dependencies: { rimraf: '~2.1.4', osenv: '0.0.3' },
+165 silly install resolved     devDependencies: {},
+165 silly install resolved     repository: { type: 'git', url: 'git://github.com/bruce/node-temp.git' },
+165 silly install resolved     scripts: { test: 'node test/temp-test.js' },
+165 silly install resolved     bugs: { url: 'https://github.com/bruce/node-temp/issues' },
+165 silly install resolved     _id: 'temp@0.6.0',
+165 silly install resolved     dist:
+165 silly install resolved      { shasum: '6b13df5cddf370f2e3a606ca40f202c419173f07',
+165 silly install resolved        tarball: 'http://registry.npmjs.org/temp/-/temp-0.6.0.tgz' },
+165 silly install resolved     _from: 'temp@>=0.6.0 <0.7.0',
+165 silly install resolved     _npmVersion: '1.2.32',
+165 silly install resolved     _npmUser: { name: 'bruce', email: 'bruce@codefluency.com' },
+165 silly install resolved     maintainers: [ [Object] ],
+165 silly install resolved     _shasum: '6b13df5cddf370f2e3a606ca40f202c419173f07',
+165 silly install resolved     _resolved: 'https://registry.npmjs.org/temp/-/temp-0.6.0.tgz' },
+165 silly install resolved   { name: 'xml2json',
+165 silly install resolved     version: '0.3.2',
+165 silly install resolved     author: { name: 'Andrew Turley' },
+165 silly install resolved     email: 'aturley@buglabs.net',
+165 silly install resolved     description: 'Converts xml to json and viceverza, using node-expat.',
+165 silly install resolved     repository:
+165 silly install resolved      { type: 'git',
+165 silly install resolved        url: 'git://github.com/buglabs/node-xml2json.git' },
+165 silly install resolved     main: 'index',
+165 silly install resolved     contributors: [ [Object] ],
+165 silly install resolved     dependencies: { 'node-expat': '2.0.0' },
+165 silly install resolved     _id: 'xml2json@0.3.2',
+165 silly install resolved     dist:
+165 silly install resolved      { shasum: '97461b97b9645723c447e919cdc64d54a76a1e65',
+165 silly install resolved        tarball: 'http://registry.npmjs.org/xml2json/-/xml2json-0.3.2.tgz' },
+165 silly install resolved     _npmVersion: '1.1.63',
+165 silly install resolved     _npmUser: { name: 'c4milo', email: 'camilo.aguilar@gmail.com' },
+165 silly install resolved     maintainers: [ [Object], [Object] ],
+165 silly install resolved     directories: {},
+165 silly install resolved     _shasum: '97461b97b9645723c447e919cdc64d54a76a1e65',
+165 silly install resolved     _resolved: 'https://registry.npmjs.org/xml2json/-/xml2json-0.3.2.tgz',
+165 silly install resolved     _from: 'xml2json@>=0.3.2 <0.4.0' } ]
+166 info install temp@0.6.0 into /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+167 info install xml2json@0.3.2 into /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+168 info installOne temp@0.6.0
+169 verbose installOne of temp to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office not in flight; installing
+170 info installOne xml2json@0.3.2
+171 verbose installOne of xml2json to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office not in flight; installing
+172 verbose lock using /Users/Thea/.npm/_locks/temp-9039fd5925d457b3.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp
+173 silly install write writing temp 0.6.0 to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp
+174 verbose lock using /Users/Thea/.npm/_locks/xml2json-cc1819969dee7751.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+175 silly install write writing xml2json 0.3.2 to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+176 verbose unbuild node_modules/office/node_modules/temp
+177 verbose unbuild node_modules/office/node_modules/xml2json
+178 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp is being purged from base /Users/Thea/Desktop/NoSQL-Team17/Projekt
+179 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp
+180 verbose tar unpack /Users/Thea/.npm/temp/0.6.0/package.tgz
+181 verbose tar unpacking to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp
+182 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp is being purged
+183 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp
+184 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json is being purged from base /Users/Thea/Desktop/NoSQL-Team17/Projekt
+185 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+186 silly gunzTarPerm modes [ '755', '644' ]
+187 verbose tar unpack /Users/Thea/.npm/xml2json/0.3.2/package.tgz
+188 verbose tar unpacking to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+189 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json is being purged
+190 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+191 silly gunzTarPerm modes [ '755', '644' ]
+192 silly gunzTarPerm extractEntry package.json
+193 silly gunzTarPerm extractEntry package.json
+194 silly gunzTarPerm extractEntry .npmignore
+195 silly gunzTarPerm extractEntry README.md
+196 silly gunzTarPerm extractEntry .npmignore
+197 silly gunzTarPerm extractEntry README.md
+198 silly gunzTarPerm extractEntry LICENSE
+199 silly gunzTarPerm extractEntry .travis.yml
+200 silly gunzTarPerm extractEntry index.js
+201 silly gunzTarPerm extractEntry test/.npmignore
+202 silly gunzTarPerm extractEntry examples/grepcount.js
+203 silly gunzTarPerm extractEntry examples/pdfcreator.js
+204 silly gunzTarPerm extractEntry test/test-coerce.js
+205 silly gunzTarPerm extractEntry test/coerce-overhead.js
+206 silly gunzTarPerm extractEntry lib/temp.js
+207 silly gunzTarPerm extractEntry test/test.js
+208 silly gunzTarPerm extractEntry test/test-reorder.js
+209 silly gunzTarPerm extractEntry test/temp-test.js
+210 silly gunzTarPerm extractEntry test/test-space.js
+211 silly gunzTarPerm extractEntry test/fixtures/domain.json
+212 silly gunzTarPerm extractEntry test/fixtures/spacetext.json
+213 silly gunzTarPerm extractEntry test/fixtures/large.xml
+214 silly gunzTarPerm extractEntry test/fixtures/large.json
+215 silly gunzTarPerm extractEntry test/fixtures/reorder.json
+216 silly gunzTarPerm extractEntry test/fixtures/coerce.xml
+217 silly gunzTarPerm extractEntry test/fixtures/spacetext.xml
+218 silly gunzTarPerm extractEntry test/fixtures/domain-reversible.json
+219 silly gunzTarPerm extractEntry test/fixtures/reorder.xml
+220 silly gunzTarPerm extractEntry test/fixtures/coerce.json
+221 silly gunzTarPerm extractEntry test/fixtures/domain.xml
+222 silly gunzTarPerm extractEntry lib/xml2json.js
+223 silly gunzTarPerm extractEntry lib/json2xml.js
+224 silly gunzTarPerm extractEntry lib/index.js
+225 verbose write writing to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/package.json
+226 info preinstall temp@0.6.0
+227 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/package.json
+228 silly prepareForInstallMany adding rimraf@~2.1.4 from temp dependencies
+229 silly prepareForInstallMany adding osenv@0.0.3 from temp dependencies
+230 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/package.json
+231 silly cache add args [ 'rimraf@~2.1.4', null ]
+232 verbose cache add spec rimraf@~2.1.4
+233 silly cache add args [ 'osenv@0.0.3', null ]
+234 verbose cache add spec osenv@0.0.3
+235 silly cache add parsed spec Result {
+235 silly cache add   raw: 'rimraf@~2.1.4',
+235 silly cache add   scope: null,
+235 silly cache add   name: 'rimraf',
+235 silly cache add   rawSpec: '~2.1.4',
+235 silly cache add   spec: '>=2.1.4 <2.2.0',
+235 silly cache add   type: 'range' }
+236 silly addNamed rimraf@>=2.1.4 <2.2.0
+237 verbose addNamed ">=2.1.4 <2.2.0" is a valid semver range for rimraf
+238 silly addNameRange { name: 'rimraf', range: '>=2.1.4 <2.2.0', hasData: false }
+239 silly mapToRegistry name rimraf
+240 silly mapToRegistry using default registry
+241 silly mapToRegistry registry https://registry.npmjs.org/
+242 silly mapToRegistry uri https://registry.npmjs.org/rimraf
+243 verbose addNameRange registry:https://registry.npmjs.org/rimraf not in flight; fetching
+244 silly cache add parsed spec Result {
+244 silly cache add   raw: 'osenv@0.0.3',
+244 silly cache add   scope: null,
+244 silly cache add   name: 'osenv',
+244 silly cache add   rawSpec: '0.0.3',
+244 silly cache add   spec: '0.0.3',
+244 silly cache add   type: 'version' }
+245 silly addNamed osenv@0.0.3
+246 verbose addNamed "0.0.3" is a plain semver version for osenv
+247 silly mapToRegistry name osenv
+248 silly mapToRegistry using default registry
+249 silly mapToRegistry registry https://registry.npmjs.org/
+250 silly mapToRegistry uri https://registry.npmjs.org/osenv
+251 verbose addNameVersion registry:https://registry.npmjs.org/osenv not in flight; fetching
+252 verbose request uri https://registry.npmjs.org/rimraf
+253 verbose request no auth needed
+254 info attempt registry request try #1 at 14:46:07
+255 http request GET https://registry.npmjs.org/rimraf
+256 verbose request uri https://registry.npmjs.org/osenv
+257 verbose request no auth needed
+258 info attempt registry request try #1 at 14:46:07
+259 http request GET https://registry.npmjs.org/osenv
+260 verbose write writing to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/package.json
+261 info preinstall xml2json@0.3.2
+262 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/package.json
+263 silly prepareForInstallMany adding node-expat@2.0.0 from xml2json dependencies
+264 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/package.json
+265 silly cache add args [ 'node-expat@2.0.0', null ]
+266 verbose cache add spec node-expat@2.0.0
+267 silly cache add parsed spec Result {
+267 silly cache add   raw: 'node-expat@2.0.0',
+267 silly cache add   scope: null,
+267 silly cache add   name: 'node-expat',
+267 silly cache add   rawSpec: '2.0.0',
+267 silly cache add   spec: '2.0.0',
+267 silly cache add   type: 'version' }
+268 silly addNamed node-expat@2.0.0
+269 verbose addNamed "2.0.0" is a plain semver version for node-expat
+270 silly mapToRegistry name node-expat
+271 silly mapToRegistry using default registry
+272 silly mapToRegistry registry https://registry.npmjs.org/
+273 silly mapToRegistry uri https://registry.npmjs.org/node-expat
+274 verbose addNameVersion registry:https://registry.npmjs.org/node-expat not in flight; fetching
+275 verbose request uri https://registry.npmjs.org/node-expat
+276 verbose request no auth needed
+277 info attempt registry request try #1 at 14:46:07
+278 http request GET https://registry.npmjs.org/node-expat
+279 http 200 https://registry.npmjs.org/osenv
+280 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+280 verbose headers   etag: '"5PEBCGQI27PB8P8C7TGV8M0K7"',
+280 verbose headers   'content-type': 'application/json',
+280 verbose headers   'cache-control': 'max-age=60',
+280 verbose headers   'content-length': '9454',
+280 verbose headers   'accept-ranges': 'bytes',
+280 verbose headers   date: 'Sun, 06 Dec 2015 13:46:07 GMT',
+280 verbose headers   via: '1.1 varnish',
+280 verbose headers   age: '16',
+280 verbose headers   connection: 'keep-alive',
+280 verbose headers   'x-served-by': 'cache-fra1230-FRA',
+280 verbose headers   'x-cache': 'HIT',
+280 verbose headers   'x-cache-hits': '1',
+280 verbose headers   'x-timer': 'S1449409567.277658,VS0,VE0',
+280 verbose headers   vary: 'Accept' }
+281 silly get cb [ 200,
+281 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+281 silly get     etag: '"5PEBCGQI27PB8P8C7TGV8M0K7"',
+281 silly get     'content-type': 'application/json',
+281 silly get     'cache-control': 'max-age=60',
+281 silly get     'content-length': '9454',
+281 silly get     'accept-ranges': 'bytes',
+281 silly get     date: 'Sun, 06 Dec 2015 13:46:07 GMT',
+281 silly get     via: '1.1 varnish',
+281 silly get     age: '16',
+281 silly get     connection: 'keep-alive',
+281 silly get     'x-served-by': 'cache-fra1230-FRA',
+281 silly get     'x-cache': 'HIT',
+281 silly get     'x-cache-hits': '1',
+281 silly get     'x-timer': 'S1449409567.277658,VS0,VE0',
+281 silly get     vary: 'Accept' } ]
+282 verbose get saving osenv to /Users/Thea/.npm/registry.npmjs.org/osenv/.cache.json
+283 silly mapToRegistry name osenv
+284 silly mapToRegistry using default registry
+285 silly mapToRegistry registry https://registry.npmjs.org/
+286 silly mapToRegistry uri https://registry.npmjs.org/osenv
+287 verbose addRemoteTarball https://registry.npmjs.org/osenv/-/osenv-0.0.3.tgz not in flight; adding
+288 verbose addRemoteTarball [ 'https://registry.npmjs.org/osenv/-/osenv-0.0.3.tgz',
+288 verbose addRemoteTarball   'cd6ad8ddb290915ad9e22765576025d411f29cb6' ]
+289 info retry fetch attempt 1 at 14:46:07
+290 info attempt registry request try #1 at 14:46:07
+291 http fetch GET https://registry.npmjs.org/osenv/-/osenv-0.0.3.tgz
+292 http 200 https://registry.npmjs.org/rimraf
+293 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+293 verbose headers   etag: '"V1GB7VJKBGZHUQN1QPWAVDOK"',
+293 verbose headers   'content-type': 'application/json',
+293 verbose headers   'cache-control': 'max-age=60',
+293 verbose headers   'content-length': '44885',
+293 verbose headers   'accept-ranges': 'bytes',
+293 verbose headers   date: 'Sun, 06 Dec 2015 13:46:07 GMT',
+293 verbose headers   via: '1.1 varnish',
+293 verbose headers   age: '18',
+293 verbose headers   connection: 'keep-alive',
+293 verbose headers   'x-served-by': 'cache-fra1244-FRA',
+293 verbose headers   'x-cache': 'HIT',
+293 verbose headers   'x-cache-hits': '525',
+293 verbose headers   'x-timer': 'S1449409567.280771,VS0,VE0',
+293 verbose headers   vary: 'Accept' }
+294 silly get cb [ 200,
+294 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+294 silly get     etag: '"V1GB7VJKBGZHUQN1QPWAVDOK"',
+294 silly get     'content-type': 'application/json',
+294 silly get     'cache-control': 'max-age=60',
+294 silly get     'content-length': '44885',
+294 silly get     'accept-ranges': 'bytes',
+294 silly get     date: 'Sun, 06 Dec 2015 13:46:07 GMT',
+294 silly get     via: '1.1 varnish',
+294 silly get     age: '18',
+294 silly get     connection: 'keep-alive',
+294 silly get     'x-served-by': 'cache-fra1244-FRA',
+294 silly get     'x-cache': 'HIT',
+294 silly get     'x-cache-hits': '525',
+294 silly get     'x-timer': 'S1449409567.280771,VS0,VE0',
+294 silly get     vary: 'Accept' } ]
+295 verbose get saving rimraf to /Users/Thea/.npm/registry.npmjs.org/rimraf/.cache.json
+296 silly addNameRange number 2 { name: 'rimraf', range: '>=2.1.4 <2.2.0', hasData: true }
+297 silly addNameRange versions [ 'rimraf',
+297 silly addNameRange   [ '1.0.0',
+297 silly addNameRange     '1.0.1',
+297 silly addNameRange     '1.0.2',
+297 silly addNameRange     '1.0.4',
+297 silly addNameRange     '1.0.5',
+297 silly addNameRange     '1.0.6',
+297 silly addNameRange     '1.0.7',
+297 silly addNameRange     '1.0.8',
+297 silly addNameRange     '1.0.9',
+297 silly addNameRange     '2.0.0',
+297 silly addNameRange     '2.0.1',
+297 silly addNameRange     '2.0.2',
+297 silly addNameRange     '2.0.3',
+297 silly addNameRange     '2.1.0',
+297 silly addNameRange     '2.1.1',
+297 silly addNameRange     '2.1.2',
+297 silly addNameRange     '2.1.3',
+297 silly addNameRange     '2.1.4',
+297 silly addNameRange     '2.2.0',
+297 silly addNameRange     '2.2.1',
+297 silly addNameRange     '2.2.2',
+297 silly addNameRange     '2.2.3',
+297 silly addNameRange     '2.2.4',
+297 silly addNameRange     '2.2.5',
+297 silly addNameRange     '2.2.6',
+297 silly addNameRange     '2.2.8',
+297 silly addNameRange     '2.3.0',
+297 silly addNameRange     '2.3.1',
+297 silly addNameRange     '2.3.2',
+297 silly addNameRange     '2.3.3',
+297 silly addNameRange     '2.3.4',
+297 silly addNameRange     '2.4.0',
+297 silly addNameRange     '2.4.1',
+297 silly addNameRange     '2.4.2',
+297 silly addNameRange     '2.4.3',
+297 silly addNameRange     '2.4.4' ] ]
+298 silly addNamed rimraf@2.1.4
+299 verbose addNamed "2.1.4" is a plain semver version for rimraf
+300 silly mapToRegistry name rimraf
+301 silly mapToRegistry using default registry
+302 silly mapToRegistry registry https://registry.npmjs.org/
+303 silly mapToRegistry uri https://registry.npmjs.org/rimraf
+304 verbose addRemoteTarball https://registry.npmjs.org/rimraf/-/rimraf-2.1.4.tgz not in flight; adding
+305 verbose addRemoteTarball [ 'https://registry.npmjs.org/rimraf/-/rimraf-2.1.4.tgz',
+305 verbose addRemoteTarball   '5a6eb62eeda068f51ede50f29b3e5cd22f3d9bb2' ]
+306 info retry fetch attempt 1 at 14:46:07
+307 info attempt registry request try #1 at 14:46:07
+308 http fetch GET https://registry.npmjs.org/rimraf/-/rimraf-2.1.4.tgz
+309 http fetch 200 https://registry.npmjs.org/osenv/-/osenv-0.0.3.tgz
+310 silly fetchAndShaCheck shasum cd6ad8ddb290915ad9e22765576025d411f29cb6
+311 verbose addTmpTarball /var/folders/_8/2q4q23cx7qs5wg5zm7mz9kf40000gn/T/npm-39755-07cdd26a/registry.npmjs.org/osenv/-/osenv-0.0.3.tgz not in flight; adding
+312 verbose addTmpTarball already have metadata; skipping unpack for osenv@0.0.3
+313 silly cache afterAdd osenv@0.0.3
+314 verbose afterAdd /Users/Thea/.npm/osenv/0.0.3/package/package.json not in flight; writing
+315 verbose afterAdd /Users/Thea/.npm/osenv/0.0.3/package/package.json written
+316 http fetch 200 https://registry.npmjs.org/rimraf/-/rimraf-2.1.4.tgz
+317 silly fetchAndShaCheck shasum 5a6eb62eeda068f51ede50f29b3e5cd22f3d9bb2
+318 verbose addTmpTarball /var/folders/_8/2q4q23cx7qs5wg5zm7mz9kf40000gn/T/npm-39755-07cdd26a/registry.npmjs.org/rimraf/-/rimraf-2.1.4.tgz not in flight; adding
+319 verbose addTmpTarball already have metadata; skipping unpack for rimraf@2.1.4
+320 silly cache afterAdd rimraf@2.1.4
+321 verbose afterAdd /Users/Thea/.npm/rimraf/2.1.4/package/package.json not in flight; writing
+322 verbose afterAdd /Users/Thea/.npm/rimraf/2.1.4/package/package.json written
+323 silly install resolved [ { name: 'osenv',
+323 silly install resolved     version: '0.0.3',
+323 silly install resolved     main: 'osenv.js',
+323 silly install resolved     directories: { test: 'test' },
+323 silly install resolved     dependencies: {},
+323 silly install resolved     devDependencies: { tap: '~0.2.5' },
+323 silly install resolved     scripts: { test: 'tap test/*.js' },
+323 silly install resolved     repository: { type: 'git', url: 'git://github.com/isaacs/osenv' },
+323 silly install resolved     keywords:
+323 silly install resolved      [ 'environment',
+323 silly install resolved        'variable',
+323 silly install resolved        'home',
+323 silly install resolved        'tmpdir',
+323 silly install resolved        'path',
+323 silly install resolved        'prompt',
+323 silly install resolved        'ps1' ],
+323 silly install resolved     author:
+323 silly install resolved      { name: 'Isaac Z. Schlueter',
+323 silly install resolved        email: 'i@izs.me',
+323 silly install resolved        url: 'http://blog.izs.me/' },
+323 silly install resolved     license: 'BSD',
+323 silly install resolved     description: 'Look up environment settings specific to different operating systems',
+323 silly install resolved     _id: 'osenv@0.0.3',
+323 silly install resolved     dist:
+323 silly install resolved      { shasum: 'cd6ad8ddb290915ad9e22765576025d411f29cb6',
+323 silly install resolved        tarball: 'http://registry.npmjs.org/osenv/-/osenv-0.0.3.tgz' },
+323 silly install resolved     maintainers: [ [Object] ],
+323 silly install resolved     _shasum: 'cd6ad8ddb290915ad9e22765576025d411f29cb6',
+323 silly install resolved     _resolved: 'https://registry.npmjs.org/osenv/-/osenv-0.0.3.tgz',
+323 silly install resolved     _from: 'osenv@0.0.3' },
+323 silly install resolved   { name: 'rimraf',
+323 silly install resolved     version: '2.1.4',
+323 silly install resolved     main: 'rimraf.js',
+323 silly install resolved     description: 'A deep deletion module for node (like `rm -rf`)',
+323 silly install resolved     author:
+323 silly install resolved      { name: 'Isaac Z. Schlueter',
+323 silly install resolved        email: 'i@izs.me',
+323 silly install resolved        url: 'http://blog.izs.me/' },
+323 silly install resolved     license:
+323 silly install resolved      { type: 'MIT',
+323 silly install resolved        url: 'https://github.com/isaacs/rimraf/raw/master/LICENSE' },
+323 silly install resolved     optionalDependencies: { 'graceful-fs': '~1' },
+323 silly install resolved     repository: { type: 'git', url: 'git://github.com/isaacs/rimraf.git' },
+323 silly install resolved     scripts: { test: 'cd test && bash run.sh' },
+323 silly install resolved     contributors: [ [Object], [Object], [Object], [Object], [Object] ],
+323 silly install resolved     _id: 'rimraf@2.1.4',
+323 silly install resolved     dependencies: { 'graceful-fs': '~1' },
+323 silly install resolved     dist:
+323 silly install resolved      { shasum: '5a6eb62eeda068f51ede50f29b3e5cd22f3d9bb2',
+323 silly install resolved        tarball: 'http://registry.npmjs.org/rimraf/-/rimraf-2.1.4.tgz' },
+323 silly install resolved     _from: 'rimraf@>=2.1.4 <2.2.0',
+323 silly install resolved     _npmVersion: '1.2.7',
+323 silly install resolved     _npmUser: { name: 'isaacs', email: 'i@izs.me' },
+323 silly install resolved     maintainers: [ [Object] ],
+323 silly install resolved     directories: {},
+323 silly install resolved     _shasum: '5a6eb62eeda068f51ede50f29b3e5cd22f3d9bb2',
+323 silly install resolved     _resolved: 'https://registry.npmjs.org/rimraf/-/rimraf-2.1.4.tgz' } ]
+324 info install osenv@0.0.3 into /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp
+325 info install rimraf@2.1.4 into /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp
+326 info installOne osenv@0.0.3
+327 verbose installOne of osenv to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp not in flight; installing
+328 info installOne rimraf@2.1.4
+329 verbose installOne of rimraf to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp not in flight; installing
+330 verbose lock using /Users/Thea/.npm/_locks/osenv-cd26cff4b1f01edf.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv
+331 verbose lock using /Users/Thea/.npm/_locks/rimraf-d6bc1d44ce77e6b1.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf
+332 silly install write writing osenv 0.0.3 to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv
+333 silly install write writing rimraf 2.1.4 to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf
+334 verbose unbuild node_modules/office/node_modules/temp/node_modules/osenv
+335 verbose unbuild node_modules/office/node_modules/temp/node_modules/rimraf
+336 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv is being purged from base /Users/Thea/Desktop/NoSQL-Team17/Projekt
+337 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv
+338 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf is being purged from base /Users/Thea/Desktop/NoSQL-Team17/Projekt
+339 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf
+340 verbose tar unpack /Users/Thea/.npm/osenv/0.0.3/package.tgz
+341 verbose tar unpacking to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv
+342 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv is being purged
+343 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv
+344 verbose tar unpack /Users/Thea/.npm/rimraf/2.1.4/package.tgz
+345 verbose tar unpacking to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf
+346 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf is being purged
+347 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf
+348 silly gunzTarPerm modes [ '755', '644' ]
+349 silly gunzTarPerm modes [ '755', '644' ]
+350 silly gunzTarPerm extractEntry package.json
+351 silly gunzTarPerm extractEntry package.json
+352 silly gunzTarPerm extractEntry README.md
+353 silly gunzTarPerm extractEntry LICENSE
+354 silly gunzTarPerm extractEntry README.md
+355 silly gunzTarPerm extractEntry LICENSE
+356 silly gunzTarPerm extractEntry osenv.js
+357 silly gunzTarPerm extractEntry test/unix.js
+358 silly gunzTarPerm extractEntry rimraf.js
+359 silly gunzTarPerm extractEntry AUTHORS
+360 silly gunzTarPerm extractEntry test/windows.js
+361 silly gunzTarPerm extractEntry test/test-async.js
+362 silly gunzTarPerm extractEntry test/test-sync.js
+363 silly gunzTarPerm extractEntry test/run.sh
+364 silly gunzTarPerm extractEntry test/setup.sh
+365 http 200 https://registry.npmjs.org/node-expat
+366 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+366 verbose headers   etag: '"O8OZ5B4MYG2JKVNR641J77VQ"',
+366 verbose headers   'content-type': 'application/json',
+366 verbose headers   'cache-control': 'max-age=60',
+366 verbose headers   'content-length': '52489',
+366 verbose headers   'accept-ranges': 'bytes',
+366 verbose headers   date: 'Sun, 06 Dec 2015 13:46:07 GMT',
+366 verbose headers   via: '1.1 varnish',
+366 verbose headers   age: '0',
+366 verbose headers   connection: 'keep-alive',
+366 verbose headers   'x-served-by': 'cache-fra1241-FRA',
+366 verbose headers   'x-cache': 'HIT',
+366 verbose headers   'x-cache-hits': '1',
+366 verbose headers   'x-timer': 'S1449409567.338650,VS0,VE100',
+366 verbose headers   vary: 'Accept' }
+367 silly get cb [ 200,
+367 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+367 silly get     etag: '"O8OZ5B4MYG2JKVNR641J77VQ"',
+367 silly get     'content-type': 'application/json',
+367 silly get     'cache-control': 'max-age=60',
+367 silly get     'content-length': '52489',
+367 silly get     'accept-ranges': 'bytes',
+367 silly get     date: 'Sun, 06 Dec 2015 13:46:07 GMT',
+367 silly get     via: '1.1 varnish',
+367 silly get     age: '0',
+367 silly get     connection: 'keep-alive',
+367 silly get     'x-served-by': 'cache-fra1241-FRA',
+367 silly get     'x-cache': 'HIT',
+367 silly get     'x-cache-hits': '1',
+367 silly get     'x-timer': 'S1449409567.338650,VS0,VE100',
+367 silly get     vary: 'Accept' } ]
+368 verbose get saving node-expat to /Users/Thea/.npm/registry.npmjs.org/node-expat/.cache.json
+369 silly mapToRegistry name node-expat
+370 silly mapToRegistry using default registry
+371 silly mapToRegistry registry https://registry.npmjs.org/
+372 silly mapToRegistry uri https://registry.npmjs.org/node-expat
+373 verbose addRemoteTarball https://registry.npmjs.org/node-expat/-/node-expat-2.0.0.tgz not in flight; adding
+374 verbose addRemoteTarball [ 'https://registry.npmjs.org/node-expat/-/node-expat-2.0.0.tgz',
+374 verbose addRemoteTarball   'a10271b3463484fa4b59895df61693a1de4ac735' ]
+375 info retry fetch attempt 1 at 14:46:07
+376 info attempt registry request try #1 at 14:46:07
+377 http fetch GET https://registry.npmjs.org/node-expat/-/node-expat-2.0.0.tgz
+378 verbose write writing to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv/package.json
+379 info preinstall osenv@0.0.3
+380 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv/package.json
+381 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv/package.json
+382 verbose write writing to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/package.json
+383 silly install resolved []
+384 verbose about to build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv
+385 info build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv
+386 info preinstall rimraf@2.1.4
+387 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/package.json
+388 info linkStuff osenv@0.0.3
+389 silly linkStuff osenv@0.0.3 has /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules as its parent node_modules
+390 verbose linkBins osenv@0.0.3
+391 verbose linkMans osenv@0.0.3
+392 verbose rebuildBundles osenv@0.0.3
+393 info install osenv@0.0.3
+394 silly prepareForInstallMany adding graceful-fs@~1 from rimraf dependencies
+395 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/package.json
+396 info postinstall osenv@0.0.3
+397 verbose unlock done using /Users/Thea/.npm/_locks/osenv-cd26cff4b1f01edf.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/osenv
+398 silly cache add args [ 'graceful-fs@~1', null ]
+399 verbose cache add spec graceful-fs@~1
+400 silly cache add parsed spec Result {
+400 silly cache add   raw: 'graceful-fs@~1',
+400 silly cache add   scope: null,
+400 silly cache add   name: 'graceful-fs',
+400 silly cache add   rawSpec: '~1',
+400 silly cache add   spec: '>=1.0.0 <2.0.0',
+400 silly cache add   type: 'range' }
+401 silly addNamed graceful-fs@>=1.0.0 <2.0.0
+402 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for graceful-fs
+403 silly addNameRange { name: 'graceful-fs', range: '>=1.0.0 <2.0.0', hasData: false }
+404 silly mapToRegistry name graceful-fs
+405 silly mapToRegistry using default registry
+406 silly mapToRegistry registry https://registry.npmjs.org/
+407 silly mapToRegistry uri https://registry.npmjs.org/graceful-fs
+408 verbose addNameRange registry:https://registry.npmjs.org/graceful-fs not in flight; fetching
+409 verbose request uri https://registry.npmjs.org/graceful-fs
+410 verbose request no auth needed
+411 info attempt registry request try #1 at 14:46:07
+412 http request GET https://registry.npmjs.org/graceful-fs
+413 http fetch 200 https://registry.npmjs.org/node-expat/-/node-expat-2.0.0.tgz
+414 http 200 https://registry.npmjs.org/graceful-fs
+415 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+415 verbose headers   etag: '"5PFKCUZ7Y0U2YTBK4JXYLQB0D"',
+415 verbose headers   'content-type': 'application/json',
+415 verbose headers   'cache-control': 'max-age=60',
+415 verbose headers   'content-length': '38809',
+415 verbose headers   'accept-ranges': 'bytes',
+415 verbose headers   date: 'Sun, 06 Dec 2015 13:46:07 GMT',
+415 verbose headers   via: '1.1 varnish',
+415 verbose headers   age: '55',
+415 verbose headers   connection: 'keep-alive',
+415 verbose headers   'x-served-by': 'cache-fra1241-FRA',
+415 verbose headers   'x-cache': 'HIT',
+415 verbose headers   'x-cache-hits': '2',
+415 verbose headers   'x-timer': 'S1449409567.656016,VS0,VE0',
+415 verbose headers   vary: 'Accept' }
+416 silly get cb [ 200,
+416 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+416 silly get     etag: '"5PFKCUZ7Y0U2YTBK4JXYLQB0D"',
+416 silly get     'content-type': 'application/json',
+416 silly get     'cache-control': 'max-age=60',
+416 silly get     'content-length': '38809',
+416 silly get     'accept-ranges': 'bytes',
+416 silly get     date: 'Sun, 06 Dec 2015 13:46:07 GMT',
+416 silly get     via: '1.1 varnish',
+416 silly get     age: '55',
+416 silly get     connection: 'keep-alive',
+416 silly get     'x-served-by': 'cache-fra1241-FRA',
+416 silly get     'x-cache': 'HIT',
+416 silly get     'x-cache-hits': '2',
+416 silly get     'x-timer': 'S1449409567.656016,VS0,VE0',
+416 silly get     vary: 'Accept' } ]
+417 verbose get saving graceful-fs to /Users/Thea/.npm/registry.npmjs.org/graceful-fs/.cache.json
+418 silly addNameRange number 2 { name: 'graceful-fs', range: '>=1.0.0 <2.0.0', hasData: true }
+419 silly addNameRange versions [ 'graceful-fs',
+419 silly addNameRange   [ '1.0.0',
+419 silly addNameRange     '1.0.1',
+419 silly addNameRange     '1.0.2',
+419 silly addNameRange     '1.1.0',
+419 silly addNameRange     '1.1.1',
+419 silly addNameRange     '1.1.2',
+419 silly addNameRange     '1.1.3',
+419 silly addNameRange     '1.1.4',
+419 silly addNameRange     '1.1.5',
+419 silly addNameRange     '1.1.6',
+419 silly addNameRange     '1.1.7',
+419 silly addNameRange     '1.1.8',
+419 silly addNameRange     '1.1.9',
+419 silly addNameRange     '1.1.10',
+419 silly addNameRange     '1.1.11',
+419 silly addNameRange     '1.1.12',
+419 silly addNameRange     '1.1.13',
+419 silly addNameRange     '1.1.14',
+419 silly addNameRange     '1.2.0',
+419 silly addNameRange     '1.2.1',
+419 silly addNameRange     '1.2.2',
+419 silly addNameRange     '1.2.3',
+419 silly addNameRange     '2.0.0',
+419 silly addNameRange     '2.0.1',
+419 silly addNameRange     '2.0.2',
+419 silly addNameRange     '2.0.3',
+419 silly addNameRange     '3.0.0',
+419 silly addNameRange     '3.0.1',
+419 silly addNameRange     '3.0.2',
+419 silly addNameRange     '3.0.3',
+419 silly addNameRange     '3.0.4',
+419 silly addNameRange     '3.0.5',
+419 silly addNameRange     '3.0.6',
+419 silly addNameRange     '3.0.7',
+419 silly addNameRange     '3.0.8',
+419 silly addNameRange     '4.1.0',
+419 silly addNameRange     '4.1.1',
+419 silly addNameRange     '4.1.2' ] ]
+420 silly addNamed graceful-fs@1.2.3
+421 verbose addNamed "1.2.3" is a plain semver version for graceful-fs
+422 silly mapToRegistry name graceful-fs
+423 silly mapToRegistry using default registry
+424 silly mapToRegistry registry https://registry.npmjs.org/
+425 silly mapToRegistry uri https://registry.npmjs.org/graceful-fs
+426 verbose addRemoteTarball https://registry.npmjs.org/graceful-fs/-/graceful-fs-1.2.3.tgz not in flight; adding
+427 verbose addRemoteTarball [ 'https://registry.npmjs.org/graceful-fs/-/graceful-fs-1.2.3.tgz',
+427 verbose addRemoteTarball   '15a4806a57547cb2d2dbf27f42e89a8c3451b364' ]
+428 info retry fetch attempt 1 at 14:46:07
+429 info attempt registry request try #1 at 14:46:07
+430 http fetch GET https://registry.npmjs.org/graceful-fs/-/graceful-fs-1.2.3.tgz
+431 silly fetchAndShaCheck shasum a10271b3463484fa4b59895df61693a1de4ac735
+432 verbose addTmpTarball /var/folders/_8/2q4q23cx7qs5wg5zm7mz9kf40000gn/T/npm-39755-07cdd26a/registry.npmjs.org/node-expat/-/node-expat-2.0.0.tgz not in flight; adding
+433 verbose addTmpTarball already have metadata; skipping unpack for node-expat@2.0.0
+434 silly cache afterAdd node-expat@2.0.0
+435 verbose afterAdd /Users/Thea/.npm/node-expat/2.0.0/package/package.json not in flight; writing
+436 verbose afterAdd /Users/Thea/.npm/node-expat/2.0.0/package/package.json written
+437 silly install resolved [ { name: 'node-expat',
+437 silly install resolved     version: '2.0.0',
+437 silly install resolved     main: './lib/node-expat',
+437 silly install resolved     description: 'NodeJS binding for fast XML parsing.',
+437 silly install resolved     keywords: [ 'xml', 'sax', 'expat', 'libexpat', 'parse', 'parsing' ],
+437 silly install resolved     scripts: { test: 'vows --spec ./test.js', install: 'node-gyp rebuild' },
+437 silly install resolved     dependencies: {},
+437 silly install resolved     devDependencies: { vows: '>=0.5.12' },
+437 silly install resolved     repository: { type: 'git', path: 'git://github.com/astro/node-expat.git' },
+437 silly install resolved     homepage: 'http://github.com/astro/node-expat',
+437 silly install resolved     bugs: 'http://github.com/astro/node-expat/issues',
+437 silly install resolved     author:
+437 silly install resolved      { name: 'Astro',
+437 silly install resolved        email: 'astro@spaceboyz.net',
+437 silly install resolved        url: 'http://spaceboyz.net/~astro/' },
+437 silly install resolved     contributors:
+437 silly install resolved      [ [Object],
+437 silly install resolved        [Object],
+437 silly install resolved        [Object],
+437 silly install resolved        [Object],
+437 silly install resolved        [Object],
+437 silly install resolved        [Object],
+437 silly install resolved        [Object],
+437 silly install resolved        [Object],
+437 silly install resolved        [Object],
+437 silly install resolved        [Object],
+437 silly install resolved        [Object],
+437 silly install resolved        [Object] ],
+437 silly install resolved     licenses: [ [Object] ],
+437 silly install resolved     engines: { node: '>=0.4' },
+437 silly install resolved     gypfile: true,
+437 silly install resolved     _id: 'node-expat@2.0.0',
+437 silly install resolved     dist:
+437 silly install resolved      { shasum: 'a10271b3463484fa4b59895df61693a1de4ac735',
+437 silly install resolved        tarball: 'http://registry.npmjs.org/node-expat/-/node-expat-2.0.0.tgz' },
+437 silly install resolved     maintainers: [ [Object] ],
+437 silly install resolved     directories: {},
+437 silly install resolved     _shasum: 'a10271b3463484fa4b59895df61693a1de4ac735',
+437 silly install resolved     _resolved: 'https://registry.npmjs.org/node-expat/-/node-expat-2.0.0.tgz',
+437 silly install resolved     _from: 'node-expat@2.0.0' } ]
+438 info install node-expat@2.0.0 into /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+439 info installOne node-expat@2.0.0
+440 verbose installOne of node-expat to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json not in flight; installing
+441 verbose lock using /Users/Thea/.npm/_locks/node-expat-37941fc4ee6de5ce.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat
+442 silly install write writing node-expat 2.0.0 to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat
+443 verbose unbuild node_modules/office/node_modules/xml2json/node_modules/node-expat
+444 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat is being purged from base /Users/Thea/Desktop/NoSQL-Team17/Projekt
+445 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat
+446 verbose tar unpack /Users/Thea/.npm/node-expat/2.0.0/package.tgz
+447 verbose tar unpacking to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat
+448 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat is being purged
+449 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat
+450 silly gunzTarPerm modes [ '755', '644' ]
+451 silly gunzTarPerm extractEntry package.json
+452 silly gunzTarPerm extractEntry .npmignore
+453 silly gunzTarPerm extractEntry LICENSE
+454 silly gunzTarPerm extractEntry test.js
+455 silly gunzTarPerm extractEntry bench.js
+456 silly gunzTarPerm extractEntry README.markdown
+457 silly gunzTarPerm extractEntry .travis.yml
+458 silly gunzTarPerm extractEntry node-expat.cc
+459 silly gunzTarPerm extractEntry test-mystic-library.xml
+460 http fetch 200 https://registry.npmjs.org/graceful-fs/-/graceful-fs-1.2.3.tgz
+461 silly fetchAndShaCheck shasum 15a4806a57547cb2d2dbf27f42e89a8c3451b364
+462 verbose addTmpTarball /var/folders/_8/2q4q23cx7qs5wg5zm7mz9kf40000gn/T/npm-39755-07cdd26a/registry.npmjs.org/graceful-fs/-/graceful-fs-1.2.3.tgz not in flight; adding
+463 verbose addTmpTarball already have metadata; skipping unpack for graceful-fs@1.2.3
+464 silly cache afterAdd graceful-fs@1.2.3
+465 verbose afterAdd /Users/Thea/.npm/graceful-fs/1.2.3/package/package.json not in flight; writing
+466 verbose afterAdd /Users/Thea/.npm/graceful-fs/1.2.3/package/package.json written
+467 silly install resolved [ { author:
+467 silly install resolved      { name: 'Isaac Z. Schlueter',
+467 silly install resolved        email: 'i@izs.me',
+467 silly install resolved        url: 'http://blog.izs.me' },
+467 silly install resolved     name: 'graceful-fs',
+467 silly install resolved     description: 'A drop-in replacement for fs, making various improvements.',
+467 silly install resolved     version: '1.2.3',
+467 silly install resolved     repository:
+467 silly install resolved      { type: 'git',
+467 silly install resolved        url: 'git://github.com/isaacs/node-graceful-fs.git' },
+467 silly install resolved     main: 'graceful-fs.js',
+467 silly install resolved     engines: { node: '>=0.4.0' },
+467 silly install resolved     directories: { test: 'test' },
+467 silly install resolved     scripts: { test: 'tap test/*.js' },
+467 silly install resolved     keywords:
+467 silly install resolved      [ 'fs',
+467 silly install resolved        'module',
+467 silly install resolved        'reading',
+467 silly install resolved        'retry',
+467 silly install resolved        'retries',
+467 silly install resolved        'queue',
+467 silly install resolved        'error',
+467 silly install resolved        'errors',
+467 silly install resolved        'handling',
+467 silly install resolved        'EMFILE',
+467 silly install resolved        'EAGAIN',
+467 silly install resolved        'EINVAL',
+467 silly install resolved        'EPERM',
+467 silly install resolved        'EACCESS' ],
+467 silly install resolved     license: 'BSD',
+467 silly install resolved     bugs: { url: 'https://github.com/isaacs/node-graceful-fs/issues' },
+467 silly install resolved     _id: 'graceful-fs@1.2.3',
+467 silly install resolved     dist:
+467 silly install resolved      { shasum: '15a4806a57547cb2d2dbf27f42e89a8c3451b364',
+467 silly install resolved        tarball: 'http://registry.npmjs.org/graceful-fs/-/graceful-fs-1.2.3.tgz' },
+467 silly install resolved     _from: 'graceful-fs@>=1.0.0 <2.0.0',
+467 silly install resolved     _npmVersion: '1.3.2',
+467 silly install resolved     _npmUser: { name: 'isaacs', email: 'i@izs.me' },
+467 silly install resolved     maintainers: [ [Object] ],
+467 silly install resolved     _shasum: '15a4806a57547cb2d2dbf27f42e89a8c3451b364',
+467 silly install resolved     _resolved: 'https://registry.npmjs.org/graceful-fs/-/graceful-fs-1.2.3.tgz' } ]
+468 info install graceful-fs@1.2.3 into /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf
+469 info installOne graceful-fs@1.2.3
+470 verbose installOne of graceful-fs to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf not in flight; installing
+471 verbose lock using /Users/Thea/.npm/_locks/graceful-fs-0ddde26b0a3baba3.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs
+472 silly install write writing graceful-fs 1.2.3 to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs
+473 verbose unbuild node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs
+474 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs is being purged from base /Users/Thea/Desktop/NoSQL-Team17/Projekt
+475 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs
+476 verbose tar unpack /Users/Thea/.npm/graceful-fs/1.2.3/package.tgz
+477 verbose tar unpacking to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs
+478 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs is being purged
+479 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs
+480 silly gunzTarPerm modes [ '755', '644' ]
+481 silly gunzTarPerm extractEntry package.json
+482 silly gunzTarPerm extractEntry deps/libexpat/README
+483 silly gunzTarPerm extractEntry .npmignore
+484 silly gunzTarPerm extractEntry README.md
+485 silly gunzTarPerm extractEntry deps/libexpat/ConfigureChecks.cmake
+486 silly gunzTarPerm extractEntry deps/libexpat/CMake.README
+487 silly gunzTarPerm extractEntry deps/libexpat/examples/elements.c
+488 silly gunzTarPerm extractEntry deps/libexpat/examples/elements.dsp
+489 silly gunzTarPerm extractEntry LICENSE
+490 silly gunzTarPerm extractEntry graceful-fs.js
+491 silly gunzTarPerm extractEntry deps/libexpat/examples/outline.c
+492 silly gunzTarPerm extractEntry deps/libexpat/examples/outline.dsp
+493 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/codepage.c
+494 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/xmlmime.c
+495 silly gunzTarPerm extractEntry test/open.js
+496 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/win32filemap.c
+497 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/xmlfile.h
+498 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/codepage.h
+499 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/xmlwf.dsp
+500 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/xmltchar.h
+501 silly gunzTarPerm extractEntry test/ulimit.js
+502 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/xmlfile.c
+503 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/xmlwf.c
+504 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/ct.c
+505 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/filemap.h
+506 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/xmlurl.h
+507 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/xmlmime.h
+508 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/xmlwin32url.cxx
+509 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/unixfilemap.c
+510 silly gunzTarPerm extractEntry deps/libexpat/xmlwf/readfilemap.c
+511 silly gunzTarPerm extractEntry deps/libexpat/win32/README.txt
+512 silly gunzTarPerm extractEntry deps/libexpat/win32/MANIFEST.txt
+513 silly gunzTarPerm extractEntry deps/libexpat/win32/expat.iss
+514 silly gunzTarPerm extractEntry deps/libexpat/doc/xmlwf.1
+515 silly gunzTarPerm extractEntry deps/libexpat/doc/style.css
+516 silly gunzTarPerm extractEntry deps/libexpat/doc/valid-xhtml10.png
+517 silly gunzTarPerm extractEntry deps/libexpat/doc/reference.html
+518 silly gunzTarPerm extractEntry deps/libexpat/doc/xmlwf.sgml
+519 silly gunzTarPerm extractEntry deps/libexpat/doc/expat.png
+520 silly gunzTarPerm extractEntry deps/libexpat/Makefile.in
+521 silly gunzTarPerm extractEntry deps/libexpat/configure
+522 verbose write writing to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs/package.json
+523 info preinstall graceful-fs@1.2.3
+524 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs/package.json
+525 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs/package.json
+526 silly gunzTarPerm extractEntry deps/libexpat/bcb5/elements.mak
+527 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expat.mak
+528 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expatw.bpr
+529 silly gunzTarPerm extractEntry deps/libexpat/bcb5/setup.bat
+530 silly install resolved []
+531 verbose about to build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs
+532 info build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs
+533 silly gunzTarPerm extractEntry deps/libexpat/bcb5/xmlwf.bpf
+534 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expatw.bpf
+535 silly gunzTarPerm extractEntry deps/libexpat/bcb5/elements.bpr
+536 silly gunzTarPerm extractEntry deps/libexpat/bcb5/makefile.mak
+537 silly gunzTarPerm extractEntry deps/libexpat/bcb5/elements.bpf
+538 info linkStuff graceful-fs@1.2.3
+539 silly linkStuff graceful-fs@1.2.3 has /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules as its parent node_modules
+540 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expat_static.bpr
+541 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expatw_static.bpf
+542 verbose linkBins graceful-fs@1.2.3
+543 verbose linkMans graceful-fs@1.2.3
+544 verbose rebuildBundles graceful-fs@1.2.3
+545 info install graceful-fs@1.2.3
+546 silly gunzTarPerm extractEntry deps/libexpat/bcb5/outline.bpf
+547 info postinstall graceful-fs@1.2.3
+548 silly gunzTarPerm extractEntry deps/libexpat/bcb5/libexpatw_mtd.def
+549 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expatw.mak
+550 verbose unlock done using /Users/Thea/.npm/_locks/graceful-fs-0ddde26b0a3baba3.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf/node_modules/graceful-fs
+551 verbose about to build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf
+552 info build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf
+553 silly gunzTarPerm extractEntry deps/libexpat/bcb5/libexpat_mtd.def
+554 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expatw_static.mak
+555 silly gunzTarPerm extractEntry deps/libexpat/bcb5/xmlwf.bpr
+556 silly gunzTarPerm extractEntry deps/libexpat/bcb5/all_projects.bpg
+557 silly gunzTarPerm extractEntry deps/libexpat/bcb5/xmlwf.mak
+558 info linkStuff rimraf@2.1.4
+559 silly linkStuff rimraf@2.1.4 has /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules as its parent node_modules
+560 silly gunzTarPerm extractEntry deps/libexpat/bcb5/README.txt
+561 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expat.bpr
+562 verbose linkBins rimraf@2.1.4
+563 verbose linkMans rimraf@2.1.4
+564 verbose rebuildBundles rimraf@2.1.4
+565 verbose rebuildBundles [ 'graceful-fs' ]
+566 info install rimraf@2.1.4
+567 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expat_static.bpf
+568 info postinstall rimraf@2.1.4
+569 silly gunzTarPerm extractEntry deps/libexpat/bcb5/outline.mak
+570 silly gunzTarPerm extractEntry deps/libexpat/bcb5/outline.bpr
+571 verbose unlock done using /Users/Thea/.npm/_locks/rimraf-d6bc1d44ce77e6b1.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp/node_modules/rimraf
+572 verbose about to build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp
+573 info build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp
+574 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expatw_static.bpr
+575 info linkStuff temp@0.6.0
+576 silly linkStuff temp@0.6.0 has /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules as its parent node_modules
+577 verbose linkBins temp@0.6.0
+578 verbose linkMans temp@0.6.0
+579 verbose rebuildBundles temp@0.6.0
+580 verbose rebuildBundles [ 'osenv', 'rimraf' ]
+581 info install temp@0.6.0
+582 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expat.bpf
+583 silly gunzTarPerm extractEntry deps/libexpat/bcb5/expat_static.mak
+584 info postinstall temp@0.6.0
+585 verbose unlock done using /Users/Thea/.npm/_locks/temp-9039fd5925d457b3.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/temp
+586 silly gunzTarPerm extractEntry deps/libexpat/version.c
+587 silly gunzTarPerm extractEntry deps/libexpat/libexpat.gyp
+588 silly gunzTarPerm extractEntry deps/libexpat/expat.pc.in
+589 silly gunzTarPerm extractEntry deps/libexpat/expat_config.h.cmake
+590 silly gunzTarPerm extractEntry deps/libexpat/lib/macconfig.h
+591 silly gunzTarPerm extractEntry deps/libexpat/lib/libexpat.def
+592 silly gunzTarPerm extractEntry deps/libexpat/lib/iasciitab.h
+593 silly gunzTarPerm extractEntry deps/libexpat/lib/xmltok_impl.c
+594 silly gunzTarPerm extractEntry deps/libexpat/lib/expat.dsp
+595 silly gunzTarPerm extractEntry deps/libexpat/lib/libexpatw.def
+596 silly gunzTarPerm extractEntry deps/libexpat/lib/expat_external.h
+597 silly gunzTarPerm extractEntry deps/libexpat/lib/latin1tab.h
+598 silly gunzTarPerm extractEntry deps/libexpat/lib/winconfig.h
+599 silly gunzTarPerm extractEntry deps/libexpat/lib/asciitab.h
+600 silly gunzTarPerm extractEntry deps/libexpat/lib/expat.h
+601 silly gunzTarPerm extractEntry deps/libexpat/lib/nametab.h
+602 silly gunzTarPerm extractEntry deps/libexpat/lib/xmltok.h
+603 silly gunzTarPerm extractEntry deps/libexpat/lib/utf8tab.h
+604 silly gunzTarPerm extractEntry deps/libexpat/lib/Makefile.MPW
+605 silly gunzTarPerm extractEntry deps/libexpat/lib/amigaconfig.h
+606 silly gunzTarPerm extractEntry deps/libexpat/lib/xmlparse.c
+607 silly gunzTarPerm extractEntry deps/libexpat/lib/xmltok_impl.h
+608 silly gunzTarPerm extractEntry deps/libexpat/lib/ascii.h
+609 silly gunzTarPerm extractEntry deps/libexpat/lib/xmlrole.h
+610 silly gunzTarPerm extractEntry deps/libexpat/lib/xmltok_ns.c
+611 silly gunzTarPerm extractEntry deps/libexpat/lib/expat_static.dsp
+612 silly gunzTarPerm extractEntry deps/libexpat/lib/expatw_static.dsp
+613 silly gunzTarPerm extractEntry deps/libexpat/lib/xmlrole.c
+614 silly gunzTarPerm extractEntry deps/libexpat/lib/expatw.dsp
+615 silly gunzTarPerm extractEntry deps/libexpat/lib/internal.h
+616 silly gunzTarPerm extractEntry deps/libexpat/lib/xmltok.c
+617 silly gunzTarPerm extractEntry deps/libexpat/MANIFEST
+618 silly gunzTarPerm extractEntry deps/libexpat/expat_config.h.in
+619 silly gunzTarPerm extractEntry deps/libexpat/expat_config.h
+620 silly gunzTarPerm extractEntry deps/libexpat/Changes
+621 silly gunzTarPerm extractEntry deps/libexpat/configure.in
+622 silly gunzTarPerm extractEntry deps/libexpat/m4/libtool.m4
+623 silly gunzTarPerm extractEntry deps/libexpat/m4/ltversion.m4
+624 silly gunzTarPerm extractEntry deps/libexpat/m4/lt~obsolete.m4
+625 silly gunzTarPerm extractEntry deps/libexpat/m4/ltsugar.m4
+626 silly gunzTarPerm extractEntry deps/libexpat/m4/ltoptions.m4
+627 silly gunzTarPerm extractEntry deps/libexpat/vms/expat_config.h
+628 silly gunzTarPerm extractEntry deps/libexpat/vms/README.vms
+629 silly gunzTarPerm extractEntry deps/libexpat/vms/descrip.mms
+630 silly gunzTarPerm extractEntry deps/libexpat/conftools/PrintPath
+631 silly gunzTarPerm extractEntry deps/libexpat/conftools/expat.m4
+632 silly gunzTarPerm extractEntry deps/libexpat/conftools/ac_c_bigendian_cross.m4
+633 silly gunzTarPerm extractEntry deps/libexpat/conftools/mkinstalldirs
+634 silly gunzTarPerm extractEntry deps/libexpat/conftools/config.guess
+635 silly gunzTarPerm extractEntry deps/libexpat/conftools/get-version.sh
+636 silly gunzTarPerm extractEntry deps/libexpat/conftools/install-sh
+637 silly gunzTarPerm extractEntry deps/libexpat/conftools/ltmain.sh
+638 silly gunzTarPerm extractEntry deps/libexpat/conftools/config.sub
+639 silly gunzTarPerm extractEntry deps/libexpat/CMakeLists.txt
+640 silly gunzTarPerm extractEntry deps/libexpat/amiga/expat_vectors.c
+641 silly gunzTarPerm extractEntry deps/libexpat/amiga/expat.xml
+642 silly gunzTarPerm extractEntry deps/libexpat/amiga/expat_68k_handler_stubs.c
+643 silly gunzTarPerm extractEntry deps/libexpat/amiga/expat_68k.c
+644 silly gunzTarPerm extractEntry deps/libexpat/amiga/Makefile
+645 silly gunzTarPerm extractEntry deps/libexpat/amiga/expat_lib.c
+646 silly gunzTarPerm extractEntry deps/libexpat/amiga/launch.c
+647 silly gunzTarPerm extractEntry deps/libexpat/amiga/README.txt
+648 silly gunzTarPerm extractEntry deps/libexpat/amiga/expat_base.h
+649 silly gunzTarPerm extractEntry deps/libexpat/amiga/include/libraries/expat.h
+650 silly gunzTarPerm extractEntry deps/libexpat/amiga/include/proto/expat.h
+651 silly gunzTarPerm extractEntry deps/libexpat/amiga/include/interfaces/expat.h
+652 silly gunzTarPerm extractEntry deps/libexpat/amiga/include/inline4/expat.h
+653 silly gunzTarPerm extractEntry deps/libexpat/amiga/expat_68k.h
+654 silly gunzTarPerm extractEntry deps/libexpat/aclocal.m4
+655 silly gunzTarPerm extractEntry deps/libexpat/COPYING
+656 silly gunzTarPerm extractEntry deps/libexpat/expat.dsw
+657 silly gunzTarPerm extractEntry deps/libexpat/tests/runtests.c
+658 silly gunzTarPerm extractEntry deps/libexpat/tests/xmltest.sh
+659 silly gunzTarPerm extractEntry deps/libexpat/tests/minicheck.c
+660 silly gunzTarPerm extractEntry deps/libexpat/tests/minicheck.h
+661 silly gunzTarPerm extractEntry deps/libexpat/tests/runtestspp.cpp
+662 silly gunzTarPerm extractEntry deps/libexpat/tests/chardata.c
+663 silly gunzTarPerm extractEntry deps/libexpat/tests/README.txt
+664 silly gunzTarPerm extractEntry deps/libexpat/tests/chardata.h
+665 silly gunzTarPerm extractEntry deps/libexpat/tests/benchmark/benchmark.dsp
+666 silly gunzTarPerm extractEntry deps/libexpat/tests/benchmark/README.txt
+667 silly gunzTarPerm extractEntry deps/libexpat/tests/benchmark/benchmark.c
+668 silly gunzTarPerm extractEntry deps/libexpat/tests/benchmark/benchmark.dsw
+669 silly gunzTarPerm extractEntry lib/node-expat.js
+670 silly gunzTarPerm extractEntry binding.gyp
+671 verbose write writing to /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat/package.json
+672 info preinstall node-expat@2.0.0
+673 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat/package.json
+674 verbose readDependencies loading dependencies from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat/package.json
+675 silly install resolved []
+676 verbose about to build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat
+677 info build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat
+678 info linkStuff node-expat@2.0.0
+679 silly linkStuff node-expat@2.0.0 has /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules as its parent node_modules
+680 verbose linkBins node-expat@2.0.0
+681 verbose linkMans node-expat@2.0.0
+682 verbose rebuildBundles node-expat@2.0.0
+683 info install node-expat@2.0.0
+684 verbose unsafe-perm in lifecycle true
+685 info node-expat@2.0.0 Failed to exec install script
+686 verbose unlock done using /Users/Thea/.npm/_locks/node-expat-37941fc4ee6de5ce.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat
+687 verbose about to build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+688 verbose unlock done using /Users/Thea/.npm/_locks/xml2json-cc1819969dee7751.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+689 verbose about to build /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+690 verbose unlock done using /Users/Thea/.npm/_locks/office-d63a5d170eaaf283.lock for /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+691 verbose stack Error: node-expat@2.0.0 install: `node-gyp rebuild`
+691 verbose stack Exit status 1
+691 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:214:16)
+691 verbose stack     at emitTwo (events.js:87:13)
+691 verbose stack     at EventEmitter.emit (events.js:172:7)
+691 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+691 verbose stack     at emitTwo (events.js:87:13)
+691 verbose stack     at ChildProcess.emit (events.js:172:7)
+691 verbose stack     at maybeClose (internal/child_process.js:818:16)
+691 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+692 verbose pkgid node-expat@2.0.0
+693 verbose cwd /Users/Thea/Desktop/NoSQL-Team17/Projekt
+694 error Darwin 15.0.0
+695 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "office"
+696 error node v4.2.2
+697 error npm  v2.14.7
+698 error code ELIFECYCLE
+699 error node-expat@2.0.0 install: `node-gyp rebuild`
+699 error Exit status 1
+700 error Failed at the node-expat@2.0.0 install script 'node-gyp rebuild'.
+700 error This is most likely a problem with the node-expat package,
+700 error not with npm itself.
+700 error Tell the author that this fails on your system:
+700 error     node-gyp rebuild
+700 error You can get their info via:
+700 error     npm owner ls node-expat
+700 error There is likely additional logging output above.
+701 verbose exit [ 1, true ]
+702 verbose unbuild node_modules/office/node_modules/xml2json/node_modules/node-expat
+703 info preuninstall node-expat@2.0.0
+704 info uninstall node-expat@2.0.0
+705 verbose unbuild rmStuff node-expat@2.0.0 from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules
+706 verbose unbuild rmStuff in /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules
+707 info postuninstall node-expat@2.0.0
+708 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat is being purged from base /Users/Thea/Desktop/NoSQL-Team17/Projekt
+709 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat
+710 silly vacuum-fs purging /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules/node-expat
+711 silly vacuum-fs removing /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json/node_modules
+712 silly vacuum-fs quitting because other entries in /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+713 verbose unbuild node_modules/office/node_modules/xml2json
+714 info preuninstall xml2json@0.3.2
+715 info uninstall xml2json@0.3.2
+716 verbose unbuild rmStuff xml2json@0.3.2 from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules
+717 verbose unbuild rmStuff in /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules
+718 info postuninstall xml2json@0.3.2
+719 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json is being purged from base /Users/Thea/Desktop/NoSQL-Team17/Projekt
+720 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+721 silly vacuum-fs purging /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules/xml2json
+722 silly vacuum-fs quitting because other entries in /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office/node_modules
+723 verbose unbuild node_modules/office
+724 info preuninstall office@0.0.8
+725 info uninstall office@0.0.8
+726 verbose unbuild rmStuff office@0.0.8 from /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules
+727 info postuninstall office@0.0.8
+728 silly gentlyRm /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office is being purged from base /Users/Thea/Desktop/NoSQL-Team17/Projekt
+729 verbose gentlyRm don't care about contents; nuking /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+730 silly vacuum-fs purging /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules/office
+731 silly vacuum-fs quitting because other entries in /Users/Thea/Desktop/NoSQL-Team17/Projekt/node_modules
