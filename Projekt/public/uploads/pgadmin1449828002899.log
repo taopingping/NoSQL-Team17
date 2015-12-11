@@ -1,6 +1,0 @@
-2015-12-06 10:54:30 ERROR  : There is nothing in the SQL pane to save!
-2015-12-06 18:24:29 ERROR  : Error connecting to the server: FATAL:  Passwort-Authentifizierung für Benutzer „postgres“ fehlgeschlagen
-password retrieved from file "C:\Users\win7\AppData\Roaming/postgresql/pgpass.conf"
-
-2015-12-10 11:07:45 ERROR  : Error connecting to the server: FATAL:  Passwort-Authentifizierung für Benutzer „postgres“ fehlgeschlagen
-
