@@ -8,29 +8,31 @@ html(lang='en')
         button.btn.btn-default(type='submit', onclick='pressSearchKey()')
           i.glyphicon.glyphicon-search
       input#srch-term.form-control(type='text', placeholder='Enter search text here', name='srch-term')
-      .input-group-btn
-        span.btn.btn-default.btn-file
-          input(type='file', accept=".doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document")
-        button.btn.btn-default(type='submit', onclick='uploadFile()', name='file')
-          i.glyphicon.glyphicon-upload
-  br
-  #search
-  #result
-  <!-- Template for search results-->
-  script#result-template(type='text/x-handlebars-template')
-    table.table.table-striped
-      tr
-        th ID
-        th Document
-        th Count
-      {{#each this}}
-      tr
-        td {{id}}
-        td {{doc}}
-        td {{count}}
-      {{/each}}
+      form#uploadForm(enctype='multipart/form-data', action='/', method='post')
+        .input-group-btn
+          span.btn.btn-default.btn-file
+            input(type='file', multiple='multiple', name='files')
+          button.btn.btn-default(type='submit', name='submit')
+            i.glyphicon.glyphicon-upload
+      span#status
+    br
+    #search
+    #result
+    // Template for search results
+    script#result-template(type='text/x-handlebars-template')
+      table.table.table-striped
+        tr
+          th ID
+          th Document
+          th Count
+        |     {{#each this}}
+        tr
+          td {{id}}
+          td
+            a(href="/uploads/{{doc}}") {{doc}}
+          td {{count}}
+        | {{/each}}
   script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
   script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
   script(src='http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars.min-latest.js')
-  script(src='/javascripts/upload.js')
   script(src='/javascripts/search.js')

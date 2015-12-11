@@ -1,13 +1,32 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+var http = require('http');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var elasticsearch = require('elasticsearch');
-var JSFtp = require("jsftp");
+var multer = require("multer");
+var fs = require('fs');
+var textract = require('textract');
 var app = express();
+var upload = multer({ dest : './uploads'});
+
+var dir = './public/uploads/';
+var uploads = [];
+var docData = [];
+fs.readdir(dir, function(err, items) {
+  uploads = items;
+  uploads.forEach(function(item) {
+    var path = dir + item;
+    textract.fromFileWithPath(path, function( error, text ) {
+      if(error) {
+  			console.log("Could not parse file " + path);
+  		}
+      else {
+        docData.push(text);
+      }
+    });
+  });
+});
 
 require('dotenv').load();
 
@@ -16,60 +35,66 @@ var client = new elasticsearch.Client({
   log: 'trace'
 });
 
-var Ftp = new JSFtp({
-  host: process.env.FTP_HOST,
-  port: process.env.FTP_PORT,
-  user: process.env.FTP_USER,
-  pass: process.env.FTP_PWD
-});
-
-Ftp.ls(".", function(err, res) {
-  res.forEach(function(file) {
-    // log filename
-    console.log(file.name);
-
-    //log file
-    console.log(file);
-  });
-});
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
+app.use(multer({ dest: './public/uploads/',
+	rename: function (fieldname, filename) {
+		return filename+Date.now();
+	},
+	onFileUploadStart: function (file) {
+		console.log(file.originalname + ' is starting ...');
+	},
+	onFileUploadComplete: function (file) {
+    console.log(file.fieldname + ' uploaded to  ' + file.path);
+    uploads.push(file);
+    textract.fromFileWithPath(file.path, function( error, text ) {
+      if(error) {
+  			console.log("Could not parse file " + path);
+  		}
+      else {
+        docData.push(text);
+      }
+    });
+	}
+}));
+
+app.post('/',function(req,res){
+	upload(req,res,function(err) {
+		if(err) {
+			return res.end("Error uploading file.");
+		}
+    res.render(__dirname + "/views/index.jade");
+		res.end();
+	});
+});
+
 app.get('/:search', function(req, res){
   console.log("Searched for: " + req.params.search);
-  //set result
-// TODO initialize ES client
-
-  //initialize MongoDB client
-  var MongoClient = require('mongodb').MongoClient
-    , assert = require('assert');
-
-  // Connection URL
-  var url = 'mongodb://localhost:27017/myproject';
-  // TODO setup database
-  // Use connect method to connect to the Server
-  /*MongoClient.connect(url, function(err, db) {
-    assert.equal(null, err);
-    console.log("Connected correctly to server");
-
-
-
-    db.close();
-  });*/
-  var result = [{id: 1, doc:"a.doc", count: 3 }, {id: 2, doc: "b.doc", count: 2 }, {id: 3, doc: "c.txt", count: 1 }];
-  res.send(result);
+  var dir = './public/uploads/';
+  var result = [];
+  var invalidItems = 0;
+  fs.readdir(dir, function(err, items) {
+    console.log(items);
+    for (var i=0; i<items.length; i++) {
+      if(!stringStartsWith(items[i],".")) {
+        result.push({id: i+1-invalidItems, doc: items[i], count: 3});
+      }
+      else{
+        invalidItems++;
+      }
+    }
+    res.send(result);
+  });
 });
 
 // catch 404 and forward to error handler
@@ -107,8 +132,6 @@ app.listen(process.env.SRV_PORT);
 
 module.exports = app;
 
-//parse to
-var textract = require('textract');
-textract.fromFileWithPath('test.txt', function( error, text ){
-  console.log(text);
-})
+function stringStartsWith (string, prefix) {
+    return string.slice(0, prefix.length) == prefix;
+}
