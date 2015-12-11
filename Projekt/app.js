@@ -22,7 +22,11 @@ fs.readdir(dir, function(err, items) {
   			console.log("Could not parse file " + path);
   		}
       else {
-        docData.push(text);
+        var json = {
+          name : item,
+          data: text
+        };
+        docData.push(json);
       }
     });
   });
@@ -59,10 +63,15 @@ app.use(multer({ dest: './public/uploads/',
     uploads.push(file);
     textract.fromFileWithPath(file.path, function( error, text ) {
       if(error) {
-  			console.log("Could not parse file " + path);
+  			console.log("Could not parse file " + file.path);
   		}
       else {
-        docData.push(text);
+        var json = {
+          name : file.path,
+          data: text
+        };
+        docData.push(json);
+        console.log(docData);
       }
     });
 	}
