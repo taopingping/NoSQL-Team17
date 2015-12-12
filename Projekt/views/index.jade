@@ -8,7 +8,7 @@ html(lang='en')
         button.btn.btn-default(type='submit', onclick='pressSearchKey()')
           i.glyphicon.glyphicon-search
       input#srch-term.form-control(type='text', placeholder='Enter search text here', name='srch-term')
-      form#uploadForm(enctype='multipart/form-data', action='/', method='post')
+      form#uploadForm(enctype='multipart/form-data', action='/upload', method='post')
         .input-group-btn
           span.btn.btn-default.btn-file
             input(type='file', multiple='multiple', name='files')

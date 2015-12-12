@@ -22,11 +22,11 @@ fs.readdir(dir, function(err, items) {
   			console.log("Could not parse file " + path);
   		}
       else {
-        var json = {
+        var val = {
           name : item,
           data: text
         };
-        docData.push(json);
+        docData.push(val);
       }
     });
   });
@@ -66,44 +66,39 @@ app.use(multer({ dest: './public/uploads/',
   			console.log("Could not parse file " + file.path);
   		}
       else {
-        var json = {
+        var val = {
           name : file.path,
           data: text
         };
-        docData.push(json);
-        console.log(docData);
+        docData.push(val);
       }
     });
 	}
 }));
 
-app.post('/',function(req,res){
+app.post('/upload',function(req,res){
 	upload(req,res,function(err) {
 		if(err) {
 			return res.end("Error uploading file.");
 		}
+    res.redirect('/');
     res.render(__dirname + "/views/index.jade");
 		res.end();
 	});
 });
 
 app.get('/:search', function(req, res){
-  console.log("Searched for: " + req.params.search);
-  var dir = './public/uploads/';
   var result = [];
   var invalidItems = 0;
-  fs.readdir(dir, function(err, items) {
-    console.log(items);
-    for (var i=0; i<items.length; i++) {
-      if(!stringStartsWith(items[i],".")) {
-        result.push({id: i+1-invalidItems, doc: items[i], count: 3});
-      }
-      else{
-        invalidItems++;
-      }
+  for (var i=0; i<docData.length; i++) {
+    if(!stringStartsWith(items[i],".")) {
+      result.push({id: i+1-invalidItems, doc: docData[i].name, count: 3});
     }
-    res.send(result);
-  });
+    else{
+      invalidItems++;
+    }
+  }
+  res.send(result);
 });
 
 // catch 404 and forward to error handler
