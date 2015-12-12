@@ -81,7 +81,6 @@ app.post('/upload',function(req,res){
 		if(err) {
 			return res.end("Error uploading file.");
 		}
-    res.redirect('/');
     res.render(__dirname + "/views/index.jade");
 		res.end();
 	});

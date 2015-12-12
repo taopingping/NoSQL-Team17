@@ -28,6 +28,9 @@ function getAllFiles() {
           var source   = $("#result-template").html();
           var template = Handlebars.compile(source);
           $("#result").html(template(resp));
+          $("#data")
+            .tablesorter({widthFixed: true, widgets: ['zebra']})
+            .tablesorterPager({container: $("#pager")});
     },
     error: function(e) {
         alert('Error: '+e);
@@ -46,6 +49,9 @@ function pressSearchKey()    {
           var source   = $("#result-template").html();
           var template = Handlebars.compile(source);
           $("#result").html(template(resp));
+          $("#data")
+            .tablesorter({widthFixed: true, widgets: ['zebra']})
+            .tablesorterPager({container: $("#pager")}); 
     },
     error: function(e) {
         alert('Error: '+e);
