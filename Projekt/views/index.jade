@@ -20,11 +20,18 @@ html(lang='en')
     #result
     // Template for search results
     script#result-template(type='text/x-handlebars-template')
-      table.table.table-striped
-        tr
-          th ID
-          th Document
-          th Count
+      table.table.table-striped.table-bordered
+        thead
+          tr
+            th ID
+            th Document
+            th Count
+        tfoot
+          tr
+            th ID
+            th Document
+            th Count
+        tbody
         |     {{#each this}}
         tr
           td {{id}}
@@ -35,4 +42,4 @@ html(lang='en')
   script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
   script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
   script(src='http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars.min-latest.js')
-  script(src='/javascripts/search.js')
+  script(src='/javascripts/functions.js')
