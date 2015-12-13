@@ -101,8 +101,14 @@ app.get('/:search', function(req, res){
   var result = [];
   var invalidItems = 0;
   for (var i = 0; i < docData.length; i++) {
+
+    //Suchparameter req.params.search
+    //add elasticsearch
+    // Ergebnis: result
+
     if(!(stringStartsWith(docData[i].name,"."))) {
       var index = i + 1 - invalidItems;
+      // Ergebnis einfügen
       result.push({id: index, doc: docData[i].name, count: 3});
     }
     else{
