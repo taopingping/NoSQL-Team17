@@ -34,7 +34,7 @@ function getAllFiles() {
           $("#result").html(template(resp));
     },
     error: function(e) {
-        alert('Error: '+e);
+        alert('Error: '+JSON.stringify(e));
     }
   });
 }

@@ -64,7 +64,7 @@ app.use('/', routes);
 app.use(multer({ dest: './public/uploads/',
 	rename: function (fieldname, filename) {
     //add the current date to the filename to allow multiple uploads
-		return filename+Date.now();
+    return filename + Date.now();
 	},
 	onFileUploadStart: function (file) {
 		console.log(file.originalname + ' is starting ...');
@@ -79,8 +79,9 @@ app.use(multer({ dest: './public/uploads/',
   		}
       else {
         //add the uploaded file's text to the docData
+        var len = dir.length - 2;
         var val = {
-          name : file,
+          name : file.path.substring(len),
           data: text
         };
         docData.push(val);
@@ -100,21 +101,17 @@ app.post('/upload',function(req,res){
 });
 
 app.get('/:search', function(req, res){
-  console.log("files on server: " + docData.length);
   var result = [];
   var invalidItems = 0;
-  for (var i = 0; i < uploads.length; i++) {
+  for (var i = 0; i < docData.length; i++) {
     if(!(stringStartsWith(docData[i].name,"."))) {
-      console.log("xyz");
       var index = i + 1 - invalidItems;
       result.push({id: index, doc: docData[i].name, count: 3});
     }
     else{
       invalidItems++;
     }
-    console.log("def");
   }
-  console.log("sending result");
   res.send(result);
 });
 
@@ -154,5 +151,12 @@ app.listen(process.env.SRV_PORT);
 module.exports = app;
 
 function stringStartsWith (string, prefix) {
-    return string.slice(0, prefix.length) == prefix;
+  var res;
+  try {
+    res = string.slice(0, prefix.length) == prefix;
+  }
+  catch(err) {
+    res = false;
+  }
+    return res;
 }
