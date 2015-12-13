@@ -1,5 +1,7 @@
+// load all files whhen index page is called
 getAllFiles();
 
+// control file uploads
 $('#uploadForm').submit(function() {
    $("#status").empty().text("File is uploading...");
    $.ajaxSubmit({
@@ -14,12 +16,14 @@ $('#uploadForm').submit(function() {
   return false;
 });
 
+// handle enter key presses
 $('input[name=srch-term]').keyup(function(event){
     if(event.keyCode == 13 || event.which == 13){
         pressSearchKey();
     }
 });
 
+// load all files
 function getAllFiles() {
   $.ajax({
     url: "http://localhost:1337/1",
@@ -28,9 +32,6 @@ function getAllFiles() {
           var source   = $("#result-template").html();
           var template = Handlebars.compile(source);
           $("#result").html(template(resp));
-          $("#data")
-            .tablesorter({widthFixed: true, widgets: ['zebra']})
-            .tablesorterPager({container: $("#pager")});
     },
     error: function(e) {
         alert('Error: '+e);
@@ -38,6 +39,7 @@ function getAllFiles() {
   });
 }
 
+// handle a user's search
 function pressSearchKey()    {
   var needle = $('input[name=srch-term]').val();
   $.ajax({
@@ -49,12 +51,9 @@ function pressSearchKey()    {
           var source   = $("#result-template").html();
           var template = Handlebars.compile(source);
           $("#result").html(template(resp));
-          $("#data")
-            .tablesorter({widthFixed: true, widgets: ['zebra']})
-            .tablesorterPager({container: $("#pager")}); 
     },
     error: function(e) {
-        alert('Error: '+e);
+        alert('Error: '+e.text);
     }
   });
 }

@@ -8,28 +8,38 @@ var multer = require("multer");
 var fs = require('fs');
 var textract = require('textract');
 var app = express();
-var upload = multer({ dest : './uploads'});
-
+var upload = multer({ dest : './public/uploads'});
 var dir = './public/uploads/';
+
+// Store all files and their data
 var uploads = [];
 var docData = [];
+
+//read all files when server starts
 fs.readdir(dir, function(err, items) {
-  uploads = items;
-  uploads.forEach(function(item) {
-    var path = dir + item;
-    textract.fromFileWithPath(path, function( error, text ) {
-      if(error) {
-  			console.log("Could not parse file " + path);
-  		}
-      else {
-        var val = {
-          name : item,
-          data: text
-        };
-        docData.push(val);
-      }
+  if(err) {
+    console.log("Could not read files from directory " + dir);
+  }
+  else {
+    uploads = items;
+    console.log("uploads length: " + uploads.length);
+    uploads.forEach(function(item) {
+      var path = dir + item;
+      console.log("checking file " + path);
+      textract.fromFileWithPath(path, function( err, text ) {
+        if(err) {
+    			console.log("Could not parse file " + path);
+    		}
+        else {
+          var val = {
+            name : item,
+            data: text
+          };
+          docData.push(val);
+        }
+      });
     });
-  });
+  }
 });
 
 require('dotenv').load();
@@ -53,6 +63,7 @@ app.use('/', routes);
 
 app.use(multer({ dest: './public/uploads/',
 	rename: function (fieldname, filename) {
+    //add the current date to the filename to allow multiple uploads
 		return filename+Date.now();
 	},
 	onFileUploadStart: function (file) {
@@ -60,14 +71,16 @@ app.use(multer({ dest: './public/uploads/',
 	},
 	onFileUploadComplete: function (file) {
     console.log(file.fieldname + ' uploaded to  ' + file.path);
+    //add the uploaded file to the stored files
     uploads.push(file);
     textract.fromFileWithPath(file.path, function( error, text ) {
       if(error) {
   			console.log("Could not parse file " + file.path);
   		}
       else {
+        //add the uploaded file's text to the docData
         var val = {
-          name : file.path,
+          name : file,
           data: text
         };
         docData.push(val);
@@ -87,16 +100,21 @@ app.post('/upload',function(req,res){
 });
 
 app.get('/:search', function(req, res){
+  console.log("files on server: " + docData.length);
   var result = [];
   var invalidItems = 0;
-  for (var i=0; i<docData.length; i++) {
-    if(!stringStartsWith(items[i],".")) {
-      result.push({id: i+1-invalidItems, doc: docData[i].name, count: 3});
+  for (var i = 0; i < uploads.length; i++) {
+    if(!(stringStartsWith(docData[i].name,"."))) {
+      console.log("xyz");
+      var index = i + 1 - invalidItems;
+      result.push({id: index, doc: docData[i].name, count: 3});
     }
     else{
       invalidItems++;
     }
+    console.log("def");
   }
+  console.log("sending result");
   res.send(result);
 });
 
