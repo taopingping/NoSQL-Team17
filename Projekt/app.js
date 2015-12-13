@@ -22,10 +22,8 @@ fs.readdir(dir, function(err, items) {
   }
   else {
     uploads = items;
-    console.log("uploads length: " + uploads.length);
     uploads.forEach(function(item) {
       var path = dir + item;
-      console.log("checking file " + path);
       textract.fromFileWithPath(path, function( err, text ) {
         if(err) {
     			console.log("Could not parse file " + path);
@@ -95,8 +93,7 @@ app.post('/upload',function(req,res){
 		if(err) {
 			return res.end("Error uploading file.");
 		}
-    res.render(__dirname + "/views/index.jade");
-		res.end();
+		res.redirect('/');
 	});
 });
 
