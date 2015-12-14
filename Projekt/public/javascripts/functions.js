@@ -28,10 +28,9 @@ function getAllFiles() {
   $.ajax({
     url: "http://localhost:1337/1",
     type: 'GET',
-    success: function (resp) {
-          var source   = $("#result-template").html();
-          var template = Handlebars.compile(source);
-          $("#result").html(template(resp));
+    success: function (resp) {var source   = $("#result-template").html();
+        var template = Handlebars.compile(source);
+        $("#result").html(template(resp));
         $('#data').DataTable();
         alert(template(resp));
     },
@@ -53,6 +52,7 @@ function pressSearchKey()    {
           var source   = $("#result-template").html();
           var template = Handlebars.compile(source);
           $("#result").html(template(resp));
+          $('#data').DataTable();
     },
     error: function(e) {
         alert('Error: '+e.text);
@@ -64,9 +64,3 @@ function pressSearchKey()    {
 function showPathOfUpload() {
     document.getElementById("uploadFile").value = document.getElementById("uploadBtn").value;
 }
-
-// make data table
-$(document).ready(function() {
-    $('#data').DataTable();
-    alert($('#data'));
-} );
