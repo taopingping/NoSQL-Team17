@@ -32,6 +32,8 @@ function getAllFiles() {
           var source   = $("#result-template").html();
           var template = Handlebars.compile(source);
           $("#result").html(template(resp));
+        $('#data').DataTable();
+        alert(template(resp));
     },
     error: function(e) {
         alert('Error: '+JSON.stringify(e));
@@ -62,3 +64,9 @@ function pressSearchKey()    {
 function showPathOfUpload() {
     document.getElementById("uploadFile").value = document.getElementById("uploadBtn").value;
 }
+
+// make data table
+$(document).ready(function() {
+    $('#data').DataTable();
+    alert($('#data'));
+} );
