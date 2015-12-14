@@ -1,0 +1,23 @@
+1. Express Generator installieren
+
+   sudo npm install -g express-generator
+
+2. Gehe zum Ordner wo du das Projekt anlegen willst
+
+   cd ~/ordner
+
+3. Anlegen des Projekts ('projekt' wird als ein Ordner angelegt)
+
+   express projekt
+
+4. Gehe zum Ordner projekt
+
+   cd projekt
+
+5. Dependencies installieren
+
+   npm install
+
+______
+
+End
