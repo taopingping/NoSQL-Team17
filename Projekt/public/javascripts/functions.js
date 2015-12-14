@@ -57,3 +57,8 @@ function pressSearchKey()    {
     }
   });
 }
+
+// show path of upload
+function showPathOfUpload() {
+    document.getElementById("uploadFile").value = document.getElementById("uploadBtn").value;
+}

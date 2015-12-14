@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
+</head>
+<body>
+<div class="col-lg-6">
+    <div class="input-group">
+        <input id="srch-term" type="text" placeholder="Enter search text here" name="srch-term" class="form-control"/>
+
+        <div class="input-group-btn">
+            <button type="submit" onclick="pressSearchKey()" class="btn btn-default"><i
+                    class="glyphicon glyphicon-search"></i></button>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3">
+    <input id="uploadFile" placeholder="..." disabled="disabled" class="form-control"/>
+</div>
+<div class="col-lg-3">
+    <form id="uploadForm" enctype="multipart/form-data" action="/upload" method="post">
+        <div class="btn btn-default fileUpload">
+            <span>Upload</span>
+            <input id="uploadBtn" onchange="showPathOfUpload()" type="file" multiple="multiple" name="files" class="upload">
+        </div>
+        <button type="submit" name="submit" class="btn btn-default"><i class="glyphicon glyphicon-upload"></i>
+        </button>
+        <span id="status"></span>
+    </form>
+</div>
+
+<div id="search"></div>
+<div id="result"></div>
+<!-- Template for search results-->
+<script id="result-template" type="text/x-handlebars-template">
+    <table id="data" class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Document</th>
+            <th>Count</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tfoot>
+        <tr>
+            <th>ID</th>
+            <th>Document</th>
+            <th>Count</th>
+            <th>Delete</th>
+        </tr>
+        </tfoot>
+        <tbody></tbody>
+        {{#each this}}
+        <tr>
+            <td>{{id}}</td>
+            <td><a href="/uploads/{{doc}}">{{doc}}</a></td>
+            <td>{{count}}</td>
+            <td><span class="glyphicon glyphicon-star" aria-hidden="true"></span></td>
+        </tr>
+        {{/each}}
+    </table>
+</script>
+</body>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars.min-latest.js"></script>
+<script src="../public/javascripts/functions.js"></script>
+</html>

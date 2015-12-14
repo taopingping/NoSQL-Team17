@@ -6,3 +6,28 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+}
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.col-lg-3 {
+  padding-bottom: 20px;
+}
+
+.col-lg-6 {
+  padding-bottom: 20px;
+}

@@ -2,20 +2,24 @@ doctype html
 html(lang='en')
   head
     link(href='//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css', rel='stylesheet')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
   body
-    .input-group
-      .input-group-btn
-        button.btn.btn-default(type='submit', onclick='pressSearchKey()')
-          i.glyphicon.glyphicon-search
-      input#srch-term.form-control(type='text', placeholder='Enter search text here', name='srch-term')
-      form#uploadForm(enctype='multipart/form-data', action='/upload', method='post')
+    .col-lg-6
+      .input-group
+        input#srch-term.form-control(type='text', placeholder='Enter search text here', name='srch-term')
         .input-group-btn
-          span.btn.btn-default.btn-file
-            input(type='file', multiple='multiple', name='files')
-          button.btn.btn-default(type='submit', name='submit')
-            i.glyphicon.glyphicon-upload
-      span#status
-    br
+          button.btn.btn-default(type='submit', onclick='pressSearchKey()')
+            i.glyphicon.glyphicon-search
+    .col-lg-3
+      input#uploadFile.form-control(placeholder='...', disabled='disabled')
+    .col-lg-3
+      form#uploadForm(enctype='multipart/form-data', action='/upload', method='post')
+        .btn.btn-default.fileUpload
+          span Upload
+          input#uploadBtn.upload(onchange='showPathOfUpload()', type='file', multiple='multiple', name='files')
+        button.btn.btn-default(type='submit', name='submit')
+          i.glyphicon.glyphicon-upload
+        span#status
     #search
     #result
     // Template for search results
@@ -26,11 +30,13 @@ html(lang='en')
             th ID
             th Document
             th Count
+            th Delete
         tfoot
           tr
             th ID
             th Document
             th Count
+            th Delete
         tbody
         |     {{#each this}}
         tr
@@ -38,6 +44,8 @@ html(lang='en')
           td
             a(href="/uploads/{{doc}}") {{doc}}
           td {{count}}
+          td
+            span.glyphicon.glyphicon-trash
         | {{/each}}
   script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
   script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
