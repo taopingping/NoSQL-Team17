@@ -31,3 +31,7 @@ a {
 .col-lg-6 {
   padding-bottom: 20px;
 }
+
+#data_filter {
+  visibility: hidden;
+}
