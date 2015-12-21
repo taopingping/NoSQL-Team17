@@ -100,21 +100,17 @@ app.post('/upload',function(req,res){
 app.get('/:search', function(req, res){
   var result = [];
   var invalidItems = 0;
+  console.log("Data = " + docData.length);
   for (var i = 0; i < docData.length; i++) {
-
-    //Suchparameter req.params.search
-    //add elasticsearch
-    // Ergebnis: result
-
     if(!(stringStartsWith(docData[i].name,"."))) {
       var index = i + 1 - invalidItems;
-      // Ergebnis einfügen
       result.push({id: index, doc: docData[i].name, count: 3});
     }
     else{
       invalidItems++;
     }
   }
+  console.log("data; " + docData.length);
   res.send(result);
 });
 

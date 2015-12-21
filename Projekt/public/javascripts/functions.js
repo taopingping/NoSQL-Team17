@@ -1,3 +1,5 @@
+var t = $('#data').DataTable();
+
 // load all files whhen index page is called
 getAllFiles();
 
@@ -26,20 +28,24 @@ $('input[name=srch-term]').keyup(function(event){
 // load all files
 function getAllFiles() {
   $.ajax({
-    url: "http://localhost:1337/1",
+    url: "http://localhost:1337/files",
     type: 'GET',
-    success: function (resp) {var source   = $("#result-template").html();
-        var template = Handlebars.compile(source);
-        $("#result").html(template(resp));
-        $('#data').DataTable();
-        alert(template(resp));
+    success: function (resp) {
+      $('#data tbody').html();
+      resp.forEach(function(resultItem) {
+        t.row.add( [
+            resultItem.id,
+            '<a href=/uploads/'+resultItem.doc+'>'+resultItem.doc+'</a>',
+            resultItem.count,
+            '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
+        ] ).draw( false );
+      });
     },
     error: function(e) {
-        alert('Error: '+JSON.stringify(e));
+      alert('Error: '+JSON.stringify(e));
     }
   });
 }
-
 // handle a user's search
 function pressSearchKey()    {
   var needle = $('input[name=srch-term]').val();
@@ -49,10 +55,15 @@ function pressSearchKey()    {
     success: function (resp) {
           $("#search").text("Suchanfrage: " + needle);
           $("#search").attr("class","well well-sm");
-          var source   = $("#result-template").html();
-          var template = Handlebars.compile(source);
-          $("#result").html(template(resp));
-          $('#data').DataTable();
+          t.row.remove(); 
+          resp.forEach(function(resultItem) {
+            t.row.add( [
+                resultItem.id,
+                '<a href=/uploads/'+resultItem.doc+'>'+resultItem.doc+'</a>',
+                resultItem.count,
+                '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
+            ] ).draw( false );
+          });
     },
     error: function(e) {
         alert('Error: '+e.text);
