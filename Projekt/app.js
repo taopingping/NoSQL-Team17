@@ -40,12 +40,14 @@ fs.readdir(dir, function(err, items) {
   }
 });
 
+
 require('dotenv').load();
 
 var client = new elasticsearch.Client({
   host: process.env.ES_HOST,
   log: 'trace'
 });
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -97,9 +99,10 @@ app.post('/upload',function(req,res){
 	});
 });
 
-app.get('/:search', function(req, res){
+app.get('/*', function(req, res){
   var result = [];
   var invalidItems = 0;
+  console.log(req.params);
   for (var i = 0; i < docData.length; i++) {
     if(!(stringStartsWith(docData[i].name,"."))) {
       var index = i + 1 - invalidItems;

@@ -48,8 +48,8 @@ function getAllFiles() {
         ] ).draw( false );
       });
     },
-    error: function(e) {
-      alert('Error: '+JSON.stringify(e));
+    error: function(xhr) {
+      status('Error: ' + xhr.status);
     }
   });
 }
@@ -73,7 +73,7 @@ function pressSearchKey()    {
           });
     },
     error: function(e) {
-        alert('Error: '+e.text);
+        status('Error: '+e.text);
     }
   });
 }
