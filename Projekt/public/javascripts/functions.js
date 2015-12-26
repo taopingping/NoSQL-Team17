@@ -11,7 +11,14 @@ $('#uploadForm').submit(function() {
         status('Error: ' + xhr.status);
       },
       success: function(response) {
-        console.log(response);
+        resp.forEach(function(resultItem) {
+          t.row.add( [
+              resultItem.id,
+              '<a href=/uploads/'+resultItem.doc+'>'+resultItem.doc+'</a>',
+              resultItem.count,
+              '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
+          ] ).draw( false );
+        });
         $("#status").empty().text(response);
       }
   });
@@ -55,7 +62,7 @@ function pressSearchKey()    {
     success: function (resp) {
           $("#search").text("Suchanfrage: " + needle);
           $("#search").attr("class","well well-sm");
-          t.row.remove(); 
+          t.row.remove();
           resp.forEach(function(resultItem) {
             t.row.add( [
                 resultItem.id,

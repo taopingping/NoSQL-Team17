@@ -100,7 +100,6 @@ app.post('/upload',function(req,res){
 app.get('/:search', function(req, res){
   var result = [];
   var invalidItems = 0;
-  console.log("Data = " + docData.length);
   for (var i = 0; i < docData.length; i++) {
     if(!(stringStartsWith(docData[i].name,"."))) {
       var index = i + 1 - invalidItems;
@@ -110,7 +109,6 @@ app.get('/:search', function(req, res){
       invalidItems++;
     }
   }
-  console.log("data; " + docData.length);
   res.send(result);
 });
 
