@@ -27,14 +27,16 @@ $('input[name=srch-term]').keyup(function(event){
 // load all files
 function getAllFiles() {
   $.ajax({
-    url: "http://localhost:1337/files",
+    url: "http://localhost:1337/",
     type: 'GET',
     success: function (resp) {
+      console.log("resp ___ " + JSON.stringify(resp));
+      var i = 1;
       resp.forEach(function(resultItem) {
         t.row.add( [
-            resultItem.id,
-            '<a href=/uploads/'+resultItem.doc+'>'+resultItem.doc+'</a>',
-            resultItem.count,
+            i++,
+            '<a href=/uploads/'+resultItem._source.name+'>'+resultItem._source.name+'</a>',
+            resultItem._score,
             '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
         ] ).draw( false );
       });
@@ -51,17 +53,19 @@ function pressSearchKey()    {
     url: "http://localhost:1337/"+needle,
     type: 'GET',
     success: function (resp) {
-          $("#search").text("Suchanfrage: " + needle);
-          $("#search").attr("class","well well-sm");
-          t.row.remove();
-          resp.forEach(function(resultItem) {
-            t.row.add( [
-                resultItem.id,
-                '<a href=/uploads/'+resultItem.doc+'>'+resultItem.doc+'</a>',
-                resultItem.count,
-                '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
-            ] ).draw( false );
-          });
+        console.log("resp ___ " + JSON.stringify(resp));
+        $("#search").text("Suchanfrage: " + needle);
+        $("#search").attr("class","well well-sm");
+        //t.row.remove();
+        var i = 1;
+        resp.forEach(function(resultItem) {
+          t.row.add( [
+              i++,
+              '<a href=/uploads/'+resultItem._source.name+'>'+resultItem._source.name+'</a>',
+              resultItem._score,
+              '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
+          ] ).draw( false );
+        });
     },
     error: function(e) {
         alert('Error: '+e.text);

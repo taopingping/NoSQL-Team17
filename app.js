@@ -11,32 +11,8 @@ var app = express();
 var upload = multer({ dest : './public/uploads'});
 var dir = './public/uploads/';
 
-// Store all files and their data
-var docData = [];
+var currentIndex = 1;
 
-//read all files when server starts
-fs.readdir(dir, function(err, items) {
-  if(err) {
-    console.log("Could not read files from directory " + dir);
-  }
-  else {
-    items.forEach(function(item) {
-      var path = dir + item;
-      textract.fromFileWithPath(path, function( err, text ) {
-        if(err) {
-          console.log("Could not parse file " + path);
-    		}
-        else {
-          var val = {
-            name : item,
-            data: text
-          };
-          docData.push(val);
-        }
-      });
-    });
-  }
-});
 
 var client = new elasticsearch.Client({
   host: 'localhost:9200',
@@ -58,12 +34,35 @@ client.ping({
 });
 //------------------------------------------------------------------------------------------1
 
-for(var i = 0; i < docData.length; i++) {
-  //index to es
-  //docData[i].name name
-  //docData[i].data text
-  //client.create();
-}
+//read all files when server starts
+fs.readdir(dir, function(err, items) {
+  if(err) {
+    console.log("Could not read files from directory " + dir);
+  }
+  else {
+    items.forEach(function(item) {
+      var path = dir + item;
+      textract.fromFileWithPath(path, function( err, text ) {
+        if(err) {
+          console.log("Could not parse file " + path);
+    		}
+        else {
+          client.index({
+      			index:'uploadedfiles',
+      			type:'file',
+      			id: currentIndex++,
+      			body:{
+      				name: item,
+      				text: text
+      			}
+      		},function(error,response){
+      			console.log(response);
+      		});
+        }
+      });
+    });
+  }
+});
 
 
 // view engine setup
@@ -95,28 +94,17 @@ app.use(multer({ dest: './public/uploads/',
       else {
         //add the uploaded file's text to the docData
         var len = dir.length - 2;
-        var val = {
-          name : file.path.substring(len),
-          data: text
-        };
-        docData.push(val);
-        //index to elasticsearch
-		//send data to elasticsearch  database--------------0
-		client.index({
-			index:'uploadedfiles',
-			type:'file',
-			id: docData.length-1,
-			body:{
-				name: val.name,
-				text: val.data
-			}
-		},function(error,response){
-			console.log(response);
-		}
-		);
-		
-		//--------------------------------------------------1
-		
+    		client.index({
+    			index:'uploadedfiles',
+    			type:'file',
+    			id: currentIndex++,
+    			body:{
+    				name: file.path.substring(len),
+    				text: text
+    			}
+    		},function(error,response){
+    			console.log(response);
+    		});
       }
     });
 	}
@@ -131,17 +119,14 @@ app.post('/upload',function(req,res){
 	});
 });
 
+app.get('/', function(req, res) {
+  //do nth
+})
+
 app.get('/*', function(req, res){
-  var result = [];
-  var invalidItems = 0;
-  //Der übergebene Suchwert - req.params[0]
-  console.log(req.params[0]);
   /*for (var i = 0; i < docData.length; i++) {
     result.push({id: i+1, doc: docData[i].name, count: 3});
   }*/
-	
-    //elasticsearch search command------------------------------------0
-	
 	client.search({
 		index: 'uploadedfiles',
 		type: 'file',
@@ -152,27 +137,17 @@ app.get('/*', function(req, res){
 						match: {
 							text: req.params[0]
 						}
-					},
-				boost_mode: replace,
-				functions: [
-				{
-					script_score: {
-					script: _index['text'][req.params[0]].tf()
 					}
 				}
-				]
-				}
-			}	
+			}
 		}
 	}).then(function (resp) {
 		var hits = resp.hits.hits;
-		console.log('----------------------------------------------------');
+    res.send(hits);
 	}, function (err) {
     console.trace(err.message);
 	});
 	//----------------------------------------------------1
-  
-  res.send(result);
 });
 
 // catch 404 and forward to error handler
