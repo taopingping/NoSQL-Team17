@@ -12,7 +12,6 @@ var upload = multer({ dest : './public/uploads'});
 var dir = './public/uploads/';
 
 // Store all files and their data
-var uploads = [];
 var docData = [];
 
 //read all files when server starts
@@ -21,8 +20,7 @@ fs.readdir(dir, function(err, items) {
     console.log("Could not read files from directory " + dir);
   }
   else {
-    uploads = items;
-    uploads.forEach(function(item) {
+    items.forEach(function(item) {
       var path = dir + item;
       textract.fromFileWithPath(path, function( err, text ) {
         if(err) {
@@ -71,10 +69,8 @@ app.use(multer({ dest: './public/uploads/',
 	},
 	onFileUploadComplete: function (file) {
     console.log(file.fieldname + ' uploaded to  ' + file.path);
-    //add the uploaded file to the stored files
-    uploads.push(file);
-    textract.fromFileWithPath(file.path, function( error, text ) {
-      if(error) {
+    textract.fromFileWithPath(file.path, function( err, text ) {
+      if(err) {
   			console.log("Could not parse file " + file.path);
   		}
       else {
@@ -102,7 +98,8 @@ app.post('/upload',function(req,res){
 app.get('/*', function(req, res){
   var result = [];
   var invalidItems = 0;
-  console.log(req.params);
+  //Der übergebene Suchwert - req.params[0]
+  console.log(req.params[0]);
   for (var i = 0; i < docData.length; i++) {
     if(!(stringStartsWith(docData[i].name,"."))) {
       var index = i + 1 - invalidItems;
