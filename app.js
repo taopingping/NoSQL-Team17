@@ -39,9 +39,24 @@ fs.readdir(dir, function(err, items) {
 });
 
 var client = new elasticsearch.Client({
-  host: '9200',
+  host: 'localhost:9200',
   log: 'trace'
 });
+
+//Test---------------------------------------------------------------------------------------0
+
+client.ping({
+	requestTimeout: Infinity,
+	// undocumented params are appended to the query string
+	hello: "Elasticsearch"
+}, function (error) {
+	if (error) {
+		console.error('Elasticsearch cluster is down!');
+	} else {
+		console.log('ElasticSearch: All is well');
+	}
+});
+//------------------------------------------------------------------------------------------1
 
 for(var i = 0; i < docData.length; i++) {
   //index to es
@@ -86,6 +101,22 @@ app.use(multer({ dest: './public/uploads/',
         };
         docData.push(val);
         //index to elasticsearch
+		//send data to elasticsearch  database--------------0
+		client.index({
+			index:'uploadedfiles',
+			type:'file',
+			id: docData.length-1,
+			body:{
+				name: val.name,
+				text: val.data
+			}
+		},function(error,response){
+			console.log(response);
+		}
+		);
+		
+		//--------------------------------------------------1
+		
       }
     });
 	}
@@ -108,6 +139,39 @@ app.get('/*', function(req, res){
   /*for (var i = 0; i < docData.length; i++) {
     result.push({id: i+1, doc: docData[i].name, count: 3});
   }*/
+	
+    //elasticsearch search command------------------------------------0
+	
+	client.search({
+		index: 'uploadedfiles',
+		type: 'file',
+		body: {
+			 query: {
+				function_score: {
+					query: {
+						match: {
+							text: req.params[0]
+						}
+					},
+				boost_mode: replace,
+				functions: [
+				{
+					script_score: {
+					script: _index['text'][req.params[0]].tf()
+					}
+				}
+				]
+				}
+			}	
+		}
+	}).then(function (resp) {
+		var hits = resp.hits.hits;
+		console.log('----------------------------------------------------');
+	}, function (err) {
+    console.trace(err.message);
+	});
+	//----------------------------------------------------1
+  
   res.send(result);
 });
 
