@@ -1,0 +1,47 @@
+@(anomaly : model.anomalies.jpl.AnomalyJPL)
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   
+   <div class="tDkBlueLine"></div>
+        <div class="t3MainFormRegion">
+            <table class="tDetail" border="1" width="100%">
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>ISA Number:</b></font>
+                            <br />
+                            @anomaly.getAnomalyID()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Mission String:</b></font>
+                            <br />
+                            @anomaly.getMissionString()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Incident Date:</b></font>
+                            <br />
+                            @anomaly.getIncidentDate()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Closure Date:</b></font>
+                            <br />
+                            @anomaly.getClosureDate()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td colspan="2" align="LEFT" valign="TOP">
+                            <font size="-1"><b>Failure Effect Rating:</b></font>
+                            <br />
+                            @anomaly.getFailureEffectRating()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Failure Risk:</b></font>
+                            <br />
+                            @anomaly.getFailureRisk()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Description:</b></font>
+                            <br />
+                            @anomaly.getDescription()
+                        </td>
+                    </tr>
+            </table>
+            <br />
+        </div>

@@ -1,0 +1,26 @@
+@(message : String)@main("TestPage"){
+
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("jsPlugins/bootstrap-select-master/bootstrap-select.css")"/>
+<script src="@routes.Assets.at("jsPlugins/bootstrap-select-master/bootstrap-select.js")" type="text/javascript"></script>
+
+<script>
+
+$('.selectpicker').selectpicker({
+    style: 'btn-info',
+    size: 4
+});
+
+</script>
+
+<h1>@message</h1>
+
+<select class="selectpicker" >
+
+<option>option1</option>
+<option>option1</option>
+<option>option1</option>
+
+</select>
+
+}

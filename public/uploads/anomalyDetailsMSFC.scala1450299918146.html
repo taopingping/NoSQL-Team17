@@ -1,0 +1,338 @@
+@(anomaly : model.anomalies.sts.AnomalyMSFC)
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   
+   <div class="tDkBlueLine"></div>
+        <div class="t3MainFormRegion">
+            <table class="tDetail" border="1" width="100%">
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>MSFC Report Number:</b></font>
+                            <br />
+                            @anomaly.getAnomalyID()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Contractor Report Number:</b></font>
+                            <br />
+                            @anomaly.getContractorReportNumber()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>KSC EICN:</b></font>
+                            <br />
+                            @anomaly.getkSCEICN()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>In-Flight Anomaly Number:</b></font>
+                            <br />
+                            @anomaly.getAnomalyStatus()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td colspan="2" align="LEFT" valign="TOP">
+                            <font size="-1"><b>Problem Title:</b></font>
+                            <br />
+                            @anomaly.getAnomalyTitle()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Hazard Number:</b></font>
+                            <br />
+                            @anomaly.getHazardNumber()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Hazard Cause ID:</b></font>
+                            <br />
+                            @anomaly.getHazardCauseID()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Fail Date:</b></font>
+                            <br />
+                            @anomaly.getAnomalyDate()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Criticality Funct/HW:</b></font>
+                            <br />
+                            @anomaly.getCriticalityFunctHW()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Status:</b></font>
+                            <br />
+                            @anomaly.getAnomalyStatus()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Contractor:</b></font>
+                            <br />
+                            @anomaly.getContractor()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Project:</b></font>
+                            <br />
+                            @anomaly.getProject()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>System:</b></font>
+                            <br />
+                            @anomaly.getSystem()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Process Escape:</b></font>
+                            <br />
+                            @anomaly.getProcessEscape()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>FMEA Reference:</b></font>
+                            <br />
+                            @anomaly.getfMEAReference()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td colspan="4" align="LEFT" valign="TOP">
+                            <font size="-1"><b>Effectivity Text:</b></font>
+                            <br />
+                            @anomaly.getEffectivityText()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>NCA Name:</b></font>
+                            <br />
+							@anomaly.getnCAName()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>NCA Part Number:</b></font>
+                            <br />
+							@anomaly.getnCAPartNumber()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>NCA Serial/Lot:</b></font>
+                            <br />
+							@anomaly.getnCASerialLot()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>NCA Manufacturer:</b></font>
+                            <br />
+							@anomaly.getnCAManufacturer()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>LRU Name:</b></font>
+                            <br />
+							@anomaly.getLRUName()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>LRU Part Number:</b></font>
+                            <br />
+							@anomaly.getLRUPartNumber()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>LRU Serial/Lot:</b></font>
+                            <br />
+							@anomaly.getLRUSerialLot()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>LRU Manufacturer:</b></font>
+                            <br />
+							@anomaly.getLRUManufacturer()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>EIM Name:</b></font>
+                            <br />
+							@anomaly.getEIMName()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>EIM Part Number:</b></font>
+                            <br />
+							@anomaly.getEIMPartNumber()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>EIM Serial/Lot:</b></font>
+                            <br />
+							@anomaly.getEIMSerialLot()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>EIM Manufacturer:</b></font>
+                            <br />
+							@anomaly.getEIMManufacturer()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Date Isolated:</b></font>
+                            <br />
+                            @anomaly.getDateIsolated()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Received at MSFC:</b></font>
+                            <br />
+                            @anomaly.getReceivedatMSFC()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Add Date:</b></font>
+                            <br />
+                            @anomaly.getAddDate()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>System Level:</b></font>
+                            <br />
+                            @anomaly.getSystemLevel()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Location:</b></font>
+                            <br />
+                            @anomaly.getLocation()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Test/Operation:</b></font>
+                            <br />
+                            @anomaly.getTestOperation()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Prevailing Condtion:</b></font>
+                            <br />
+                            @anomaly.getPrevailingCondtion()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Mission Effectivity:</b></font>
+                            <br />
+							@anomaly.getMissionEffectivity()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Date Last Deferred:</b></font>
+                            <br />
+                            @anomaly.getDateLastDeferred()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Deferred Until Date:</b></font>
+                            <br />
+                            @anomaly.getDeferredUntilDate()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Recurrence Control:</b></font>
+                            <br />
+                            @anomaly.getDeferredUntilDate()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>CIL Retention Rationale Change:</b></font>
+                            <br />
+                            @anomaly.getRecurrenceControl()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Fail Mode:</b></font>
+                            <br />
+                            @anomaly.getFailMode()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Defect:</b></font>
+                            <br />
+                            @anomaly.getDefect()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Material:</b></font>
+                            <br />
+                            @anomaly.getMaterial()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Cause:</b></font>
+                            <br />
+                            @anomaly.getCause()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Symptom:</b></font>
+                            <br />
+                            @anomaly.getSymptom()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Last MSFC Update:</b></font>
+                            <br />
+                            @anomaly.getLastMSFCUpdate()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>Contractor Closure Submittal:</b></font>
+                            <br />
+                            @anomaly.getContractorClosureSubmittal()
+                        </td>
+                        <td align="LEFT" valign="TOP">
+                            <font size="-1"><b>MSFC Closure Date:</b></font>
+                            <br />
+                            @anomaly.getMSFCClosureDate()
+                        </td>
+                    </tr>
+                
+                <tr align="LEFT" valign="TOP">
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>Related Document:</b></font>
+                        <br />
+						@anomaly.getRelatedDocument()
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>Related Document ID:</b></font>
+                        <br />
+						@anomaly.getRelatedDocumentID()
+                    </td>
+                    <td colspan="2" align="LEFT" valign="TOP">
+                        <font size="-1"><b>Related Document Title:</b></font>
+                        <br />
+						@anomaly.getRelatedDocumentTitle()
+                    </td>
+                </tr>
+                <tr align="LEFT" valign="TOP">
+                    <td colspan="4" align="LEFT" valign="TOP">
+                        <font size="-1"><b>Problem Description:</b></font>
+                        <br />
+                        <font face="COURIER" size ="-1">
+                            @anomaly.getProblemDescription()
+                            <br />
+                        </font>
+                    </td>
+                </tr>
+                <tr align="LEFT" valign="TOP">
+                    <td colspan="4" align="LEFT" valign="TOP">
+                        <font size="-1"><b>Investigation/Resolution Summary:</b></font>
+                        <br />
+                        <font face="COURIER" size="-1">
+                            <pre>@anomaly.getInvestigationResolutionSummary()</pre>
+                        </font>
+                    </td>
+                </tr>
+                <tr align="LEFT" valign="TOP">
+                    <td colspan="4" align="LEFT" valign="TOP">
+                        <font size="-1"><b>Contractor Investigation/Resolution:</b></font>
+                        <br />
+                        <font face="COURIER" size ="-1">
+                            @anomaly.getContractorInvestigationResolution()
+                        </font>
+                    </td>
+                </tr>
+                <tr align="LEFT" valign="TOP">
+                    <td colspan="4" align="LEFT" valign="TOP">
+                        <font size="-1"><b>MSFC Response/Concurrence:</b></font>
+                        <br />
+                        <font face="COURIER" size ="-1">
+                            @anomaly.getMSFCResponseConcurrence()
+                        </font>
+                    </td>
+                </tr>
+                <tr align="LEFT" valign="TOP">
+                    <td colspan="4" align="LEFT" valign="TOP">
+                        <font size="-1"><b>Supporting Reports: Click on link to view supporting data:</b></font>
+                        <br />
+						<font face="COURIER" size ="-1">
+                            <span>@anomaly.getSupportingReports()</span>
+							</font>
+                    </td>
+                </tr> 
+            </table>
+            <br />
+        </div>

@@ -1,0 +1,126 @@
+@(soearStates:List[String],missionImpact:List[String])@main("Anomalyinsight"){
+<html>
+
+<head>
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("jsPlugins/bootstrap-select-master/bootstrap-select.css")"/>
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("jsPlugins/datepicker/css/datepicker.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("jsPlugins/pagination/simplePagination.css")">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+<script src="@routes.Assets.at("jsPlugins/bootstrap-select-master/bootstrap-select.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("jsPlugins/bootstrap-growl-master/bootstrap-growl.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("jsPlugins/datepicker/js/bootstrap-datepicker.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/anomalyUtilities.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/dataTable.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("jsPlugins/pagination/jquery.simplePagination.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/googlechartsApi.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/charts.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/searchAnomalies.js")" type="text/javascript"></script>
+
+
+</head>
+<body>
+	<form id="validation">
+	<input type="hidden" id="pageID" value="searchPage">
+
+	@navigation("searchAnomaly")
+
+	<div class="container">
+		<br> OR <input type="radio" class="operator" name="operator"
+			value="or" checked="checked"> AND <input type="radio"
+			class="operator" name="operator" value="and"> </br> </br>
+
+
+		<table class="table" style="border: 2px #ddd solid;">
+			<tr>
+				<th>ID</th>
+				<td><input type="text" id="soarID" name="soarID"
+					placeholder="SOAR ID" class="searchTextField form-control" /></td>
+				<th>Spacecraft</th>
+				<td><input id="spacecraft" name="spacecraft"
+					placeholder="Spacecraft" class="searchTextField form-control"
+					type="text" /></td>
+			</tr>
+			<tr>
+				<th>Anomaly Status</th>
+				<td><select id="soarStates" name="soarStates" multiple
+					data-selected-text-format="count>3"
+					class="muliSelectSearchField selectpicker">
+						@for(soearState <- soearStates) {
+						<option>@soearState</option> }
+				</select></td>
+				<th>Mission Impact</th>
+				<td><select id="missionImpact" name="missionImpact" multiple
+					data-selected-text-format="count>3"
+					class="muliSelectSearchField selectpicker">
+					@for(mission<- missionImpact) {
+						<option>@mission</option> 
+						}
+				</select></td>
+			</tr>
+			<tr>
+				<th>Anomaly Date</th>
+				
+				<td id="anomalyDate"  class="form-group">
+					
+					<select class="selectpicker" id="anomalyDateChoice" onchange="location = this.options[this.selectedIndex].value;">
+							<option></option>
+							<option value="javascript:getDateFields('before', 'anomalyDate')">before</option>
+							<option value="javascript:getDateFields('between', 'anomalyDate')" >between</option>
+							<option value="javascript:getDateFields('after', 'anomalyDate')">after</option>
+							<option value="javascript:getDateFields('on', 'anomalyDate')">on</option>
+					</select>
+					
+				
+					<input id="anomalyDateFrom" name="anomalyDateFrom" class="searchTextField dateFrom form-control dateBox hidden" type="text" /> 
+					<input id="anomalyDateTo" name="anomalyDateTo" class="searchTextField form-control dateBox dateTo hidden" type="text" />
+					<input id="anomalyDateOn" name="anomalyDateOn" class="searchTextField form-control dateBox dateOn hidden" type="text" />
+
+				</td>
+				<th>Last Updated</th>
+				
+				<td id="lastUpdated" class="form-group">
+				
+					<select class="selectpicker" id="lastUpdatedChoice" onchange="location = this.options[this.selectedIndex].value;">
+							<option></option>
+							<option value="javascript:getDateFields('before', 'lastUpdated')">before</option>
+							<option value="javascript:getDateFields('between', 'lastUpdated')" >between</option>
+							<option value="javascript:getDateFields('after', 'lastUpdated')">after</option>
+							<option value="javascript:getDateFields('on', 'lastUpdated')">on</option>
+					</select>
+				
+					<input id="lastUpdatedFrom" name="lastUpdatedFrom" class="searchTextField form-control dateFrom dateBox hidden" type="text" /> 
+					<input id="lastUpdatedTo" name="lastUpdatedTo" class="searchTextField form-control dateTo dateBox hidden" type="text" />
+					<input id="lastUpdatedOn" name="lastUpdatedOn" class="searchTextField form-control dateOn dateBox hidden" type="text" />
+				</td>
+			</tr>
+			<tr>
+				<th>text</th>
+				<td><input type="text" id="anomalyText"	class="searchTextField form-control" /></td>
+				<th>Center</th>
+				<td><select multiple data-selected-text-format="count>3" id="center" name="center" class="selectpicker muliSelectSearchField"><option>GSFC</option>
+						<option>JPL</option><option>STS</option></select></td>
+			</tr>
+		</table>
+
+		</br>
+
+		<div class="panel-group" id="accordion">
+		
+		@charts.pieChart()
+	
+		@charts.barChart()
+		
+		</div>
+		</form>
+		@dataTable("0", new LinkedList()) 
+		
+		<br>
+	</div>
+	<br>
+	<br>
+</body>
+</html>
+}

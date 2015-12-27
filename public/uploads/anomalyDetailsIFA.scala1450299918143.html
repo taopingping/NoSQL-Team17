@@ -1,0 +1,121 @@
+@(anomaly : model.anomalies.sts.AnomalyIFA)
+<html>
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+ <div class="tDkBlueLine"></div>
+    <div class="t3MainFormRegion">
+        <p></p>
+            <table border="1">
+                <tr align="LEFT" valign="TOP">
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>IFA NUMBER:</b></font>
+                        <br />
+                        @anomaly.getAnomalyID()
+                    </td>
+                    <td colspan="2" align="LEFT" valign="TOP">
+                        <font size="-1"><b>TITLE:</b></font>
+                        <br />
+                        @anomaly.getAnomalyTitle()
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>MISSION CONSTRAINT:</b></font>
+                        <br />
+                        @anomaly.getMissionConstraint()
+                    </td>
+                </tr>
+                <tr align="LEFT" valign="TOP">
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>SORT NUMBER:</b></font>
+                        <br />
+                        @anomaly.getSortNumber()
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>IFA STATUS:</b></font>
+                        <br />
+                        Closed: 1989/12/08
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>PRACA STATUS:</b></font>
+                        <br />
+                        @anomaly.getPracaStatus()
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>PRCBD NUMBER:</b></font>
+                        <br />
+                        @anomaly.getPrcbdNumber()
+                    </td>
+                </tr>
+                <tr align="LEFT" valign="TOP">
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>SUBS:</b></font>
+                        <br />
+                        @anomaly.getSubs()
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>IFA TIME GMT:</b></font>
+                        <br />
+                        @anomaly.getIfaTimeGmt()
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>IFA DATE:</b></font>
+                        <br />
+                        
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>ELAPSED TIME:</b></font>
+                        <br />
+                        @anomaly.getElapsedTime()
+                    </td>
+                </tr>
+                <tr align="LEFT" valign="TOP">
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>HOUSTON TIME:</b></font>
+                        <br />
+                        @anomaly.getHoustonTime()
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>PHASE:</b></font>
+                        <br />
+                        @anomaly.getPhase()
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>CLOSURE INITIATED BY:</b></font>
+                        <br />
+                        @anomaly.getClosureInitiatedBy()
+                    </td>
+                    <td align="LEFT" valign="TOP">
+                        <font size="-1"><b>RESPONSIBLE MANAGERS:</b></font>
+                        <br />
+                        @anomaly.getResponsibleManagers()
+                    </td>
+                </tr>
+					<tr  align="LEFT" valign="TOP">
+						<td colspan="4" align="LEFT" valign="TOP">
+						<font size="-1"><b>TYPES AND TRACKING NUMBERS:</b></font>
+							@anomaly.getAllTypesAndTrackingNumbers()
+						</td>	
+					</tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td colspan="4" align="LEFT" valign="TOP">
+                            <font size="-1"><b>DESCRIPTION:</b></font>
+                            <br />
+                            @anomaly.getDescription()
+                        </td>
+                    </tr>
+                    <tr align="LEFT" valign="TOP">
+                        <td colspan="4" align="LEFT" valign="TOP">
+                            <font size="-1"><b>CLOSURE RATIONALE:</b></font>
+                            <br />
+                            @anomaly.getClosureRationale()
+                        </td>
+                    </tr>
+            </table>
+    </div>
+
+
+
+</body>
+
+</html>
+

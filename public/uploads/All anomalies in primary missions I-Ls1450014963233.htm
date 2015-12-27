@@ -1,0 +1,776 @@
+<!-- saved from url=(0125)https://soars.gsfc.nasa.gov/searchreport_dsp.cfm?DTTM=20120626181024&RequestTimeout=5000&UIDX=3987&SIDX=0&AIDX=114&AUIDX=3987 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script language="JAVASCRIPT">
+	window.onerror=myerrorhandler;
+	function myerrorhandler(msg,url,lno) {
+		alert("A Javascript error occurred on the following Cold Fusion template: \n\n" + url + "\nat line number " + lno + "\n\n" + 'The error is - *' + msg + '*' + "\n\n" + 'If this error affects your ability to use the SOARS System, contact your System Administrator with this information.');
+		return true; /* suppress standard JS error window */
+	}
+</script>
+		<!--THIS IS THE FILES FOR THE CSV MANAGER SYSTEM-->
+		<!--END CSV MANAGER SETTINGS-->
+ <!-- PR/PFR Project Administrator --->
+<!--THIS IS THE FILES FOR THE CSV MANAGER SYSTEM-->
+<!--END CSV MANAGER SETTINGS-->
+<!-- setting constants to set maxlengths to textboxes -->
+<!-- setting constants to set maxlengths to textboxes -->
+<!-- apply to pages: add soar and edit soar -->
+<!-- page: addSOAR_frm.cfm -->
+<link rel="stylesheet" type="text/css" media="screen" href="./All anomalies in primary missions I-L_files/soars.css">
+	<title>My SOARS Page -- Search/Reports</title>
+<script language="JavaScript" type="text/javascript">
+	<!-- Hide script from old browsers
+function newExcelWindow(URL) {
+	var XLSWIN = window.open(URL,"XLSWIN","width=800,height=300,top=50,left=400,scrollbars=yes,resizable=yes,menubar=yes");
+}
+	function doDownload() {
+	  // Open a sub-window to display the report
+	  newExcelWindow('./csv/index.cfm?DTTM=20120626181025&RequestTimeout=5000&fuseaction=GETRPTFILE&UIDX=3987&SIDX=0&FILETYPE=' + document.form1.fformat.options[document.form1.fformat.selectedIndex].value + '&AIDX=114');
+	}
+	function Details(ID,REV) {
+		detailsWindow = window.open("soardetails_dsp.cfm?id=" + ID + "&rev=" + REV + "&DTTM=20120626181025&RequestTimeout=5000","newWin"+ID+REV,"width=900,height=410,top=5,left=5,resizable=yes,scrollbars=yes,menubar=yes");
+	}
+	function MyPageRefresh() {
+	  location.replace("./searchreport_dsp.cfm?DTTM=20120626181025&RequestTimeout=5000&AIDX=114&AUIDX=3987&SIDX=0&UIDX=3987");
+	}
+	// End hiding script -->
+</script>	
+</head>
+<body bgcolor="ffffee" onload="window.focus()">
+<form name="form1" action="https://soars.gsfc.nasa.gov/searchreport_act.cfm?DTTM=20120626181025&RequestTimeout=5000" method="post">
+<!-- SELECT SMN.soars_id as SID, SMN.craft_index as CRFTIDX, SMN.state_index as STIDX, SSC.craft_launch_date as LNCHDATE, SMN.sc_soars_id as SCID, SMN.subsys_index as SSIDX, SMN.protected_flag AS PFLAG, SMN.soars_id as F2, SMN.sc_soars_id as F58, convert(char(10), SMN.anomaly_date, 101) as F9, SMN.anomaly_time as F10, SMN.anomaly_time_utc as F71, SMN.anomaly_title as F72, SMN.project_type as F3, SMN.project_number as F4, SSM.mode_desc as F59, SMP.phase_desc as F60, SST.state_desc as F5, SCS.status_desc as F65, SAC.anomaly_category_desc as F36, SSC.craft_acronym as F6, SS.ss_description as F48, SS.ss_acronym as F80, CMP.comp_desc as F49, CMP.comp_acronym as F81, SSS.subsys_acronym as F7, SSS.subsys_description as F82, SCP.comp_acronym as F8, SCP.comp_description as F83, SMN.component_id_num as F38, SMN.component_serial as F39, SMN.component_mfg as F40, SMN.assembly_name as F12, SMN.assembly_id_num as F41, SMN.assembly_serial as F42, SMN.assembly_mfg as F43, SMN.part_name as F68, SMN.part_number as F69, SMN.drawing_ref_designator as F70, convert(char(10), SMN.launch_date, 101) as F37, SMN.anomaly_jday as F11, SMN.revolution_number as F13, SMN.latitude as F14, SMN.latitude_ns as F15, SMN.longitude as F16, SMN.longitude_ew as F17, SMN.altitude as F61, SMN.eci_x_coord as F62, SMN.eci_y_coord as F63, SMN.eci_z_coord as F64, SMN.asc_desc as F18, SMN.sun_dark as F19, SMN.days_operation as F20, SMN.orig_last_name as F21, SMN.govt1_last_name as F22, SMN.assign_to_user_index as F66, SMN.assign_to_name as F67, SII.investigation_desc as F23, SME.mission_effect_desc as F24, SIS.severity_desc as F52, SAE.anomaly_effect_desc as F25, SFC.failure_desc as F26, SAT.anomaly_type_desc as F27, SMN.resp_last_name as F28, SMN.govt2_last_name as F29, SMN.sys_mgr_last_name as F30, ACL.anomaly_classification_desc as F75, SAR.anomaly_rootcause_desc as F76, convert(char(10), SMN.anomaly_closure_date, 101) as F73, SMN.personal_injury as F32, SMN.unexpected_damage as F33, convert(char(10),SMN.date_entered,101) as F34, STX.text_value_a as F44, STX.text_value_b as F45, STX.text_value_c as F46, STX.text_value_d as F57, STX.text_value_e as F56, STX.text_value_f as F47, STX.text_value_g as F55, SMN.last_chg_user_index as F50, convert(char(10),SMN.last_chg_date,101) as F51, SMN.recurring_anomaly as F53, SCR.criticality_desc as F54, SMN.protected_flag as F74, SWFV1.field_selection_value as F77, SWFV2.field_selection_value as F78, SWFV3.field_selection_value as F79
+FROM soars_main SMN
+INNER JOIN soars_spacecraft SSC ON (SMN.craft_index = SSC.craft_index)
+LEFT OUTER JOIN soars_subsystems SSS ON (SMN.craft_index = SSS.craft_index AND SMN.subsys_index = SSS.subsys_index)
+LEFT OUTER JOIN soars_subsystems SSS2 ON (SMN.craft_index = SSS2.craft_index AND SMN.subsys_index = SSS2.subsys_index) LEFT OUTER JOIN subsystems SS ON (SSS2.common_subsys_index = SS.common_subsys_index)
+LEFT OUTER JOIN soars_components SCP ON (SCP.comp_index = SMN.component_index AND SCP.subsys_index = SMN.subsys_index AND SCP.craft_index = SMN.craft_index)
+LEFT OUTER JOIN soars_components SCP2 ON (SMN.craft_index = SCP2.craft_index AND SMN.subsys_index = SCP2.subsys_index AND SMN.component_index = SCP2.comp_index) LEFT OUTER JOIN components CMP ON (CMP.common_comp_index = SCP2.common_comp_index)
+LEFT OUTER JOIN soars_investigation_index SII ON (SMN.investigation_index = SII.investigation_index)
+LEFT OUTER JOIN soars_mission_effect SME ON (SMN.mission_effect_index = SME.mission_effect_index)
+LEFT OUTER JOIN soars_anomaly_effect SAE ON (SMN.anomaly_effect_index = SAE.anomaly_effect_index)
+LEFT OUTER JOIN soars_failure_category SFC ON (SMN.failure_index = SFC.failure_index)
+LEFT OUTER JOIN soars_anomaly_type SAT ON (SMN.anomaly_type_index = SAT.anomaly_type_index)
+LEFT OUTER JOIN soars_txtfields STX ON (SMN.soar_revision = STX.soar_revision AND SMN.soar_number = STX.soar_number)
+LEFT OUTER JOIN soars_states SST ON (SMN.state_index = SST.state_index)
+LEFT OUTER JOIN soars_impact_severity SIS ON (SMN.severity_index = SIS.severity_index)
+LEFT OUTER JOIN soars_anomaly_category SAC ON (SMN.anomaly_category_index = SAC.anomaly_category_index)
+LEFT OUTER JOIN soars_criticality SCR ON (SMN.criticality_index = SCR.criticality_index)
+LEFT OUTER JOIN soars_spacecraft_mode SSM ON (SMN.craft_index = SSM.craft_index AND SMN.mode_index = SSM.mode_index)
+LEFT OUTER JOIN soars_mission_phase SMP ON (SMN.craft_index = SMP.craft_index AND SMN.phase_index = SMP.phase_index)
+LEFT OUTER JOIN soars_current_status SCS ON (SMN.state_index = SCS.state_index AND SMN.status_index = SCS.status_index)
+LEFT OUTER JOIN soars_anomaly_classification ACL ON (SMN.anomaly_classification_index = ACL.anomaly_classification_index)
+LEFT OUTER JOIN soars_anomaly_rootcause SAR ON (SMN.anomaly_rootcause_index = SAR.anomaly_rootcause_index)
+LEFT OUTER JOIN soars_wildcard_field_values SWFV1 ON (SMN.craft_index = SWFV1.craft_index AND SWFV1.wildcard_index = 1 AND SMN.wildcard_field1_index = SWFV1.field_index)
+LEFT OUTER JOIN soars_wildcard_field_values SWFV2 ON (SMN.craft_index = SWFV2.craft_index AND SWFV2.wildcard_index = 2 AND SMN.wildcard_field2_index = SWFV2.field_index)
+LEFT OUTER JOIN soars_wildcard_field_values SWFV3 ON (SMN.craft_index = SWFV3.craft_index AND SWFV3.wildcard_index = 3 AND SMN.wildcard_field3_index = SWFV3.field_index)  WHERE  SSC.primary_other = 'P'
+ AND  ( SMN.craft_index = 77 OR SMN.craft_index = 185 OR SMN.craft_index = 45 OR SMN.craft_index = 122 OR SMN.craft_index = 82 OR SMN.craft_index = 84 OR SMN.craft_index = 90 OR SMN.craft_index = 112 OR SMN.craft_index = 46 OR SMN.craft_index = 47 OR SMN.craft_index = 114 OR SMN.craft_index = 48 OR SMN.craft_index = 104 OR SMN.craft_index = 49 OR SMN.craft_index = 50 OR SMN.craft_index = 51 OR SMN.craft_index = 52 OR SMN.craft_index = 95 OR SMN.craft_index = 179 OR SMN.craft_index = 79 OR SMN.craft_index = 151 OR SMN.craft_index = 187)
+ORDER BY SSC.craft_acronym asc, SAC.anomaly_category_desc asc -->
+<table width="100%">
+  <tbody><tr>
+    <td valign="top">Report Title: All anomalies in primary missions I-L</td>
+	<td align="right" valign="top" nowrap="">Date: 06/26/2012 Time: 18:10:25</td>
+  </tr>
+</tbody></table>
+<hr>
+<input type="button" value="Print" onclick="window.print()"> |
+<input type="button" value="Close Window" onclick="window.close()">
+| <input type="submit" value="Save Query"><br>
+<table border="1">
+	<tbody><tr>
+	<th bgcolor="#ffffff">Index Number</th>
+	<th bgcolor="#ffffff">SOAR ID</th>
+	<th bgcolor="#ffffff">Anomaly Date</th>
+	<th bgcolor="#ffffff">Anomaly Time</th>
+	<th bgcolor="#ffffff">Anomaly Time UTC</th>
+	<th bgcolor="#ffffff">Anomaly Title</th>
+	<th bgcolor="#ffffff">Project Type</th>
+	<th bgcolor="#ffffff">Project Number</th>
+	<th bgcolor="#ffffff">Spacecraft Mode</th>
+	<th bgcolor="#ffffff">Mission Phase</th>
+	<th bgcolor="#ffffff">SOAR States</th>
+	<th bgcolor="#ffffff">SOAR Current Status</th>
+	<th bgcolor="#ffffff">Anomaly Category</th>
+	<th bgcolor="#ffffff">Spacecraft</th>
+	<th bgcolor="#ffffff">Common Subsystem</th>
+	<th bgcolor="#ffffff">Common Subsystem Acronym</th>
+	<th bgcolor="#ffffff">Common Component</th>
+	<th bgcolor="#ffffff">Common Component Acronym</th>
+	<th bgcolor="#ffffff">Subsystem Acronym</th>
+	<th bgcolor="#ffffff">Subsystem Description</th>
+	<th bgcolor="#ffffff">Component Acronym</th>
+	<th bgcolor="#ffffff">Component Description</th>
+	<th bgcolor="#ffffff">Component ID Number</th>
+	<th bgcolor="#ffffff">Component Serial Number</th>
+	<th bgcolor="#ffffff">Component Manufacturer</th>
+	<th bgcolor="#ffffff">Assembly Name</th>
+	<th bgcolor="#ffffff">Assembly ID Number</th>
+	<th bgcolor="#ffffff">Assembly Serial Number</th>
+	<th bgcolor="#ffffff">Assembly Manufacturer</th>
+	<th bgcolor="#ffffff">Part Name</th>
+	<th bgcolor="#ffffff">Part Number</th>
+	<th bgcolor="#ffffff">Drawing Ref Designator</th>
+	<th bgcolor="#ffffff">Launch Date</th>
+	<th bgcolor="#ffffff">JDAY</th>
+	<th bgcolor="#ffffff">Revolution Number</th>
+	<th bgcolor="#ffffff">Latitude</th>
+	<th bgcolor="#ffffff">N/S</th>
+	<th bgcolor="#ffffff">Longitude</th>
+	<th bgcolor="#ffffff">E/W</th>
+	<th bgcolor="#ffffff">Altitude</th>
+	<th bgcolor="#ffffff">ECI X Coordinate</th>
+	<th bgcolor="#ffffff">ECI Y Coordinate</th>
+	<th bgcolor="#ffffff">ECI Z Coordinate</th>
+	<th bgcolor="#ffffff">Asc/Desc</th>
+	<th bgcolor="#ffffff">Sun/Dark</th>
+	<th bgcolor="#ffffff">Days Oper</th>
+	<th bgcolor="#ffffff">Orig Last Name</th>
+	<th bgcolor="#ffffff">Govt 1 Last Name</th>
+	<th bgcolor="#ffffff">Assign To User</th>
+	<th bgcolor="#ffffff">Assign To Other Name</th>
+	<th bgcolor="#ffffff">Investigation Index</th>
+	<th bgcolor="#ffffff">Mission Impact</th>
+	<th bgcolor="#ffffff">Impact Severity on Anomalous Item</th>
+	<th bgcolor="#ffffff">Operational Impact</th>
+	<th bgcolor="#ffffff">Failure Category</th>
+	<th bgcolor="#ffffff">Anomaly Type</th>
+	<th bgcolor="#ffffff">Resp Last Name</th>
+	<th bgcolor="#ffffff">Govt 2 Last Name</th>
+	<th bgcolor="#ffffff">SAM Last Name</th>
+	<th bgcolor="#ffffff">Anomaly Classification</th>
+	<th bgcolor="#ffffff">Anomaly Root Cause</th>
+	<th bgcolor="#ffffff">Anomaly Closure Date</th>
+	<th bgcolor="#ffffff">Personal Injury</th>
+	<th bgcolor="#ffffff">Mishap Report Required</th>
+	<th bgcolor="#ffffff">Date Entered</th>
+	<th bgcolor="#ffffff">Anomaly Description</th>
+	<th bgcolor="#ffffff">Additional Comments</th>
+	<th bgcolor="#ffffff">Cause of Anomaly</th>
+	<th bgcolor="#ffffff">Corrective Action</th>
+	<th bgcolor="#ffffff">Follow-on Actions/Recommendations</th>
+	<th bgcolor="#ffffff">Reference Documents</th>
+	<th bgcolor="#ffffff">Investigation Log</th>
+	<th bgcolor="#ffffff">Last Updated Name</th>
+	<th bgcolor="#ffffff">Last Updated Date</th>
+	<th bgcolor="#ffffff">Recurring Anomaly</th>
+	<th bgcolor="#ffffff">Criticality</th>
+	<th bgcolor="#ffffff">Protected Flag</th>
+	<th bgcolor="#ffffff">Wildcard Field 1</th>
+	<th bgcolor="#ffffff">Wildcard Field 2</th>
+	<th bgcolor="#ffffff">Wildcard Field 3</th>
+	</tr>
+	<tr bgcolor="#eeeedd">
+			<td valign="top"><a href="javascript:Details('10357','E')">E-10357</a></td>
+			<td valign="top"><a href="javascript:Details('10357','E')">S-BBBBB-0001</a></td>
+			<td valign="top">06/16/2009</td>
+			<td valign="top">01:45:57</td>
+			<td valign="top">2009-167-01:45:57</td>
+			<td valign="top">BBBBB ACE Token Bus Anomaly</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">CLOSED</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">FLIGHT SEGMENT</td>
+			<td valign="top">Swift</td>
+			<td valign="top">ACS-ATTITUDE CONTROL SYSTEM</td>
+			<td valign="top">ACS</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">ACS</td>
+			<td valign="top">Attitude Control Subsystem</td>
+			<td valign="top">ACE</td>
+			<td valign="top">Attitude Control Electronics</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">10/19/2008</td>
+			<td valign="top">167</td>
+			<td valign="top">33</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">D</td>
+			<td valign="top">S</td>
+			<td valign="top">240</td>
+			<td valign="top">Doe</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Jane Doe&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top"> Minor</td>
+			<td valign="top">Minor</td>
+			<td valign="top">Ops Workaround</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Odendahl</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Software</td>
+			<td valign="top">Environmental</td>
+			<td valign="top">08/24/2009</td>
+			<td valign="top">N</td>
+			<td valign="top">N</td>
+			<td valign="top">06/24/2009</td>
+			<td valign="top">Summary:
+- There was a time sync issue between the BCR and ACE, caused by the ACE. The anomaly was resolved by executing an ACE processor reboot. Spacecraft bus and payload currently nominal. (BCR - Battery Charge Regulator; ACE - Attitude Control Electronics)
+- This anomaly posed no threat to the long-term health of the spacecraft. The impact to science is that the ISOC team must use a more labor-intensive data processing technique to de-spin the affected data. 
+- The entire anomaly recovery process occurred below 15Re, where the payload does not collect data.
+- This anomaly is thought to be a result of radiation. While not common, it has been observed in other MicroStar missions. Since the anomaly ocurred near apogee it was most likely due to a GCR.
+Description:
+- There was a time sync issue between the BCR and ACE, caused by the ACE. 
+- This was diagnosed because there were an increasing number of HMLogs (Health and maintenance logs) put out by the ACE &amp; BCR. The HMLogs come out any time there is an anomaly, be it a small timing error or a major anomaly. Each HMLog has a characteristic message describing what the anomaly is; these messages can be read upon dumping the Flight Computer buffer.
+- As a precaution we deleted the commands for the re-pointing maneuver at perigee and the payload transition to high voltage. A new ATS with these commands was prepared, to be uploaded after successful recovery from the anomaly. (ATS - Absolute Time Sequence commands stored onboard in the Flight Computer and executed autonomously at the designated time) 
+- The Flight Computer buffer was dumped and telemetry showed the HMLogs were of the 'small timing error' sort. ACS, Systems and Software engineers conferred and agreed the most likely problem was that the ACE &amp; BCR got out of sync due to radiation and the problem was on the ACE side. (ACS - Attitude Control System)
+- At the 6/18 FRB it was decided to reboot the ACE and see if it fixed the timing issue. We dumped the SSR and then did an ACE reboot. 
+- Immediately upon reboot it was apparent the problem had been corrected because no HMLogs were being generated. Please note: If the ACE reboot alone had not worked a BCR reboot would be executed, but that was not necessary. Neither of these reboots affect the power to the payload, or effect the payload's operation below 15Re (where the anomaly recovery activities were performed).
+- The reboot telemetry was monitored long enough for the spin reading to stabilize and to verify that no additional HMLogs were generated. An ATS was uploaded to execute the re-pointing maneuver before the 1700 pass and turn the payload on at 15Re (per standard payload operations). The spacecraft performance was verified on the 1700 pass before the payload entered HVSCI at 21:30.
+- The spacecraft bus and payload are behaving nominally according to real-time SOH data collected at the 6/22 apogee contact.
+Please see attached Orbital RAZOR Issue and powerpoint for details.</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">- There was a time sync issue between the BCR and ACE, caused by the ACE. 
+- This was diagnosed because there were an increasing number of HMLogs (Health and maintenance logs) put out by the ACE &amp; BCR. The HMLogs come out any time there is an anomaly, be it a small timing error or a major anomaly. Each HMLog has a characteristic message describing what the anomaly is; these messages can be read upon dumping the Flight Computer buffer.
+- The Flight Computer buffer was dumped and telemetry showed the HMLogs were of the 'small timing error' sort. ACS, Systems and Software engineers conferred and agreed the most likely problem was that the ACE &amp; BCR got out of sync due to radiation and the problem was on the ACE side. (ACS - Attitude Control System)</td>
+			<td valign="top">- As a precaution we deleted the commands for the re-pointing maneuver at perigee and the payload transition to high voltage. A new ATS with these commands was prepared, to be uploaded after successful recovery from the anomaly. (ATS - Absolute Time Sequence commands stored onboard in the Flight Computer and executed autonomously at the designated time)
+- At the 6/18 FRB it was decided to reboot the ACE and see if it fixed the timing issue. We dumped the SSR and then did an ACE reboot. 
+- Immediately upon reboot it was apparent the problem had been corrected because no HMLogs were being generated. Please note: If the ACE reboot alone had not worked a BCR reboot would be executed, but that was not necessary. Neither of these reboots affect the power to the payload, or effect the payload's operation below 15Re (where the anomaly recovery activities were performed).
+- The reboot telemetry was monitored long enough for the spin reading to stabilize and to verify that no additional HMLogs were generated. An ATS was uploaded to execute the re-pointing maneuver before the 1700 pass and turn the payload on at 15Re (per standard payload operations). The spacecraft performance was verified on the 1700 pass before the payload entered HVSCI at 21:30.
+- The spacecraft bus and payload are behaving nominally according to real-time SOH data collected at the 6/22 apogee contact.</td>
+			<td valign="top">The most probable cause of this anomaly is radiation. While this sync issue is not common, it has been seen in MicroStars before. No follow up actions required.</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">See Orbital RAZOR Issue attached.</td>
+			<td valign="top">John Smith&nbsp;</td>
+			<td valign="top">08/24/2009</td>
+			<td valign="top">N</td>
+			<td valign="top">Significant</td>
+			<td valign="top">Y</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+	</tr>
+	
+	<tr bgcolor="#eeeedd">
+			<td valign="top"><a href="javascript:Details('10357','E')">E-11113</a></td>
+			<td valign="top"><a href="javascript:Details('10357','E')">S-KLSPE-0001</a></td>
+			<td valign="top">06/16/2009</td>
+			<td valign="top">01:45:57</td>
+			<td valign="top">2009-167-01:45:57</td>
+			<td valign="top">KLSPE ACE Token Bus Anomaly</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">CLOSED</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">FLIGHT SEGMENT</td>
+			<td valign="top">KLSPE</td>
+			<td valign="top">ACS-ATTITUDE CONTROL SYSTEM</td>
+			<td valign="top">ACS</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">ACS</td>
+			<td valign="top">Attitude Control Subsystem</td>
+			<td valign="top">ACE</td>
+			<td valign="top">Attitude Control Electronics</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">10/19/2008</td>
+			<td valign="top">167</td>
+			<td valign="top">33</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">D</td>
+			<td valign="top">S</td>
+			<td valign="top">240</td>
+			<td valign="top">Doe</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Jane Doe&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top"> Minor</td>
+			<td valign="top">Minor</td>
+			<td valign="top">Ops Workaround</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Odendahl</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Software</td>
+			<td valign="top">Environmental</td>
+			<td valign="top">08/24/2009</td>
+			<td valign="top">N</td>
+			<td valign="top">N</td>
+			<td valign="top">06/24/2009</td>
+			<td valign="top">Summary:
+- There was a time sync issue between the BCR and ACE, caused by the ACE. The anomaly was resolved by executing an ACE processor reboot. Spacecraft bus and payload currently nominal. (BCR - Battery Charge Regulator; ACE - Attitude Control Electronics)
+- This anomaly posed no threat to the long-term health of the spacecraft. The impact to science is that the ISOC team must use a more labor-intensive data processing technique to de-spin the affected data. 
+- The entire anomaly recovery process occurred below 15Re, where the payload does not collect data.
+- This anomaly is thought to be a result of radiation. While not common, it has been observed in other MicroStar missions. Since the anomaly ocurred near apogee it was most likely due to a GCR.
+Description:
+- There was a time sync issue between the BCR and ACE, caused by the ACE. 
+- This was diagnosed because there were an increasing number of HMLogs (Health and maintenance logs) put out by the ACE &amp; BCR. The HMLogs come out any time there is an anomaly, be it a small timing error or a major anomaly. Each HMLog has a characteristic message describing what the anomaly is; these messages can be read upon dumping the Flight Computer buffer.
+- As a precaution we deleted the commands for the re-pointing maneuver at perigee and the payload transition to high voltage. A new ATS with these commands was prepared, to be uploaded after successful recovery from the anomaly. (ATS - Absolute Time Sequence commands stored onboard in the Flight Computer and executed autonomously at the designated time) 
+- The Flight Computer buffer was dumped and telemetry showed the HMLogs were of the 'small timing error' sort. ACS, Systems and Software engineers conferred and agreed the most likely problem was that the ACE &amp; BCR got out of sync due to radiation and the problem was on the ACE side. (ACS - Attitude Control System)
+- At the 6/18 FRB it was decided to reboot the ACE and see if it fixed the timing issue. We dumped the SSR and then did an ACE reboot. 
+- Immediately upon reboot it was apparent the problem had been corrected because no HMLogs were being generated. Please note: If the ACE reboot alone had not worked a BCR reboot would be executed, but that was not necessary. Neither of these reboots affect the power to the payload, or effect the payload's operation below 15Re (where the anomaly recovery activities were performed).
+- The reboot telemetry was monitored long enough for the spin reading to stabilize and to verify that no additional HMLogs were generated. An ATS was uploaded to execute the re-pointing maneuver before the 1700 pass and turn the payload on at 15Re (per standard payload operations). The spacecraft performance was verified on the 1700 pass before the payload entered HVSCI at 21:30.
+- The spacecraft bus and payload are behaving nominally according to real-time SOH data collected at the 6/22 apogee contact.
+Please see attached Orbital RAZOR Issue and powerpoint for details.</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">- There was a time sync issue between the BCR and ACE, caused by the ACE. 
+- This was diagnosed because there were an increasing number of HMLogs (Health and maintenance logs) put out by the ACE &amp; BCR. The HMLogs come out any time there is an anomaly, be it a small timing error or a major anomaly. Each HMLog has a characteristic message describing what the anomaly is; these messages can be read upon dumping the Flight Computer buffer.
+- The Flight Computer buffer was dumped and telemetry showed the HMLogs were of the 'small timing error' sort. ACS, Systems and Software engineers conferred and agreed the most likely problem was that the ACE &amp; BCR got out of sync due to radiation and the problem was on the ACE side. (ACS - Attitude Control System)</td>
+			<td valign="top">- As a precaution we deleted the commands for the re-pointing maneuver at perigee and the payload transition to high voltage. A new ATS with these commands was prepared, to be uploaded after successful recovery from the anomaly. (ATS - Absolute Time Sequence commands stored onboard in the Flight Computer and executed autonomously at the designated time)
+- At the 6/18 FRB it was decided to reboot the ACE and see if it fixed the timing issue. We dumped the SSR and then did an ACE reboot. 
+- Immediately upon reboot it was apparent the problem had been corrected because no HMLogs were being generated. Please note: If the ACE reboot alone had not worked a BCR reboot would be executed, but that was not necessary. Neither of these reboots affect the power to the payload, or effect the payload's operation below 15Re (where the anomaly recovery activities were performed).
+- The reboot telemetry was monitored long enough for the spin reading to stabilize and to verify that no additional HMLogs were generated. An ATS was uploaded to execute the re-pointing maneuver before the 1700 pass and turn the payload on at 15Re (per standard payload operations). The spacecraft performance was verified on the 1700 pass before the payload entered HVSCI at 21:30.
+- The spacecraft bus and payload are behaving nominally according to real-time SOH data collected at the 6/22 apogee contact.</td>
+			<td valign="top">The most probable cause of this anomaly is radiation. While this sync issue is not common, it has been seen in MicroStars before. No follow up actions required.</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">See Orbital RAZOR Issue attached.</td>
+			<td valign="top">John Smith&nbsp;</td>
+			<td valign="top">08/24/2009</td>
+			<td valign="top">N</td>
+			<td valign="top">Significant</td>
+			<td valign="top">Y</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+	</tr>
+	
+	<tr bgcolor="#eeeedd">
+			<td valign="top"><a href="javascript:Details('10357','E')">E-11112</a></td>
+			<td valign="top"><a href="javascript:Details('10357','E')">S-IOAKA-0001</a></td>
+			<td valign="top">06/16/2009</td>
+			<td valign="top">01:45:57</td>
+			<td valign="top">2009-167-01:45:57</td>
+			<td valign="top">BAAAB ACE Token Bus Anomaly</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">CLOSED</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">FLIGHT SEGMENT</td>
+			<td valign="top">IOAKA</td>
+			<td valign="top">ACS-ATTITUDE CONTROL SYSTEM</td>
+			<td valign="top">ACS</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">ACS</td>
+			<td valign="top">Attitude Control Subsystem</td>
+			<td valign="top">ACE</td>
+			<td valign="top">Attitude Control Electronics</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">10/19/2008</td>
+			<td valign="top">167</td>
+			<td valign="top">33</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">D</td>
+			<td valign="top">S</td>
+			<td valign="top">240</td>
+			<td valign="top">Doe</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Jane Doe&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top"> Minor</td>
+			<td valign="top">Minor</td>
+			<td valign="top">Ops Workaround</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Odendahl</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Software</td>
+			<td valign="top">Environmental</td>
+			<td valign="top">08/24/2009</td>
+			<td valign="top">N</td>
+			<td valign="top">N</td>
+			<td valign="top">06/24/2009</td>
+			<td valign="top">Summary:
+- There was a time sync issue between the BCR and ACE, caused by the ACE. The anomaly was resolved by executing an ACE processor reboot. Spacecraft bus and payload currently nominal. (BCR - Battery Charge Regulator; ACE - Attitude Control Electronics)
+- This anomaly posed no threat to the long-term health of the spacecraft. The impact to science is that the ISOC team must use a more labor-intensive data processing technique to de-spin the affected data. 
+- The entire anomaly recovery process occurred below 15Re, where the payload does not collect data.
+- This anomaly is thought to be a result of radiation. While not common, it has been observed in other MicroStar missions. Since the anomaly ocurred near apogee it was most likely due to a GCR.
+Description:
+- There was a time sync issue between the BCR and ACE, caused by the ACE. 
+- This was diagnosed because there were an increasing number of HMLogs (Health and maintenance logs) put out by the ACE &amp; BCR. The HMLogs come out any time there is an anomaly, be it a small timing error or a major anomaly. Each HMLog has a characteristic message describing what the anomaly is; these messages can be read upon dumping the Flight Computer buffer.
+- As a precaution we deleted the commands for the re-pointing maneuver at perigee and the payload transition to high voltage. A new ATS with these commands was prepared, to be uploaded after successful recovery from the anomaly. (ATS - Absolute Time Sequence commands stored onboard in the Flight Computer and executed autonomously at the designated time) 
+- The Flight Computer buffer was dumped and telemetry showed the HMLogs were of the 'small timing error' sort. ACS, Systems and Software engineers conferred and agreed the most likely problem was that the ACE &amp; BCR got out of sync due to radiation and the problem was on the ACE side. (ACS - Attitude Control System)
+- At the 6/18 FRB it was decided to reboot the ACE and see if it fixed the timing issue. We dumped the SSR and then did an ACE reboot. 
+- Immediately upon reboot it was apparent the problem had been corrected because no HMLogs were being generated. Please note: If the ACE reboot alone had not worked a BCR reboot would be executed, but that was not necessary. Neither of these reboots affect the power to the payload, or effect the payload's operation below 15Re (where the anomaly recovery activities were performed).
+- The reboot telemetry was monitored long enough for the spin reading to stabilize and to verify that no additional HMLogs were generated. An ATS was uploaded to execute the re-pointing maneuver before the 1700 pass and turn the payload on at 15Re (per standard payload operations). The spacecraft performance was verified on the 1700 pass before the payload entered HVSCI at 21:30.
+- The spacecraft bus and payload are behaving nominally according to real-time SOH data collected at the 6/22 apogee contact.
+Please see attached Orbital RAZOR Issue and powerpoint for details.</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">- There was a time sync issue between the BCR and ACE, caused by the ACE. 
+- This was diagnosed because there were an increasing number of HMLogs (Health and maintenance logs) put out by the ACE &amp; BCR. The HMLogs come out any time there is an anomaly, be it a small timing error or a major anomaly. Each HMLog has a characteristic message describing what the anomaly is; these messages can be read upon dumping the Flight Computer buffer.
+- The Flight Computer buffer was dumped and telemetry showed the HMLogs were of the 'small timing error' sort. ACS, Systems and Software engineers conferred and agreed the most likely problem was that the ACE &amp; BCR got out of sync due to radiation and the problem was on the ACE side. (ACS - Attitude Control System)</td>
+			<td valign="top">- As a precaution we deleted the commands for the re-pointing maneuver at perigee and the payload transition to high voltage. A new ATS with these commands was prepared, to be uploaded after successful recovery from the anomaly. (ATS - Absolute Time Sequence commands stored onboard in the Flight Computer and executed autonomously at the designated time)
+- At the 6/18 FRB it was decided to reboot the ACE and see if it fixed the timing issue. We dumped the SSR and then did an ACE reboot. 
+- Immediately upon reboot it was apparent the problem had been corrected because no HMLogs were being generated. Please note: If the ACE reboot alone had not worked a BCR reboot would be executed, but that was not necessary. Neither of these reboots affect the power to the payload, or effect the payload's operation below 15Re (where the anomaly recovery activities were performed).
+- The reboot telemetry was monitored long enough for the spin reading to stabilize and to verify that no additional HMLogs were generated. An ATS was uploaded to execute the re-pointing maneuver before the 1700 pass and turn the payload on at 15Re (per standard payload operations). The spacecraft performance was verified on the 1700 pass before the payload entered HVSCI at 21:30.
+- The spacecraft bus and payload are behaving nominally according to real-time SOH data collected at the 6/22 apogee contact.</td>
+			<td valign="top">The most probable cause of this anomaly is radiation. While this sync issue is not common, it has been seen in MicroStars before. No follow up actions required.</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">See Orbital RAZOR Issue attached.</td>
+			<td valign="top">John Smith&nbsp;</td>
+			<td valign="top">08/24/2009</td>
+			<td valign="top">N</td>
+			<td valign="top">Significant</td>
+			<td valign="top">Y</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+	</tr>
+	
+	
+	
+	<tr bgcolor="#eeeedd">
+			<td valign="top"><a href="javascript:Details('10357','E')">E-11111</a></td>
+			<td valign="top"><a href="javascript:Details('10357','E')">S-BAAAB-0001</a></td>
+			<td valign="top">06/16/2009</td>
+			<td valign="top">01:45:57</td>
+			<td valign="top">2009-167-01:45:57</td>
+			<td valign="top">BAAAB ACE Token Bus Anomaly</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">CLOSED</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">FLIGHT SEGMENT</td>
+			<td valign="top">BAAAB</td>
+			<td valign="top">ACS-ATTITUDE CONTROL SYSTEM</td>
+			<td valign="top">ACS</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">ACS</td>
+			<td valign="top">Attitude Control Subsystem</td>
+			<td valign="top">ACE</td>
+			<td valign="top">Attitude Control Electronics</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">10/19/2008</td>
+			<td valign="top">167</td>
+			<td valign="top">33</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">D</td>
+			<td valign="top">S</td>
+			<td valign="top">240</td>
+			<td valign="top">Doe</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Jane Doe&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top"> Minor</td>
+			<td valign="top">Minor</td>
+			<td valign="top">Ops Workaround</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Odendahl</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Software</td>
+			<td valign="top">Environmental</td>
+			<td valign="top">08/24/2009</td>
+			<td valign="top">N</td>
+			<td valign="top">N</td>
+			<td valign="top">06/24/2009</td>
+			<td valign="top">Summary:
+- There was a time sync issue between the BCR and ACE, caused by the ACE. The anomaly was resolved by executing an ACE processor reboot. Spacecraft bus and payload currently nominal. (BCR - Battery Charge Regulator; ACE - Attitude Control Electronics)
+- This anomaly posed no threat to the long-term health of the spacecraft. The impact to science is that the ISOC team must use a more labor-intensive data processing technique to de-spin the affected data. 
+- The entire anomaly recovery process occurred below 15Re, where the payload does not collect data.
+- This anomaly is thought to be a result of radiation. While not common, it has been observed in other MicroStar missions. Since the anomaly ocurred near apogee it was most likely due to a GCR.
+Description:
+- There was a time sync issue between the BCR and ACE, caused by the ACE. 
+- This was diagnosed because there were an increasing number of HMLogs (Health and maintenance logs) put out by the ACE &amp; BCR. The HMLogs come out any time there is an anomaly, be it a small timing error or a major anomaly. Each HMLog has a characteristic message describing what the anomaly is; these messages can be read upon dumping the Flight Computer buffer.
+- As a precaution we deleted the commands for the re-pointing maneuver at perigee and the payload transition to high voltage. A new ATS with these commands was prepared, to be uploaded after successful recovery from the anomaly. (ATS - Absolute Time Sequence commands stored onboard in the Flight Computer and executed autonomously at the designated time) 
+- The Flight Computer buffer was dumped and telemetry showed the HMLogs were of the 'small timing error' sort. ACS, Systems and Software engineers conferred and agreed the most likely problem was that the ACE &amp; BCR got out of sync due to radiation and the problem was on the ACE side. (ACS - Attitude Control System)
+- At the 6/18 FRB it was decided to reboot the ACE and see if it fixed the timing issue. We dumped the SSR and then did an ACE reboot. 
+- Immediately upon reboot it was apparent the problem had been corrected because no HMLogs were being generated. Please note: If the ACE reboot alone had not worked a BCR reboot would be executed, but that was not necessary. Neither of these reboots affect the power to the payload, or effect the payload's operation below 15Re (where the anomaly recovery activities were performed).
+- The reboot telemetry was monitored long enough for the spin reading to stabilize and to verify that no additional HMLogs were generated. An ATS was uploaded to execute the re-pointing maneuver before the 1700 pass and turn the payload on at 15Re (per standard payload operations). The spacecraft performance was verified on the 1700 pass before the payload entered HVSCI at 21:30.
+- The spacecraft bus and payload are behaving nominally according to real-time SOH data collected at the 6/22 apogee contact.
+Please see attached Orbital RAZOR Issue and powerpoint for details.</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">- There was a time sync issue between the BCR and ACE, caused by the ACE. 
+- This was diagnosed because there were an increasing number of HMLogs (Health and maintenance logs) put out by the ACE &amp; BCR. The HMLogs come out any time there is an anomaly, be it a small timing error or a major anomaly. Each HMLog has a characteristic message describing what the anomaly is; these messages can be read upon dumping the Flight Computer buffer.
+- The Flight Computer buffer was dumped and telemetry showed the HMLogs were of the 'small timing error' sort. ACS, Systems and Software engineers conferred and agreed the most likely problem was that the ACE &amp; BCR got out of sync due to radiation and the problem was on the ACE side. (ACS - Attitude Control System)</td>
+			<td valign="top">- As a precaution we deleted the commands for the re-pointing maneuver at perigee and the payload transition to high voltage. A new ATS with these commands was prepared, to be uploaded after successful recovery from the anomaly. (ATS - Absolute Time Sequence commands stored onboard in the Flight Computer and executed autonomously at the designated time)
+- At the 6/18 FRB it was decided to reboot the ACE and see if it fixed the timing issue. We dumped the SSR and then did an ACE reboot. 
+- Immediately upon reboot it was apparent the problem had been corrected because no HMLogs were being generated. Please note: If the ACE reboot alone had not worked a BCR reboot would be executed, but that was not necessary. Neither of these reboots affect the power to the payload, or effect the payload's operation below 15Re (where the anomaly recovery activities were performed).
+- The reboot telemetry was monitored long enough for the spin reading to stabilize and to verify that no additional HMLogs were generated. An ATS was uploaded to execute the re-pointing maneuver before the 1700 pass and turn the payload on at 15Re (per standard payload operations). The spacecraft performance was verified on the 1700 pass before the payload entered HVSCI at 21:30.
+- The spacecraft bus and payload are behaving nominally according to real-time SOH data collected at the 6/22 apogee contact.</td>
+			<td valign="top">The most probable cause of this anomaly is radiation. While this sync issue is not common, it has been seen in MicroStars before. No follow up actions required.</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">See Orbital RAZOR Issue attached.</td>
+			<td valign="top">John Smith&nbsp;</td>
+			<td valign="top">08/24/2009</td>
+			<td valign="top">N</td>
+			<td valign="top">Significant</td>
+			<td valign="top">Y</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+	</tr>
+	
+	<tr bgcolor="#ddddcc">
+			<td valign="top"><a href="javascript:Details('10451','E')">E-10451</a></td>
+			<td valign="top"><a href="javascript:Details('10451','E')">S-BBBBB-0002</a></td>
+			<td valign="top">07/09/2009</td>
+			<td valign="top">12:00:00</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Star Tracker Power Cycle</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">CLOSED</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">FLIGHT SEGMENT</td>
+			<td valign="top">THEMIS</td>
+			<td valign="top">ACS-ATTITUDE CONTROL SYSTEM</td>
+			<td valign="top">ACS</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">ACS</td>
+			<td valign="top">Attitude Control Subsystem</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Star Tracker</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">10/19/2008</td>
+			<td valign="top">190</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">263</td>
+			<td valign="top">Doe</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">No Effect</td>
+			<td valign="top">No Effect</td>
+			<td valign="top">None</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Johnson</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Software</td>
+			<td valign="top">Environmental</td>
+			<td valign="top">01/19/2011</td>
+			<td valign="top">N</td>
+			<td valign="top">N</td>
+			<td valign="top">07/24/2009</td>
+			<td valign="top">Star Tracker Power Cycle due to invalid quaternions for &gt; 30 seconds.</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">The ACS software causes the star tracker to power cycle if it goes 30s without a valid quaternion. This occurred due to a bit flip in the Star Tracker RAM in a part of the code that gets accessed during outages. There was a partial outage on 7/9/09 when the power cycle occurred. The power cycle rewrites the RAM and the Star Tracker returns to full functioning. Science data was not lost or interrupted.
+</td>
+			<td valign="top">ACE FD&amp;C autonomously power cycles the star tracker. This corrects the problem.
+Since the power cycle is part of ACS FD&amp;C, the FDC counters incremented and FDC latches were set. The following two procedures were followed to reset these telemetry points:
+S924-Op31210 Reset ACE FDC latch Operating procedure
+S924-Op31211 Reset ACS FDC totals 
+See attached Command Action Request # 296 for the exact action taken.
+</td>
+			<td valign="top">None.</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">7/9/09 - See Orbital RAZOR Issue.
+10/22/09 - Star tracker power cycle without partial eclipse. See attached : CAR_325.doc
+12/10/09 - Star Tracker power cycle during partial eclipse. See attached : CAR_341-cr.doc, StarTrackerPowerCycle-DTU-Response.pdf, ibex_star_tracker_FDC_power_Cycles.xls.
+12/17/09 - Star tracker power cycle during partial eclipse. The CAR to clear the FDC flags has been made into a Standing CAR (executed every time the star tracker power has been cycled, dates executed added to the CAR). </td>
+			<td valign="top">Mary Johnson&nbsp;</td>
+			<td valign="top">01/19/2011</td>
+			<td valign="top">Y</td>
+			<td valign="top">Routine</td>
+			<td valign="top">N</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+	</tr>
+	<tr bgcolor="#eeeedd">
+			<td valign="top"><a href="javascript:Details('10549','E')">E-10549</a></td>
+			<td valign="top"><a href="javascript:Details('10549','E')">S-BBBBB-0003</a></td>
+			<td valign="top">08/09/2009</td>
+			<td valign="top">10:12:03</td>
+			<td valign="top">2009-221-10:12:03</td>
+			<td valign="top">BBBBB Flight Computer Reboot</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">CLOSED</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">FLIGHT SEGMENT</td>
+			<td valign="top">Fermi</td>
+			<td valign="top">C&amp;DH-COMMAND AND DATA HANDLING</td>
+			<td valign="top">C&amp;DH</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">C&amp;DH</td>
+			<td valign="top">Command &amp; Data Handling</td>
+			<td valign="top">FC</td>
+			<td valign="top">Flight Computer</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">1514173</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">10/19/2008</td>
+			<td valign="top">221</td>
+			<td valign="top">40</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">D</td>
+			<td valign="top">S</td>
+			<td valign="top">294</td>
+			<td valign="top">Doe</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Jane Doe&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top"> Minor</td>
+			<td valign="top">Minor</td>
+			<td valign="top">Data Loss</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Johnson</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Software</td>
+			<td valign="top">Hardware Failure</td>
+			<td valign="top">01/19/2011</td>
+			<td valign="top">N</td>
+			<td valign="top">N</td>
+			<td valign="top">08/20/2009</td>
+			<td valign="top">The BBBBB Flight Computer rebooted due to a watchdog timer error. Onboard FD&amp;C removed power to the payload, rebooted the Flight Computer and put the spacecraft in it's safest state, Contingency State. The spacecraft and payload health was as expected after a reboot. One orbit of data (one swath of the sky) was lost due to SSR data corruption. This swath has already been imaged once in BBBBB nominal operations, so the net effect is a reduction in statistics in that swath of the sky. </td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">The Flight Computer (FC) reset is a known problem on Orbital’s Microstar S/C bus, that we expected to happen occasionally and had procedures already in place to handle</td>
+			<td valign="top">8/10/09
+The 9:35pm EDT blind acquisition pass went well. Upon contact with the spacecraft, all systems were within limits with values expected in Contingency State. After command link was verified we uploaded a Transmitter OFF command. After verifying spacecraft SOH in Contingency State the Contingency Recovery procedure was started. The procedure ran smoothly and configured the spacecraft in Housekeeping State with all telemetry nominal.
+The CEU was then powered on. All payload housekeeping was nominal. The SSR read &amp; write pointers both read 0, indicating that the SSR was not in self refresh mode (see explanation at end of email). Because of this the data on the recorder is likely to be corrupted. The SSR blocks were dumped as planned in 3 stages: 1) data surrounding the time of the anomaly, 2) data for the entire orbit, 3) data since the CEU power-on. All of these dumps were executed successfully.
+The spacecraft is in Housekeeping State and the payload is in LVENG mode. All systems are functioning nominally.
+8/11/09
+The inertial precession maneuver was successful.
+During tonight's first pass telemetry was nominal. ATSs for the 0700-0800 contact and the inertial precession maneuver were uploaded. The maneuver occurred during the 0700 pass. The burn itself could not be monitored due to ground contact problems, but once telemetry was restored the successful completion of the maneuver was verified.
+8/12/09
+We successfully completed payload recovery. All payload and spacecraft bus systems are nominal and the payload is collecting data. The night's activities went very smoothly. 
+During the first pass commands for the second pass were uploaded, BBBBB-Lo then -Hi were turned on and telemetry was verified. We entered LVSCI mode and verified the spin pulse was received and equivalent to the spin pulse the ACS system thought it was sending out. BBBBB-Lo high voltage was enabled then -Hi's HV was enabled.
+During the second pass both sensors entered HVSTANDBY levels and BBBBB-Lo was ramped to HVSCI levels. We entered HVSCI and dwelled between passes.
+The third pass was a blind acquisition. After uploading a transmitter off command for the end of the pass BBBBB-Hi was ramped to HVSCI levels and the payload entered HVSCI. Both sensors are collecting data &amp; count rates look good.
+</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">Mary Johnson&nbsp;</td>
+			<td valign="top">01/19/2011</td>
+			<td valign="top">N</td>
+			<td valign="top">Significant</td>
+			<td valign="top">Y</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+			<td valign="top">&nbsp;</td>
+	</tr>
+</tbody></table>
+<b>1596 Records Found!</b><br>
+<!--
+<hr>
+SQL STMT: SELECT SMN.soars_id as SID, SMN.craft_index as CRFTIDX, SMN.state_index as STIDX, SSC.craft_launch_date as LNCHDATE, SMN.sc_soars_id as SCID, SMN.subsys_index as SSIDX, SMN.protected_flag AS PFLAG, SMN.soars_id as F2, SMN.sc_soars_id as F58, convert(char(10), SMN.anomaly_date, 101) as F9, SMN.anomaly_time as F10, SMN.anomaly_time_utc as F71, SMN.anomaly_title as F72, SMN.project_type as F3, SMN.project_number as F4, SSM.mode_desc as F59, SMP.phase_desc as F60, SST.state_desc as F5, SCS.status_desc as F65, SAC.anomaly_category_desc as F36, SSC.craft_acronym as F6, SS.ss_description as F48, SS.ss_acronym as F80, CMP.comp_desc as F49, CMP.comp_acronym as F81, SSS.subsys_acronym as F7, SSS.subsys_description as F82, SCP.comp_acronym as F8, SCP.comp_description as F83, SMN.component_id_num as F38, SMN.component_serial as F39, SMN.component_mfg as F40, SMN.assembly_name as F12, SMN.assembly_id_num as F41, SMN.assembly_serial as F42, SMN.assembly_mfg as F43, SMN.part_name as F68, SMN.part_number as F69, SMN.drawing_ref_designator as F70, convert(char(10), SMN.launch_date, 101) as F37, SMN.anomaly_jday as F11, SMN.revolution_number as F13, SMN.latitude as F14, SMN.latitude_ns as F15, SMN.longitude as F16, SMN.longitude_ew as F17, SMN.altitude as F61, SMN.eci_x_coord as F62, SMN.eci_y_coord as F63, SMN.eci_z_coord as F64, SMN.asc_desc as F18, SMN.sun_dark as F19, SMN.days_operation as F20, SMN.orig_last_name as F21, SMN.govt1_last_name as F22, SMN.assign_to_user_index as F66, SMN.assign_to_name as F67, SII.investigation_desc as F23, SME.mission_effect_desc as F24, SIS.severity_desc as F52, SAE.anomaly_effect_desc as F25, SFC.failure_desc as F26, SAT.anomaly_type_desc as F27, SMN.resp_last_name as F28, SMN.govt2_last_name as F29, SMN.sys_mgr_last_name as F30, ACL.anomaly_classification_desc as F75, SAR.anomaly_rootcause_desc as F76, convert(char(10), SMN.anomaly_closure_date, 101) as F73, SMN.personal_injury as F32, SMN.unexpected_damage as F33, convert(char(10),SMN.date_entered,101) as F34, STX.text_value_a as F44, STX.text_value_b as F45, STX.text_value_c as F46, STX.text_value_d as F57, STX.text_value_e as F56, STX.text_value_f as F47, STX.text_value_g as F55, SMN.last_chg_user_index as F50, convert(char(10),SMN.last_chg_date,101) as F51, SMN.recurring_anomaly as F53, SCR.criticality_desc as F54, SMN.protected_flag as F74, SWFV1.field_selection_value as F77, SWFV2.field_selection_value as F78, SWFV3.field_selection_value as F79<br>FROM soars_main SMN<br><br>INNER JOIN soars_spacecraft SSC ON (SMN.craft_index = SSC.craft_index)<br>LEFT OUTER JOIN soars_subsystems SSS ON (SMN.craft_index = SSS.craft_index AND SMN.subsys_index = SSS.subsys_index)<br>LEFT OUTER JOIN soars_subsystems SSS2 ON (SMN.craft_index = SSS2.craft_index AND SMN.subsys_index = SSS2.subsys_index) LEFT OUTER JOIN subsystems SS ON (SSS2.common_subsys_index = SS.common_subsys_index)<br>LEFT OUTER JOIN soars_components SCP ON (SCP.comp_index = SMN.component_index AND SCP.subsys_index = SMN.subsys_index AND SCP.craft_index = SMN.craft_index)<br>LEFT OUTER JOIN soars_components SCP2 ON (SMN.craft_index = SCP2.craft_index AND SMN.subsys_index = SCP2.subsys_index AND SMN.component_index = SCP2.comp_index) LEFT OUTER JOIN components CMP ON (CMP.common_comp_index = SCP2.common_comp_index)<br>LEFT OUTER JOIN soars_investigation_index SII ON (SMN.investigation_index = SII.investigation_index)<br>LEFT OUTER JOIN soars_mission_effect SME ON (SMN.mission_effect_index = SME.mission_effect_index)<br>LEFT OUTER JOIN soars_anomaly_effect SAE ON (SMN.anomaly_effect_index = SAE.anomaly_effect_index)<br>LEFT OUTER JOIN soars_failure_category SFC ON (SMN.failure_index = SFC.failure_index)<br>LEFT OUTER JOIN soars_anomaly_type SAT ON (SMN.anomaly_type_index = SAT.anomaly_type_index)<br>LEFT OUTER JOIN soars_txtfields STX ON (SMN.soar_revision = STX.soar_revision AND SMN.soar_number = STX.soar_number)<br>LEFT OUTER JOIN soars_states SST ON (SMN.state_index = SST.state_index)<br>LEFT OUTER JOIN soars_impact_severity SIS ON (SMN.severity_index = SIS.severity_index)<br>LEFT OUTER JOIN soars_anomaly_category SAC ON (SMN.anomaly_category_index = SAC.anomaly_category_index)<br>LEFT OUTER JOIN soars_criticality SCR ON (SMN.criticality_index = SCR.criticality_index)<br>LEFT OUTER JOIN soars_spacecraft_mode SSM ON (SMN.craft_index = SSM.craft_index AND SMN.mode_index = SSM.mode_index)<br>LEFT OUTER JOIN soars_mission_phase SMP ON (SMN.craft_index = SMP.craft_index AND SMN.phase_index = SMP.phase_index)<br>LEFT OUTER JOIN soars_current_status SCS ON (SMN.state_index = SCS.state_index AND SMN.status_index = SCS.status_index)<br>LEFT OUTER JOIN soars_anomaly_classification ACL ON (SMN.anomaly_classification_index = ACL.anomaly_classification_index)<br>LEFT OUTER JOIN soars_anomaly_rootcause SAR ON (SMN.anomaly_rootcause_index = SAR.anomaly_rootcause_index)<br>LEFT OUTER JOIN soars_wildcard_field_values SWFV1 ON (SMN.craft_index = SWFV1.craft_index AND SWFV1.wildcard_index = 1 AND SMN.wildcard_field1_index = SWFV1.field_index)<br>LEFT OUTER JOIN soars_wildcard_field_values SWFV2 ON (SMN.craft_index = SWFV2.craft_index AND SWFV2.wildcard_index = 2 AND SMN.wildcard_field2_index = SWFV2.field_index)<br>LEFT OUTER JOIN soars_wildcard_field_values SWFV3 ON (SMN.craft_index = SWFV3.craft_index AND SWFV3.wildcard_index = 3 AND SMN.wildcard_field3_index = SWFV3.field_index)  WHERE  SSC.primary_other = 'P'<br> AND  ( SMN.craft_index = 77 OR SMN.craft_index = 185 OR SMN.craft_index = 45 OR SMN.craft_index = 122 OR SMN.craft_index = 82 OR SMN.craft_index = 84 OR SMN.craft_index = 90 OR SMN.craft_index = 112 OR SMN.craft_index = 46 OR SMN.craft_index = 47 OR SMN.craft_index = 114 OR SMN.craft_index = 48 OR SMN.craft_index = 104 OR SMN.craft_index = 49 OR SMN.craft_index = 50 OR SMN.craft_index = 51 OR SMN.craft_index = 52 OR SMN.craft_index = 95 OR SMN.craft_index = 179 OR SMN.craft_index = 79 OR SMN.craft_index = 151 OR SMN.craft_index = 187)<br>ORDER BY SSC.craft_acronym asc, SAC.anomaly_category_desc asc
+<hr>
+-->
+<input type="button" value="Print" onclick="window.print()"> |
+<input type="button" value="Close Window" onclick="window.close()"> |
+<input type="submit" value="Save Query"> |
+<font face="Tahoma">File Format: </font><select name="fformat"><option value="CSVRAW">Comma Separated Variable</option><option value="EXCELRAW">MS Excel</option></select>&nbsp;<input type="Button" value="Download" onclick="doDownload()">
+<input type="Hidden" name="usrindex" value="3987">
+<input type="Hidden" name="rptindex" value="0">
+<input type="Hidden" name="actindex" value="114">
+<input type="Hidden" name="actuserindex" value="3987">
+<input type="Hidden" name="prjindex" value="77,185,45,122,82,84,90,112,46,47,114,48,104,49,50,51,52,95,179,79,151,187">
+</form>
+</body></html>

@@ -1,8 +1,0 @@
-{
-  "name": "application-name",
-  "version": "0.0.1",
-  "dependencies": {
-    "express": "~4.13.1",
-    "redis": "~2.3.0"
-  }
-}

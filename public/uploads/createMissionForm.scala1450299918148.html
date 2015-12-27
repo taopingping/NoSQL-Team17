@@ -1,0 +1,55 @@
+@(prefilData:Map[String, List[String]])
+<table class="table">
+<tr>
+	<th>Name</th><td><input type="text" id="name" name="name" class="searchTextField form-control"/></td>
+	<th>Cardinality</th><td><input type="text" id="cardinality" name="cardinality" class="searchTextField form-control"/></td></tr>
+<tr>
+	<th>Profile</th><td><input type="text" id="searchTextField" name="profile" class="searchTextField form-control"/></td>
+	<th>Nominal Mission Lifetime</th><td><input id="nominalMissionLifetime" type="number" name="nominalMissionLifetime" class="searchTextField form-control"/></td>
+</tr>
+<tr>
+	<th>Launch Vehicle</th><td><input id="launchVehicle" type="text" name="launchVehicle" class="searchTextField form-control"/></td>
+	<th>Launch Vehicle - Weight</th><td><input id="launchVehicleWeight" type="number" name="launchVehicleWeight" class="searchTextField form-control"/></td>
+</tr>
+<tr >
+	<th>Launch Vehicle - Number of Stages</th><td><input id="launchVehicleNumberOfStages" type="number" name="launchVehicleNumberOfStages" class="searchTextField form-control"/></td>
+	<th>Launch Vehicle - Upper-Stage Utilization</th><td><select id="launchVehicleUpperStageUtilization" type="text" name="launchVehicleUpperStageUtilization" class="selectpicker"><option>True</option><option>False</option></select></td>
+</tr>
+<tr >
+	<th>Launch Vehicle - Propellant Type</th><td><input type="text" id="launchVehiclePropellantType" name="launchVehiclePropellantType" class="searchTextField form-control"/></td>
+	<th >Launch Platform</th><td><input id="launchPlatform" type="text" name="launchPlatform" class="searchTextField form-control"/></td>
+</tr>
+<tr>
+	<th >Launch Profile</th><td ><input type="text" id="launchProfile" name="launchProfile" class="searchTextField form-control"/></td>
+	<th>Instrument Data Processing Centers</th><td><select id="instrDataProcessCenters" type="text" multiple data-selected-text-format="count>3" name="instrDataProcessCenters" class="selectpicker">@for(instrDataProcessCenters <- prefilData.get("instrDataProcessCenters")) {<option>@instrDataProcessCenters</option>}</select></td>
+</tr>
+<tr>
+	<th>Mission Trajectory</th><td><input type="text" id="missionTrajectory" name="missionTrajectory" class="searchTextField form-control"/></td>
+	<th>Human-ratedness </th><td><input type="text" id="humanratedness" name="humanratedness" class="searchTextField form-control"/></td>
+</tr>
+<tr class="border">
+	<th>Communication Supporting Assets - Orbital Relay</th><td><select type="text" id="communicationSupportingAssetsOrbitalRelay" multiple data-selected-text-format="count>3" name="communicationSupportingAssetsOrbitalRelay" class="selectpicker">@for(communicationSupportingAsset <- prefilData.get("communicationSupportingAssetsOrbitalRelay")) {<option>@communicationSupportingAsset</option>}</select></td>
+	<th>Communication Supporting Assets - Ground Stations</th><td><select type="text" id="communicationSupportingAssetGroundStations" multiple data-selected-text-format="count>3" name="communicationSupportingAssetGroundStations" class="selectpicker">@for(communicationSupportingAsset <- prefilData.get("communicationSupportingAssetGroundStations")) {<option>@communicationSupportingAsset</option>}</select></td>
+</tr>
+<tr>
+	<th>System/Software Architecture</th><td><input id="systemSoftwareArchitecture" type="text" name="systemSoftwareArchitecture" class="searchTextField form-control"/></td>
+	<th>Mission Class</th><td><select id="missionClass" multiple data-selected-text-format="count>3" type="text" name="missionClass" class="selectpicker">@for(missionClass <- prefilData.get("missionClass")) {<option>@missionClass</option>}</select></td>
+</tr>
+<tr>
+	<th>Risk Rating</th><td><select id="riskRating" multiple data-selected-text-format="count>3" type="text" name="riskRating" class="selectpicker">@for(riskRating <- prefilData.get("riskRating")) {<option>@riskRating</option>}</select></td>
+	<th>Spacecraft Instruments</th><td><input id="spacecraftInstruments" type="text" name="spacecraftInstruments" class="selectpicker"/></td>
+</tr>
+<tr>
+	<th>Spacecraft Instruments-Imaging</th><td><select id="spacecraftInstrumentsImaging" multiple data-selected-text-format="count>3" type="text" name="spacecraftInstrumentsImaging" class="selectpicker">@for(spacecraftInstruments <- prefilData.get("spacecraftInstrumentsImaging")) {<option>@spacecraftInstruments</option>}</select></td>
+	<th>Spacecraft Instruments-Field & Particle Sensors</th><td><select id="spacecraftInstrumentsFieldParticleSensors" multiple data-selected-text-format="count>3" type="text" name="spacecraftInstrumentsFieldParticleSensors" class="selectpicker">@for(spacecraftInstruments <- prefilData.get("spacecraftInstrumentsFieldParticleSensors")) {<option>@spacecraftInstruments</option>}</td>
+</tr>
+<tr>
+	<th>Attitude Control Type</th><td><input id="attitudeControlType" type="text" name="attitudeControlType" class="searchTextField form-control"/></td>
+	<th>Communications-Bandwidth</th><td><select id="communicationsBandwidth" multiple data-selected-text-format="count>3" type="text" name="communicationsBandwidth" class="selectpicker">@for(communicationsBandwidth <- prefilData.get("communicationsBandwidth")) {<option>@communicationsBandwidth</option>}</select></td>
+</tr>
+<tr>
+	<th>Communications-Contact Frequency</th><td><input id="communicationsContactFrequency" type="text" name="communicationsContactFrequency" class="searchTextField form-control"/></td>
+	<th>Launch Date</th><td><input id="launchDate" type="text" name="launchDate" class="searchTextField form-control"/></td>
+</tr>
+<tr><td colspan=4><button type="submit" class="btn btn-primary floatRight">save</button></tr>
+</table>
