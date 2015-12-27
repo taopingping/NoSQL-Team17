@@ -43,6 +43,13 @@ var client = new elasticsearch.Client({
   log: 'trace'
 });
 
+for(var i = 0; i < docData.length; i++) {
+  //index to es
+  //docData[i].name name
+  //docData[i].data text
+  //client.create();
+}
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -78,6 +85,7 @@ app.use(multer({ dest: './public/uploads/',
           data: text
         };
         docData.push(val);
+        //index to elasticsearch
       }
     });
 	}
@@ -97,9 +105,9 @@ app.get('/*', function(req, res){
   var invalidItems = 0;
   //Der übergebene Suchwert - req.params[0]
   console.log(req.params[0]);
-  for (var i = 0; i < docData.length; i++) {
+  /*for (var i = 0; i < docData.length; i++) {
     result.push({id: i+1, doc: docData[i].name, count: 3});
-  }
+  }*/
   res.send(result);
 });
 
