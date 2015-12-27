@@ -98,7 +98,7 @@ app.get('/*', function(req, res){
   //Der übergebene Suchwert - req.params[0]
   console.log(req.params[0]);
   for (var i = 0; i < docData.length; i++) {
-    result.push({id: i, doc: docData[i].name, count: 3});
+    result.push({id: i+1, doc: docData[i].name, count: 3});
   }
   res.send(result);
 });
