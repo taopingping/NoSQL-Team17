@@ -24,7 +24,7 @@ fs.readdir(dir, function(err, items) {
       var path = dir + item;
       textract.fromFileWithPath(path, function( err, text ) {
         if(err) {
-    			console.log("Could not parse file " + path);
+          console.log("Could not parse file " + path);
     		}
         else {
           var val = {
@@ -38,11 +38,8 @@ fs.readdir(dir, function(err, items) {
   }
 });
 
-
-require('dotenv').load();
-
 var client = new elasticsearch.Client({
-  host: process.env.ES_HOST,
+  host: '9200',
   log: 'trace'
 });
 
@@ -101,13 +98,7 @@ app.get('/*', function(req, res){
   //Der übergebene Suchwert - req.params[0]
   console.log(req.params[0]);
   for (var i = 0; i < docData.length; i++) {
-    if(!(stringStartsWith(docData[i].name,"."))) {
-      var index = i + 1 - invalidItems;
-      result.push({id: index, doc: docData[i].name, count: 3});
-    }
-    else{
-      invalidItems++;
-    }
+    result.push({id: i, doc: docData[i].name, count: 3});
   }
   res.send(result);
 });
@@ -143,7 +134,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(process.env.SRV_PORT);
+app.listen('1337');
 
 module.exports = app;
 

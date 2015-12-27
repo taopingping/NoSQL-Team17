@@ -11,14 +11,6 @@ $('#uploadForm').submit(function() {
         status('Error: ' + xhr.status);
       },
       success: function(response) {
-        resp.forEach(function(resultItem) {
-          t.row.add( [
-              resultItem.id,
-              '<a href=/uploads/'+resultItem.doc+'>'+resultItem.doc+'</a>',
-              resultItem.count,
-              '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
-          ] ).draw( false );
-        });
         $("#status").empty().text(response);
       }
   });
@@ -38,7 +30,6 @@ function getAllFiles() {
     url: "http://localhost:1337/files",
     type: 'GET',
     success: function (resp) {
-      $('#data tbody').html();
       resp.forEach(function(resultItem) {
         t.row.add( [
             resultItem.id,
@@ -48,8 +39,8 @@ function getAllFiles() {
         ] ).draw( false );
       });
     },
-    error: function(xhr) {
-      status('Error: ' + xhr.status);
+    error: function(e) {
+      console.log('Error: '+JSON.stringify(e));
     }
   });
 }
@@ -73,7 +64,7 @@ function pressSearchKey()    {
           });
     },
     error: function(e) {
-        status('Error: '+e.text);
+        alert('Error: '+e.text);
     }
   });
 }
