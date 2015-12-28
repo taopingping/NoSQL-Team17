@@ -25,3 +25,7 @@
 * [jQuery](https://jquery.com)
 * [bootstrap](http://getbootstrap.com)
 * [DataTables](https://datatables.net)
+
+## Upload requirements
+
+* Check the [textract requirements](https://github.com/dbashford/textract#extraction-requirements)
