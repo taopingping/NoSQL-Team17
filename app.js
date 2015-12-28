@@ -10,20 +10,15 @@ var textract = require('textract');
 var app = express();
 var upload = multer({ dest : './public/uploads'});
 var dir = './public/uploads/';
-
 var currentIndex = 1;
-
-
+var allDocuments = [];
 var client = new elasticsearch.Client({
   host: 'localhost:9200',
   log: 'trace'
 });
 
-//Test---------------------------------------------------------------------------------------0
-
 client.ping({
 	requestTimeout: Infinity,
-	// undocumented params are appended to the query string
 	hello: "Elasticsearch"
 }, function (error) {
 	if (error) {
@@ -32,7 +27,6 @@ client.ping({
 		console.log('ElasticSearch: All is well');
 	}
 });
-//------------------------------------------------------------------------------------------1
 
 //read all files when server starts
 fs.readdir(dir, function(err, items) {
@@ -47,6 +41,7 @@ fs.readdir(dir, function(err, items) {
           console.log("Could not parse file " + path);
     		}
         else {
+          allDocuments.push({name: item, text: text});
           client.index({
       			index:'uploadedfiles',
       			type:'file',
@@ -64,7 +59,6 @@ fs.readdir(dir, function(err, items) {
   }
 });
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -75,7 +69,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+//app.use('/', routes);
 
 app.use(multer({ dest: './public/uploads/',
 	rename: function (fieldname, filename) {
@@ -94,6 +88,7 @@ app.use(multer({ dest: './public/uploads/',
       else {
         //add the uploaded file's text to the docData
         var len = dir.length - 2;
+        allDocuments.push({name: file.path.substring(len), text: text});
     		client.index({
     			index:'uploadedfiles',
     			type:'file',
@@ -119,35 +114,32 @@ app.post('/upload',function(req,res){
 	});
 });
 
-app.get('/', function(req, res) {
-  //do nth
+app.get('/', function(req,res) {
+  var result = [];
+  for (var i = 0; i < allDocuments.length; i++) {
+    result.push({id: i+1, doc: allDocuments[i].name, count: 1});
+  }
+  res.render('index', { data: result });
 })
 
 app.get('/*', function(req, res){
-  /*for (var i = 0; i < docData.length; i++) {
-    result.push({id: i+1, doc: docData[i].name, count: 3});
-  }*/
-	client.search({
-		index: 'uploadedfiles',
-		type: 'file',
-		body: {
-			 query: {
-				function_score: {
-					query: {
-						match: {
-							text: req.params[0]
-						}
-					}
-				}
-			}
-		}
-	}).then(function (resp) {
-		var hits = resp.hits.hits;
-    res.send(hits);
-	}, function (err) {
-    console.trace(err.message);
-	});
-	//----------------------------------------------------1
+  if(req.params[0] != ""){
+  	client.search({
+  		index: 'uploadedfiles',
+  		type: 'file',
+  		body: {
+  			 query: {
+  				function_score: {
+  					query: { match: { text: req.params[0]}}
+  				}
+  			}
+  		}
+  	}).then(function (resp) {
+  		res.send(resp.hits.hits);
+  	}, function (err) {
+      console.trace(err.message);
+  	});
+  }
 });
 
 // catch 404 and forward to error handler

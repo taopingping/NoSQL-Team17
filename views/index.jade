@@ -31,6 +31,14 @@ html(lang='en')
             th Document
             th Count
             th Delete
+        tbody
+          each val in data
+            tr
+              td #{val.id}
+              td
+                a(href="uploads/" + val.doc) #{val.doc}
+              td #{val.count}
+              td 0
         tfoot
           tr
             th ID
