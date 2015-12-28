@@ -13,18 +13,7 @@ var currentIndex = 1;
 var allDocuments = [];
 var client = new elasticsearch.Client({
   host: 'localhost:9200',
-  log: 'trace'
-});
-
-client.ping({
-	requestTimeout: Infinity,
-	hello: "Elasticsearch"
-}, function (error) {
-	if (error) {
-		console.error('Elasticsearch cluster is down!');
-	} else {
-		console.log('ElasticSearch: All is well');
-	}
+  //log: 'trace'
 });
 
 client.indices.delete({
@@ -33,8 +22,6 @@ client.indices.delete({
 
     if (err) {
         console.error(err.message);
-    } else {
-        console.log('Indexes have been deleted!');
     }
 });
 
@@ -61,7 +48,9 @@ fs.readdir(dir, function(err, items) {
       				text: text
       			}
       		},function(error,response){
-      			console.log(response);
+      			if(error) {
+              console.log(error);
+            }
       		});
         }
       });
@@ -73,15 +62,12 @@ fs.readdir(dir, function(err, items) {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(multer({ dest: './public/uploads/',
 	rename: function (fieldname, filename) {
-    //add the current date to the filename to allow multiple uploads
     return filename + Date.now();
 	},
 	onFileUploadStart: function (file) {
@@ -94,7 +80,6 @@ app.use(multer({ dest: './public/uploads/',
   			console.log("Could not parse file " + file.path);
   		}
       else {
-        //add the uploaded file's text to the docData
         var len = dir.length - 2;
         allDocuments.push({name: file.path.substring(len), text: text});
     		client.index({
@@ -106,7 +91,9 @@ app.use(multer({ dest: './public/uploads/',
     				text: text
     			}
     		},function(error,response){
-    			console.log(response);
+          if(error) {
+            console.log(error);
+          }
     		});
       }
     });
@@ -179,6 +166,9 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen('1337');
+app.listen(1337, function () {
+  console.log('App listening at http://%s:%s', "localhost", 1337);
+  console.log('Elasticsearch listening at http://%s:%s', "localhost", 9200);
+});
 
 module.exports = app;

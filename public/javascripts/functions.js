@@ -24,27 +24,29 @@ $('input[name=srch-term]').keyup(function(event){
 // handle a user's search
 function pressSearchKey()    {
   var needle = $('input[name=srch-term]').val();
-  $.ajax({
-    url: "http://localhost:1337/"+needle,
-    type: 'GET',
-    success: function (resp) {
-        $("#search").text("Suchanfrage: " + needle);
-        $("#search").attr("class","well well-sm");
-        t.clear();
-        for(var i = 0; i < resp.length; i++) {
-          t.row.add( [
-              i+1,
-              '<a href=/uploads/'+resp[i]._source.name+'>'+resp[i]._source.name+'</a>',
-              resp[i]._score,
-              '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
-          ] );
-        }
-        t.draw( false );
-    },
-    error: function(e) {
-        alert('Error: '+e.text);
-    }
-  });
+  if(needle.length != 0){
+    $.ajax({
+      url: "http://localhost:1337/"+needle,
+      type: 'GET',
+      success: function (resp) {
+          $("#search").text("Suchanfrage: " + needle);
+          $("#search").attr("class","well well-sm");
+          t.clear();
+          for(var i = 0; i < resp.length; i++) {
+            t.row.add( [
+                i+1,
+                '<a href=/uploads/'+resp[i]._source.name+'>'+resp[i]._source.name+'</a>',
+                resp[i]._score,
+                '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
+            ] );
+          }
+          t.draw( false );
+      },
+      error: function(e) {
+          alert('Error: '+e.text);
+      }
+    });
+  }
 }
 
 // show path of upload
