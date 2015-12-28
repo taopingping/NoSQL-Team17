@@ -4,5 +4,5 @@
 
 * Elasticsearch installieren und starten (https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)
 * Clonen des Projekts
-* Zum Projekt navigieren
+* Zum Projekt navigieren (z.B. /Users/Name/NoSQL-Team17)
 * "node app.js" ausführen
