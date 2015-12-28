@@ -11,3 +11,11 @@
 ## Fileupload
 
 * Uploaded files are stored locally at /yourpath/NoSQL-Team17/uploads and can be displayed or deleted there
+
+## Used modules
+
+* multer - middleware for file upload
+* fs - read all files from server
+* textract - extract text from files
+* elasticsearch - search
+* express - mvc 
