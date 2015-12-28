@@ -19,3 +19,9 @@
 * textract - extract text from files
 * elasticsearch - search
 * express - mvc 
+
+# Additional plugins
+
+* [jQuery](https://jquery.com)
+* [bootstrap](http://getbootstrap.com)
+* [DataTables](https://datatables.net)
