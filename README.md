@@ -14,11 +14,11 @@
 
 ## Used modules
 
-* multer - middleware for file upload
-* fs - read all files from server
-* textract - extract text from files
-* elasticsearch - search
-* express - mvc 
+* [multer](https://github.com/expressjs/multer) - middleware for file upload
+* [fs](https://nodejs.org/api/fs.html) - read all files from server
+* [textract](https://github.com/dbashford/textract) - extract text from files
+* [elasticsearch](https://www.npmjs.com/package/elasticsearch) - search
+* [express](http://expressjs.com) - mvc 
 
 # Additional plugins
 
