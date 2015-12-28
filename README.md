@@ -5,7 +5,7 @@
 * Install and run elasticsearch (https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)
 * Clone the repository (git clone https://github.com/taopingping/NoSQL-Team17.git)
 * Navigate to the project (/yourpath/NoSQL-Team17) and run "node app.js" in your terminal
-* You can open the application in your browser at http://localhost:1337/
+* You can open the application in your browser at (http://localhost:1337)
 
 ## Fileupload
 
