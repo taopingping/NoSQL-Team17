@@ -3,7 +3,7 @@
 ## Run the project
 
 * Install and run elasticsearch (https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)
-* Clone the repository
+* Clone the repository (git clone https://github.com/taopingping/NoSQL-Team17.git)
 * Navigate to the project (<yourpath>/NoSQL-Team17) and run "node app.js" in your terminal
 * Elasticsearch installieren und starten (https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)
 
