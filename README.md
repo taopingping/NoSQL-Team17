@@ -25,3 +25,24 @@
 * [jQuery](https://jquery.com)
 * [bootstrap](http://getbootstrap.com)
 * [DataTables](https://datatables.net)
+
+## Formats that can be analyzed
+* HTML, HTM
+* Markdown
+* XML, XSL
+* PDF
+* DOC, DOCX
+* ODT, OTT
+* RTF
+* XLS, XLSX, XLSB, XLSM, XLTX
+* CSV
+* ODS, OTS
+* PPTX, POTX
+* ODP, OTP
+* ODG, OTG
+* application/javascript
+* All text/* mime-types.
+
+## Upload requirements
+
+* Check the [textract requirements](https://github.com/dbashford/textract#extraction-requirements)
