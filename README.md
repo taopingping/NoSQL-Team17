@@ -20,7 +20,7 @@
 * [elasticsearch](https://www.npmjs.com/package/elasticsearch) - search
 * [express](http://expressjs.com) - mvc 
 
-# Additional plugins
+## Additional plugins
 
 * [jQuery](https://jquery.com)
 * [bootstrap](http://getbootstrap.com)
