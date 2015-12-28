@@ -28,6 +28,17 @@ client.ping({
 	}
 });
 
+client.indices.delete({
+    index: '_all'
+}, function(err, res) {
+
+    if (err) {
+        console.error(err.message);
+    } else {
+        console.log('Indexes have been deleted!');
+    }
+});
+
 //read all files when server starts
 fs.readdir(dir, function(err, items) {
   if(err) {
