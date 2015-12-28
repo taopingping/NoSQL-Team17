@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var http = require('http');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
 var elasticsearch = require('elasticsearch');
 var multer = require("multer");
 var fs = require('fs');
@@ -80,8 +79,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', routes);
-
 app.use(multer({ dest: './public/uploads/',
 	rename: function (fieldname, filename) {
     //add the current date to the filename to allow multiple uploads
@@ -134,23 +131,21 @@ app.get('/', function(req,res) {
 })
 
 app.get('/*', function(req, res){
-  if(req.params[0] != ""){
-  	client.search({
-  		index: 'uploadedfiles',
-  		type: 'file',
-  		body: {
-  			 query: {
-  				function_score: {
-  					query: { match: { text: req.params[0]}}
-  				}
+  client.search({
+		index: 'uploadedfiles',
+  	type: 'file',
+  	body: {
+			 query: {
+  			function_score: {
+  				query: { match: { text: req.params[0]}}
   			}
   		}
-  	}).then(function (resp) {
-  		res.send(resp.hits.hits);
-  	}, function (err) {
-      console.trace(err.message);
-  	});
-  }
+		}
+  }).then(function (resp) {
+		res.send(resp.hits.hits);
+  }, function (err) {
+    console.trace(err.message);
+  });
 });
 
 // catch 404 and forward to error handler
@@ -187,14 +182,3 @@ app.use(function(err, req, res, next) {
 app.listen('1337');
 
 module.exports = app;
-
-function stringStartsWith (string, prefix) {
-  var res;
-  try {
-    res = string.slice(0, prefix.length) == prefix;
-  }
-  catch(err) {
-    res = false;
-  }
-    return res;
-}
