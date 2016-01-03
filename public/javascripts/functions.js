@@ -36,8 +36,7 @@ function pressSearchKey()    {
             t.row.add( [
                 i+1,
                 '<a href=/uploads/'+resp[i]._source.name+'>'+resp[i]._source.name+'</a>',
-                resp[i]._score,
-                '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
+                resp[i]._score
             ] );
           }
           t.draw( false );
