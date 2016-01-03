@@ -13,7 +13,7 @@ var currentIndex = 1;
 var allDocuments = [];
 var client = new elasticsearch.Client({
   host: 'localhost:9200',
-  //log: 'trace'
+  log: 'trace'
 });
 
 client.indices.delete({
@@ -124,12 +124,16 @@ app.get('/*', function(req, res){
   	body: {
 			 query: {
   			function_score: {
-  				query: { match: { text: req.params[0]}}
+  				query: { match: { text: req.params[0]}},
+          script_score: {
+            script: _index['text'][req.params[0]].tf()
+          }
   			}
   		}
 		}
   }).then(function (resp) {
-		res.send(resp.hits.hits);
+    console.log(resp);
+		res.send(resp);
   }, function (err) {
     console.trace(err.message);
   });
