@@ -35,3 +35,8 @@ a {
 #data_filter {
   visibility: hidden;
 }
+
+.modal-title {
+  text-align: center;
+  padding-bottom: 35px;
+}
