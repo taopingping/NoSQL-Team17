@@ -86,7 +86,7 @@ app.use(multer({
             }
             else {
                 var len = dir.length - 2;
-                // added it to table and database
+                // added it to data array and database
                 allDocuments.push({name: file.path.substring(len), text: text});
                 client.index({
                     index: 'uploadedfiles',
