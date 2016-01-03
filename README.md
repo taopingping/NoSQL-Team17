@@ -4,11 +4,13 @@
 
 * Install and run elasticsearch (https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)
 * Edit elasticsearch.yml and add the following lines:
+```
      script.groovy.sandbox.enabled: true
      script.inline: on
      script.indexed: on 
      script.search: on
      script.engine.groovy.inline.aggs: on
+```
 * Make sure elasticsearch is using its default port 9200
 * Clone the repository (git clone https://github.com/taopingping/NoSQL-Team17.git)
 * Navigate to the project (/yourpath/NoSQL-Team17) and run "node app.js" in your terminal
