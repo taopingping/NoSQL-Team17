@@ -111,9 +111,8 @@ app.post('/upload', function (req, res) {
         if (err) {
             return res.end("Error uploading file.");
         }
+        res.redirect('/');
     });
-
-    res.redirect('/');
 });
 
 app.get('/', function (req, res) {
