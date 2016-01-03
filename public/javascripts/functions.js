@@ -43,7 +43,7 @@ function pressSearchKey()    {
           t.draw( false );
       },
       error: function(e) {
-          alert('Error: '+e.text);
+        console.log(JSON.stringify(e));
       }
     });
   }

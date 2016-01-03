@@ -19,7 +19,6 @@ var client = new elasticsearch.Client({
 client.indices.delete({
     index: '_all'
 }, function(err, res) {
-
     if (err) {
         console.error(err.message);
     }
@@ -118,25 +117,33 @@ app.get('/', function(req,res) {
 })
 
 app.get('/*', function(req, res){
+  var result = [];
+  var invalidItems = 0;
   client.search({
-		index: 'uploadedfiles',
-  	type: 'file',
-  	body: {
-			 query: {
-  			function_score: {
-  				query: { match: { text: req.params[0]}},
-          script_score: {
-            script: _index['text'][req.params[0]].tf()
-          }
-  			}
-  		}
-		}
-  }).then(function (resp) {
-    console.log(resp);
-		res.send(resp);
-  }, function (err) {
-    console.trace(err.message);
-  });
+    index: 'uploadedfiles',
+    type: 'file',
+    body: {
+      query : {
+       function_score : {
+        query : {
+         match : {
+          text : req.params[0]
+         }
+        },
+        "boost_mode" : "replace",
+        "functions":[{
+        "script_score": {
+         "script" : "_index['text']['"+ req.params[0].toLowerCase() +"'].tf()"
+        }}]
+       }
+      }
+    }
+   }).then(function (resp) {
+    var hits = resp.hits.hits;
+    res.send(hits);
+   }, function (err) {
+      console.trace(err.message);
+   });
 });
 
 // catch 404 and forward to error handler
