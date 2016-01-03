@@ -111,14 +111,15 @@ app.post('/upload', function (req, res) {
         if (err) {
             return res.end("Error uploading file.");
         }
-        res.redirect('/');
     });
+
+    res.redirect('/');
 });
 
 app.get('/', function (req, res) {
     var result = [];
     for (var i = 0; i < allDocuments.length; i++) {
-        result.push({id: i + 1, doc: allDocuments[i].name, count: 1});
+        result.push({id: i + 1, doc: allDocuments[i].name, count: 0});
     }
     res.render('index', {data: result});
 })
