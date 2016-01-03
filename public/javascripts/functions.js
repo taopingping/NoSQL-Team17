@@ -31,6 +31,7 @@ function pressSearchKey()    {
       success: function (resp) {
           $("#search").text("Suchanfrage: " + needle);
           $("#search").attr("class","well well-sm");
+          // draw a new table with response data
           t.clear();
           for(var i = 0; i < resp.length; i++) {
             t.row.add( [

@@ -7,54 +7,57 @@ var multer = require("multer");
 var fs = require('fs');
 var textract = require('textract');
 var app = express();
-var upload = multer({ dest : './public/uploads'});
+var upload = multer({dest: './public/uploads'});
 var dir = './public/uploads/';
 var currentIndex = 1;
 var allDocuments = [];
 var client = new elasticsearch.Client({
-  host: 'localhost:9200',
-  log: 'trace'
+    host: 'localhost:9200',
+    log: 'trace'
 });
 
+
+// clear index
 client.indices.delete({
     index: '_all'
-}, function(err, res) {
+}, function (err, res) {
     if (err) {
         console.error(err.message);
     }
 });
 
-//read all files when server starts
-fs.readdir(dir, function(err, items) {
-  if(err) {
-    console.log("Could not read files from directory " + dir);
-  }
-  else {
-    items.forEach(function(item) {
-      var path = dir + item;
-      textract.fromFileWithPath(path, function( err, text ) {
-        if(err) {
-          console.log("Could not parse file " + path);
-    		}
-        else {
-          allDocuments.push({name: item, text: text});
-          client.index({
-      			index:'uploadedfiles',
-      			type:'file',
-      			id: currentIndex++,
-      			body:{
-      				name: item,
-      				text: text
-      			}
-      		},function(error,response){
-      			if(error) {
-              console.log(error);
-            }
-      		});
-        }
-      });
-    });
-  }
+// read all files when server starts
+fs.readdir(dir, function (err, items) {
+    if (err) {
+        console.log("Could not read files from directory " + dir);
+    }
+    else {
+        items.forEach(function (item) {
+            var path = dir + item;
+            // parse all formats to json
+            textract.fromFileWithPath(path, function (err, text) {
+                if (err) {
+                    console.log("Could not parse file " + path);
+                }
+                else {
+                    allDocuments.push({name: item, text: text});
+                    client.index({
+                        index: 'uploadedfiles',
+                        type: 'file',
+                        id: currentIndex++,
+                        body: {
+                            name: item,
+                            text: text
+                        }
+                    }, function (error, response) {
+                        if (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+        });
+    }
 });
 
 // view engine setup
@@ -62,95 +65,99 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(multer({ dest: './public/uploads/',
-	rename: function (fieldname, filename) {
+// upload files
+app.use(multer({
+    dest: './public/uploads/',
+    rename: function (fieldname, filename) {
         return filename + Date.now();
-	},
-	onFileUploadStart: function (file) {
-		console.log(file.originalname + ' is starting ...');
-	},
-	onFileUploadComplete: function (file) {
-    console.log(file.fieldname + ' uploaded to  ' + file.path);
-    textract.fromFileWithPath(file.path, function( err, text ) {
-      if(err) {
-  			console.log("Could not parse file " + file.path);
-  		}
-      else {
-        var len = dir.length - 2;
-        allDocuments.push({name: file.path.substring(len), text: text});
-    		client.index({
-    			index:'uploadedfiles',
-    			type:'file',
-    			id: currentIndex++,
-    			body:{
-    				name: file.path.substring(len),
-    				text: text
-    			}
-    		},function(error,response){
-          if(error) {
-            console.log(error);
-          }
-    		});
-      }
-    });
-	}
+    },
+    onFileUploadStart: function (file) {
+        console.log(file.originalname + ' is starting ...');
+    },
+    onFileUploadComplete: function (file) {
+        console.log(file.fieldname + ' uploaded to  ' + file.path);
+        // parse all formats to json
+        textract.fromFileWithPath(file.path, function (err, text) {
+            if (err) {
+                console.log("Could not parse file " + file.path);
+            }
+            else {
+                var len = dir.length - 2;
+                // added it to table and database
+                allDocuments.push({name: file.path.substring(len), text: text});
+                client.index({
+                    index: 'uploadedfiles',
+                    type: 'file',
+                    id: currentIndex++,
+                    body: {
+                        name: file.path.substring(len),
+                        text: text
+                    }
+                }, function (error, response) {
+                    if (error) {
+                        console.log(error);
+                    }
+                });
+            }
+        });
+    }
 }));
 
-app.post('/upload',function(req,res){
-	upload(req,res,function(err) {
-		if(err) {
-			return res.end("Error uploading file.");
-		}
-		res.redirect('/');
-	});
+app.post('/upload', function (req, res) {
+    upload(req, res, function (err) {
+        if (err) {
+            return res.end("Error uploading file.");
+        }
+        res.redirect('/');
+    });
 });
 
-app.get('/', function(req,res) {
-  var result = [];
-  for (var i = 0; i < allDocuments.length; i++) {
-    result.push({id: i+1, doc: allDocuments[i].name, count: 1});
-  }
-  res.render('index', { data: result });
+app.get('/', function (req, res) {
+    var result = [];
+    for (var i = 0; i < allDocuments.length; i++) {
+        result.push({id: i + 1, doc: allDocuments[i].name, count: 1});
+    }
+    res.render('index', {data: result});
 })
 
-app.get('/*', function(req, res){
-  var result = [];
-  var invalidItems = 0;
-  client.search({
-    index: 'uploadedfiles',
-    type: 'file',
-    body: {
-      query : {
-       function_score : {
-        query : {
-         match : {
-          text : req.params[0]
-         }
-        },
-        "boost_mode" : "replace",
-        "functions":[{
-        "script_score": {
-         "script" : "_index['text']['"+ req.params[0].toLowerCase() +"'].tf()"
-        }}]
-       }
-      }
-    }
-   }).then(function (resp) {
-    var hits = resp.hits.hits;
-    res.send(hits);
-   }, function (err) {
-      console.trace(err.message);
-   });
+app.get('/*', function (req, res) {
+    var result = [];
+    client.search({
+        index: 'uploadedfiles',
+        type: 'file',
+        body: {
+            query: {
+                function_score: {
+                    query: {
+                        match: {
+                            text: req.params[0]
+                        }
+                    },
+                    "boost_mode": "replace",
+                    "functions": [{
+                        "script_score": {
+                            "script": "_index['text']['" + req.params[0].toLowerCase() + "'].tf()"
+                        }
+                    }]
+                }
+            }
+        }
+    }).then(function (resp) {// success
+        var hits = resp.hits.hits;
+        res.send(hits);
+    }, function (err) {// error
+        console.trace(err.message);
+    });
 });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -158,28 +165,28 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
 app.listen(1337, function () {
-  console.log('App listening at http://%s:%s', "localhost", 1337);
-  console.log('Elasticsearch listening at http://%s:%s', "localhost", 9200);
+    console.log('App listening at http://%s:%s', "localhost", 1337);
+    console.log('Elasticsearch listening at http://%s:%s', "localhost", 9200);
 });
 
 module.exports = app;
