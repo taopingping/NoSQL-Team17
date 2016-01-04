@@ -7,10 +7,10 @@ var multer = require("multer");
 var fs = require('fs');
 var textract = require('textract');
 var app = express();
-var upload = multer({dest: './public/uploads'});
 var dir = './public/uploads/';
 var currentIndex = 1;
 var allDocuments = [];
+var uploadFinished = false;
 var client = new elasticsearch.Client({
     host: 'localhost:9200',
     log: 'trace'
@@ -80,7 +80,7 @@ app.use(multer({
     onFileUploadComplete: function (file) {
         console.log(file.fieldname + ' uploaded to  ' + file.path);
         // parse all formats to json
-        textract.fromFileWithPath(file.path, function (err, text) {
+        var text = textract.fromFileWithPath(file.path, function (err, text) {
             if (err) {
                 console.log("Could not parse file " + file.path);
             }
@@ -88,6 +88,7 @@ app.use(multer({
                 var len = dir.length - 2;
                 // added it to data array and database
                 allDocuments.push({name: file.path.substring(len), text: text});
+                uploadFinished = true;
                 client.index({
                     index: 'uploadedfiles',
                     type: 'file',
@@ -102,17 +103,28 @@ app.use(multer({
                     }
                 });
             }
+            return text;
         });
     }
 }));
 
 app.post('/upload', function (req, res) {
-    upload(req, res, function (err) {
-        if (err) {
-            return res.end("Error uploading file.");
+    // check every 100 ms, if file is finish uploaded
+    var itvl = setInterval(function() {
+        if (uploadFinished) {
+            clearInterval(this);
+            res.redirect('/');
         }
-        res.redirect('/');
-    });
+    }, 100);
+    setTimeout(function(){
+        clearInterval(itvl);
+        if(!uploadFinished) {
+            console.log('timeout by upload');
+            res.redirect('/');
+        }else{
+            uploadFinished = false;
+        }
+    },2000);
 });
 
 app.get('/', function (req, res) {
