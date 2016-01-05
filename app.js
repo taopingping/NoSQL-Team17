@@ -43,7 +43,7 @@ fs.readdir(dir, function (err, items) {
                     allDocuments.push({name: item, text: text});
                     client.index({
                         index: 'uploadedfiles',
-                        type: 'file',
+                        type: 'documents',
                         id: currentIndex++,
                         body: {
                             name: item,
@@ -91,7 +91,7 @@ app.use(multer({
                 uploadFinished = true;
                 client.index({
                     index: 'uploadedfiles',
-                    type: 'file',
+                    type: 'documents',
                     id: currentIndex++,
                     body: {
                         name: file.path.substring(len),
@@ -138,7 +138,7 @@ app.get('/*', function (req, res) {
     var result = [];
     client.search({
         index: 'uploadedfiles',
-        type: 'file',
+        type: 'documents',
         body: {
             "from" : 0,
             "size" : 10000,
