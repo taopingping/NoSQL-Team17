@@ -41,6 +41,7 @@
 * DOC, DOCX
 * TXT
 * RTF
+* For more check [textract](https://github.com/dbashford/textract)
 
 ## Upload requirements
 
