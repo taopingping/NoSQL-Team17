@@ -141,6 +141,8 @@ app.get('/*', function (req, res) {
         index: 'uploadedfiles',
         type: 'document',
         body: {
+            "from" : 0,
+            "size" : 10000,
             query: {
                 function_score: {
                     query: {
