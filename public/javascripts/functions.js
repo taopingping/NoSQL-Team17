@@ -1,19 +1,5 @@
 var t = $('#data').DataTable();
 
-// control file uploads
-$('#uploadForm').submit(function() {
-   $("#status").empty().text("File is uploading...");
-   $.ajaxSubmit({
-      error: function(xhr) {
-        status('Error: ' + xhr.status);
-      },
-      success: function(response) {
-        $("#status").empty().text(response);
-      }
-  });
-  return false;
-});
-
 // handle enter key presses
 $('input[name=srch-term]').keyup(function(event){
     if(event.keyCode == 13 || event.which == 13){
